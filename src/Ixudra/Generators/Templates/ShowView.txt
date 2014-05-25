@@ -1,0 +1,23 @@
+@extends('bootstrap.layouts.master')
+
+
+@section('content-title')
+{{ $##VARIABLE_SINGULAR##->name }}
+@stop
+
+
+@section('content')
+
+    {{ Form::open(array('url' => '/##VARIABLE_PLURAL##/'.$##VARIABLE_SINGULAR##->id, 'method' => 'delete')) }}
+        {{ HTML::linkRoute('##VARIABLE_PLURAL##.edit', 'Edit', array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) }}
+        {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+    {{ Form:: close() }}
+
+    <div class="well well-large col-md-10">
+        <div class='col-md-10'>
+            <div class='col-md-4'>Foo:</div>
+            <div class='col-md-6'>Bar</div>
+        </div>
+    </div>
+
+@stop

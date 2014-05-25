@@ -1,0 +1,39 @@
+<?php
+
+
+class ##CLASS_SINGULAR##Factory {
+
+    public function createFromUserInput($input)
+    {
+        $input = $this->preProcessInput($input);
+
+        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##();
+        $##VARIABLE_SINGULAR##Response = $##VARIABLE_SINGULAR##->make( $input );
+
+        $response = new BaseModelResponse( null, $input );
+        if( $##VARIABLE_SINGULAR##Response->isSuccessful() ) {
+            $##VARIABLE_SINGULAR##->save();
+
+            $response->setModel($##VARIABLE_SINGULAR##);
+            $response->addNotifications('success', array('##VARIABLE_SINGULAR##.create.success'), true);
+        } else {
+            $response->addNotifications('error', $##VARIABLE_SINGULAR##Response->getNotifications('error'));
+        }
+
+        return $response;
+    }
+
+    public function modifyFromUserInput(##CLASS_SINGULAR## $##VARIABLE_SINGULAR##, array $input)
+    {
+        $input = $this->preProcessInput($input);
+
+        $response = $##VARIABLE_SINGULAR##->modify( $input );
+
+        if( $response->isSuccessful() ) {
+            $##VARIABLE_SINGULAR##->save();
+        }
+
+        return $response;
+    }
+
+}

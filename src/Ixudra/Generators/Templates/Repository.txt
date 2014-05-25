@@ -1,0 +1,24 @@
+<?php
+
+
+class Eloquent##CLASS_SINGULAR##Repository extends BaseRepository {
+
+    public function all()
+    {
+        return ##CLASS_SINGULAR##::all();
+    }
+
+    public function find($id)
+    {
+        return ##CLASS_SINGULAR##::find($id);
+    }
+
+    public function findByFilter($filters)
+    {
+        $##VARIABLE_PLURAL## = new ##CLASS_SINGULAR##;
+        $##VARIABLE_PLURAL## = $this->applyFilters( $##VARIABLE_PLURAL##, $filters );
+
+        return $##VARIABLE_PLURAL##->get();
+    }
+
+}

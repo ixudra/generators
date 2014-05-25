@@ -1,0 +1,59 @@
+<?php
+
+
+class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
+
+    public function index()
+    {
+        $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_PLURAL## = $##VARIABLE_SINGULAR##Repository->all();
+
+        $this->addParameter('##VARIABLE_PLURAL##', $##VARIABLE_PLURAL##);
+
+        return $this->makeView('bootstrap.##VARIABLE_PLURAL##.index');
+    }
+
+    public function create($input)
+    {
+        if( $input == null ) {
+            $##VARIABLE_SINGULAR##InputHelper = App::make('##CLASS_SINGULAR##InputHelper');
+            $input = $##VARIABLE_SINGULAR##InputHelper->getDefaultInput();
+        }
+
+        return $this->prepareForm( $input, 'bootstrap.##VARIABLE_PLURAL##.create' );
+    }
+
+    public function show($##VARIABLE_SINGULAR##)
+    {
+        $this->addParameter('##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR##);
+
+        return $this->makeView('bootstrap.##VARIABLE_PLURAL##.show');
+    }
+
+    public function edit($##VARIABLE_SINGULAR##, $input)
+    {
+        if( $input == null ) {
+            $##VARIABLE_SINGULAR##InputHelper = App::make('##CLASS_SINGULAR##InputHelper');
+            $input = $##VARIABLE_SINGULAR##InputHelper->getInputForModel( $##VARIABLE_SINGULAR## );
+        }
+
+        $this->addParameter('##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR##);
+
+        return $this->prepareForm( $input, 'bootstrap.##VARIABLE_PLURAL##.edit' );
+    }
+
+    public function ##VARIABLE_SINGULAR##NotFound()
+    {
+        $this->notifyUser('error', array('##VARIABLE_SINGULAR##.error.notFound'));
+
+        return $this->index();
+    }
+
+    protected function prepareForm($input, $template)
+    {
+        $this->addParameter('input', $input);
+
+        return $this->makeView( $template );
+    }
+
+}

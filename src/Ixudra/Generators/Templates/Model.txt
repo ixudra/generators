@@ -1,0 +1,78 @@
+<?php
+
+
+use Laracasts\Presenter\PresentableTrait;
+
+class ##CLASS_SINGULAR## extends BaseModel {
+
+    use PresentableTrait;
+
+
+    protected $table = '##VARIABLE_PLURAL##';
+
+    protected $guarded = array();
+
+
+    protected $validators = array(
+        'default'           => '##CLASS_SINGULAR##Validator'
+    );
+
+    protected $presenter = '##CLASS_SINGULAR##Presenter';
+
+
+    public function make($input)
+    {
+        $response = new BaseModelResponse($this, $input);
+
+        $validator = App::make( $this->getValidator() );
+        $validator->setAttributes($input);
+        if( $validator->fails() ) {
+            $response->addNotifications('error', $validator->getErrors());
+
+            return $response;
+        }
+
+        $this->validated = true;
+
+        $response->addNotifications('success', array('##VARIABLE_SINGULAR##.create.success'), true);
+
+        return $response;
+    }
+
+    public function modify($input)
+    {
+        $response = new BaseModelResponse($this, $input);
+
+        $validator = App::make( $this->getValidator() );
+        $validator->setAttributes($input);
+        if( $validator->fails() ) {
+            $response->addNotifications('error', $validator->getErrors());
+
+            return $response;
+        }
+
+        $this->validated = true;
+
+        $response->addNotifications('success', array('##VARIABLE_SINGULAR##.edit.success'), true);
+
+        return $response;
+    }
+
+    public function remove()
+    {
+        $this->delete();
+
+        $response = new BaseModelResponse();
+        $response->addNotifications('success', array('##VARIABLE_SINGULAR##.delete.success'), true);
+
+        return $response;
+    }
+
+    public static function getDefaults()
+    {
+        return array(
+            // ...
+        );
+    }
+
+}

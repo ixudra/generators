@@ -1,0 +1,19 @@
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach( $##VARIABLE_PLURAL## as $##VARIABLE_SINGULAR## )
+            <tr>
+                <td>{{ $##VARIABLE_SINGULAR##->id }}</td>
+                <td>{{ $##VARIABLE_SINGULAR##->name }}</td>
+                <td>{{ 'actions' }}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>

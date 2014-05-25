@@ -1,0 +1,16 @@
+<?php
+
+
+class ##CLASS_SINGULAR##Validator extends BaseModelValidator {
+
+    protected $rules = array(
+        // ...
+    );
+
+    protected $messages = array(
+        // ...
+    );
+
+}
+
+

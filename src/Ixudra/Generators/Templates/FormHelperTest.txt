@@ -1,0 +1,52 @@
+<?php
+
+
+class ##CLASS_SINGULAR##FormHelperTest extends BaseTestCase {
+
+    const ##CONSTANT_SINGULAR##_ID_1 = 15;
+
+    const ##CONSTANT_SINGULAR##_ID_2 = 17;
+
+
+    protected $##VARIABLE_SINGULAR##FormHelper;
+
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->##VARIABLE_SINGULAR##FormHelper = App::make('##CLASS_SINGULAR##FormHelper');
+    }
+
+
+    /**
+     * @covers ##CLASS_SINGULAR##FormHelper::get##CLASS_PLURAL##AsSelectList()
+     */
+    public function testGet##CLASS_SINGULAR##sAsSelectList()
+    {
+        $##VARIABLE_SINGULAR##Mock1 = Mockery::mock('##CLASS_SINGULAR##')->makePartial();
+        $##VARIABLE_SINGULAR##Mock1->shouldReceive('getAttribute')->once()->with('id')->andReturn(self::##CONSTANT_SINGULAR##_ID_1);
+        $##VARIABLE_SINGULAR##Mock1->shouldReceive('getAttribute')->once()->with('name')->andReturn('Foo');
+
+        $##VARIABLE_SINGULAR##Mock2 = Mockery::mock('##CLASS_SINGULAR##')->makePartial();
+        $##VARIABLE_SINGULAR##Mock2->shouldReceive('getAttribute')->once()->with('id')->andReturn(self::##CONSTANT_SINGULAR##_ID_2);
+        $##VARIABLE_SINGULAR##Mock2->shouldReceive('getAttribute')->once()->with('name')->andReturn('Bar');
+
+        $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array( $##VARIABLE_SINGULAR##Mock1, $##VARIABLE_SINGULAR##Mock2 ) );
+
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('all')->once()->andReturn($##VARIABLE_PLURAL##);
+        App::instance('Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+
+        $result = $this->##VARIABLE_SINGULAR##FormHelper->get##CLASS_SINGULAR##sAsSelectList();
+
+        $this->assertEquals(
+            array(
+                ''                  => 'All',
+                self::##CONSTANT_SINGULAR##_ID_1     => 'Foo',
+                self::##CONSTANT_SINGULAR##_ID_2     => 'Bar'
+            ), $result
+        );
+    }
+
+}

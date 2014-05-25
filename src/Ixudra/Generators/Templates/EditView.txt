@@ -1,0 +1,13 @@
+@extends('bootstrap.layouts.master')
+
+
+@section('content-title')
+Modify ##VARIABLE_SINGULAR##
+@stop
+
+
+@section('content')
+
+@include('bootstrap.##VARIABLE_PLURAL##.form', array('url' => '/##VARIABLE_PLURAL##/'.$##VARIABLE_SINGULAR##->id, 'method' => 'put', 'input' => $input, 'formId' => 'edit##CLASS_SINGULAR##', 'redirectUrl' => '##VARIABLE_PLURAL##.show', 'redirectParameters' => array($##VARIABLE_SINGULAR##->id)))
+
+@stop

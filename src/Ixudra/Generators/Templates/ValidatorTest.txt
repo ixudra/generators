@@ -1,0 +1,40 @@
+<?php
+
+
+class ##CLASS_SINGULAR##ValidatorTest extends BaseTestCase {
+
+    protected $input = null;
+
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->input = array(
+            // ...
+        );
+    }
+
+
+    /**
+     * @covers ##CLASS_SINGULAR##Validator::passes()
+     * @covers BaseModelValidator::getErrors()
+     * @covers BaseModelValidator::setAttributes()
+     */
+    public function testPasses()
+    {
+        $validator = $this->createValidator();
+
+        $this->assertTrue($validator->passes());
+        $this->assertCount(0, $validator->getErrors());
+    }
+
+
+    protected function createValidator()
+    {
+        $validator = new ##CLASS_SINGULAR##Validator();
+        $validator->setAttributes($this->input);
+
+        return $validator;
+    }
+}

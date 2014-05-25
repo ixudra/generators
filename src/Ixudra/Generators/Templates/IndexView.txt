@@ -1,0 +1,17 @@
+@extends('bootstrap.layouts.master')
+
+
+@section('content-title')
+##CLASS_PLURAL##
+@stop
+
+
+@section('content')
+
+    <p>
+        {{ HTML::linkRoute('##VARIABLE_PLURAL##.create', 'New', array(), array('class' => 'btn btn-default')) }}
+    </p>
+
+    @include('bootstrap.##VARIABLE_PLURAL##.list')
+
+@stop
