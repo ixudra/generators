@@ -1,7 +1,7 @@
 {
     "name": "ixudra/generators",
     "description": "Custom PHP resource generation library for the Laravel 4 framework - developed by Ixudra",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": ["Ixudra", "Laravel", "Generator"],
     "homepage": "http://ixudra.be",
     "license": "MIT",
@@ -24,9 +24,6 @@
     },
 
     "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
         "psr-0": {
             "Ixudra\\Validation\\": "src/"
         }
