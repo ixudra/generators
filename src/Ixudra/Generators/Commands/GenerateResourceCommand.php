@@ -3,6 +3,7 @@
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class GenerateResourceCommand extends Command {
 
@@ -40,7 +41,7 @@ class GenerateResourceCommand extends Command {
             ),
             'controllerTest'        => array(
                 'template'              => 'ControllerTest.txt',
-                'path'                  => app_path('tests/controllers'),
+                'path'                  => app_path('tests/unit/controllers'),
                 'name'                  => '##VALUE##ControllerTest.php'
             ),
             'repository'            => array(
@@ -50,7 +51,7 @@ class GenerateResourceCommand extends Command {
             ),
             'repositoryTest'        => array(
                 'template'              => 'RepositoryTest.txt',
-                'path'                  => app_path('tests/repositories/Eloquent'),
+                'path'                  => app_path('tests/unit/repositories/Eloquent'),
                 'name'                  => 'Eloquent##VALUE##RepositoryTest.php'
             ),
             'Factory'               => array(
@@ -60,7 +61,7 @@ class GenerateResourceCommand extends Command {
             ),
             'FactoryTest'           => array(
                 'template'              => 'FactoryTest.txt',
-                'path'                  => app_path('tests/services/creation'),
+                'path'                  => app_path('tests/unit/services/creation'),
                 'name'                  => '##VALUE##FactoryTest.php'
             ),
             'viewFactory'           => array(
@@ -70,7 +71,7 @@ class GenerateResourceCommand extends Command {
             ),
             'viewFactoryTest'       => array(
                 'template'              => 'ViewFactoryTest.txt',
-                'path'                  => app_path('tests/services/presentation'),
+                'path'                  => app_path('tests/unit/services/presentation'),
                 'name'                  => '##VALUE##ViewFactoryTest.php'
             ),
             'inputHelper'           => array(
@@ -85,7 +86,7 @@ class GenerateResourceCommand extends Command {
             ),
             'formHelperTest'        => array(
                 'template'              => 'FormHelperTest.txt',
-                'path'                  => app_path('tests/services/form'),
+                'path'                  => app_path('tests/unit/services/form'),
                 'name'                  => '##VALUE##FormHelperTest.php'
             ),
             'validator'             => array(
@@ -95,7 +96,7 @@ class GenerateResourceCommand extends Command {
             ),
             'validatorTest'         => array(
                 'template'              => 'ValidatorTest.txt',
-                'path'                  => app_path('tests/services/validation'),
+                'path'                  => app_path('tests/unit/services/validation'),
                 'name'                  => '##VALUE##ValidationTest.php'
             ),
             'presenter'             => array(
@@ -149,7 +150,7 @@ class GenerateResourceCommand extends Command {
         }
 
         $path = app_path('views') . '/bootstrap/' . $this->variablePlural;
-        mkdir($path);
+        $this->createDirectory($path);
         foreach( $this->views as $view ) {
             $template = $this->loadTemplate($view['template']);
             $content = $this->replaceValues( $template );
@@ -161,14 +162,15 @@ class GenerateResourceCommand extends Command {
     {
         return array(
             array('resource-singular', InputArgument::REQUIRED, 'Singular value of the resource', null),
-            array('resource-plural', InputArgument::OPTIONAL, 'Plural value of the resource', null),
+            array('resource-plural', InputArgument::OPTIONAL, 'Plural value of the resource', null)
         );
     }
 
     protected function getOptions()
     {
         return array(
-            // ...
+            array('allowOverwrite', null, InputOption::VALUE_OPTIONAL, 'Allow the generator to overwrite existing files', 'false'),
+            array('failOnError', null, InputOption::VALUE_OPTIONAL, 'Halt the execution if an error is occurred', 'false')
         );
     }
 
@@ -176,7 +178,7 @@ class GenerateResourceCommand extends Command {
     {
         $this->variableSingular = strtolower( $this->argument('resource-singular') );
         $this->variablePlural = strtolower( $this->argument('resource-plural') );
-        if( is_null($this->variablePlural) ) {
+        if( is_null($this->variablePlural) || empty($this->variablePlural) ) {
             $this->variablePlural = $this->variableSingular .'s';
         }
 
@@ -203,7 +205,12 @@ class GenerateResourceCommand extends Command {
     {
         $fileName = __DIR__.'/../Templates/'. $name;
         if( !file_exists($fileName) ) {
-            throw new \Exception('File not found: '. $fileName);
+            if( $this->failOnError() ) {
+                throw new \Exception('File not found: '. $fileName);
+            } else {
+                $this->error('File not found: '. $fileName);
+                return null;
+            }
         }
 
         return file_get_contents($fileName);
@@ -212,11 +219,51 @@ class GenerateResourceCommand extends Command {
     protected function createFile($name, $path, $content)
     {
         $fileName = $path .'/'. str_replace( '##VALUE##', $this->classSingular, $name );
-        if( file_exists($fileName)) {
-            throw new \Exception('File already exists: '. $fileName);
+        if( file_exists($fileName) ) {
+            if( $this->allowOverwrite() ) {
+                unlink($fileName);
+            } else if( $this->failOnError() ) {
+                throw new \Exception('File already exists: '. $fileName);
+            } else {
+                $this->error('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - file already exists.');
+                return;
+            }
+        }
+
+        if( !file_exists($path) ) {
+            if( $this->failOnError() ) {
+                throw new \Exception('Target directory does not exist: '. $fileName);
+            } else {
+                $this->error('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - target directory does not.');
+                return;
+            }
         }
 
         file_put_contents($fileName, $content);
+    }
+
+    protected function createDirectory($path)
+    {
+        if( file_exists($path) ) {
+            if( $this->failOnError() ) {
+                throw new \Exception('Directory already exists: '. $path);
+            } else {
+                $this->error('Directory '. $path .' was not created - directory already exists.');
+                return;
+            }
+        }
+
+        mkdir($path);
+    }
+
+    protected function allowOverwrite()
+    {
+        return $this->option('allowOverwrite') === 'true';
+    }
+
+    protected function failOnError()
+    {
+        return $this->option('failOnError') === 'true';
     }
 
 }
