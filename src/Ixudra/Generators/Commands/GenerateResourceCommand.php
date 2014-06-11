@@ -97,7 +97,7 @@ class GenerateResourceCommand extends Command {
             'validatorTest'         => array(
                 'template'              => 'ValidatorTest.txt',
                 'path'                  => app_path('tests/unit/services/validation'),
-                'name'                  => '##VALUE##ValidationTest.php'
+                'name'                  => '##VALUE##ValidatorTest.php'
             ),
             'presenter'             => array(
                 'template'              => 'Presenter.txt',

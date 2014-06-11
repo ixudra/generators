@@ -40,7 +40,7 @@ class ##CLASS_SINGULAR##ValidatorTest extends BaseTestCase {
     {
         $validator = $this->createValidator();
 
-        $this->assertFalse($validator->passes());
+        $this->assertFalse($validator->fails());
         $this->assertCount(0, $validator->getErrors());
     }
 

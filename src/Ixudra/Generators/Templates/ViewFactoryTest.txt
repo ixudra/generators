@@ -116,6 +116,10 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function testEdit_uses##CLASS_SINGULAR##ValuesIfInputIsNull()
     {
+        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock('##CLASS_SINGULAR##InputHelper');
+        $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForModel')->once()->andReturn('Bar');
+        App::instance('##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
+
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array('name' => 'Bar') );
 
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->edit($##VARIABLE_SINGULAR##, null);
@@ -141,7 +145,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.index' );
         $this->assertViewData( $view, 'messageType', 'error' );
-        $this->assertViewData( $view, 'messageValues', array('##VARIABLE_SINGULAR##.error.notFound') );
+        $this->assertViewData( $view, 'messageValues', array('This ##VARIABLE_SINGULAR## cannot be found in the database.') );
         $this->assertViewData( $view, '##VARIABLE_PLURAL##', 'Foo' );
     }
 
