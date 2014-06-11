@@ -3,17 +3,14 @@
 
 class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
-    protected static $##VARIABLE_SINGULAR##Repository;
+    protected $##VARIABLE_SINGULAR##Repository;
 
 
-    public static function setUpBeforeClass()
+    public function setUp()
     {
-        self::$##VARIABLE_SINGULAR##Repository = new Eloquent##CLASS_SINGULAR##Repository();
-    }
+        parent::setUp();
 
-    public static function tearDownAfterClass()
-    {
-        self::$##VARIABLE_SINGULAR##Repository = null;
+        $this->##VARIABLE_SINGULAR##Repository = new Eloquent##CLASS_SINGULAR##Repository();
     }
 
 
@@ -22,7 +19,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testAll()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
         $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
@@ -30,7 +27,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_SINGULAR##4 = $this->create##CLASS_SINGULAR##( array('user_id' => 4) );
         $##VARIABLE_SINGULAR##5 = $this->create##CLASS_SINGULAR##( array('user_id' => 5) );
 
-        $##VARIABLE_PLURAL## = self::$##VARIABLE_SINGULAR##Repository->all();
+        $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->all();
 
         $this->assertCount(5, $##VARIABLE_PLURAL##);
         $this->assertContainsOnlyInstancesOf('##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
@@ -41,11 +38,11 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFind()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
 
-        $result = self::$##VARIABLE_SINGULAR##Repository->find($##VARIABLE_SINGULAR##->id);
+        $result = $this->##VARIABLE_SINGULAR##Repository->find($##VARIABLE_SINGULAR##->id);
 
         $this->assertInstanceOf('##CLASS_SINGULAR##', $result);
         $this->assertEquals(1, $result->user_id);
@@ -56,9 +53,9 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFind_returnsNullIf##CLASS_SINGULAR##DoesNotExist()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
-        $result = self::$##VARIABLE_SINGULAR##Repository->find(100);
+        $result = $this->##VARIABLE_SINGULAR##Repository->find(100);
 
         $this->assertNull($result);
     }
@@ -70,7 +67,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFindByFilter()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
         $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
@@ -80,11 +77,11 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
         $filter = array('user_id' => 2);
 
-        $##VARIABLE_PLURAL## = self::$##VARIABLE_SINGULAR##Repository->findByFilter($filter);
+        $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->findByFilter($filter);
 
         $this->assertCount(2, $##VARIABLE_PLURAL##);
-        $this->_assertCollectionWithOnlyInstancesOf('##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
-        $this->_assertCollectionContains( array($##VARIABLE_SINGULAR##2, $##VARIABLE_SINGULAR##4), $##VARIABLE_PLURAL## );
+        $this->assertCollectionWithOnlyInstancesOf('##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
+        $this->assertCollectionContains( array($##VARIABLE_SINGULAR##2, $##VARIABLE_SINGULAR##4), $##VARIABLE_PLURAL## );
     }
 
     /**
@@ -94,16 +91,25 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFindByFilter_returnsEmptyArrayIfNo##CLASS_SINGULAR##sMatchFilter()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1 ) );
         $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2 ) );
 
         $filter = array('user_id' => 3);
 
-        $##VARIABLE_PLURAL## = self::$##VARIABLE_SINGULAR##Repository->findByFilter($filter);
+        $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->findByFilter($filter);
 
         $this->assertCount(0, $##VARIABLE_PLURAL##);
+    }
+
+
+    protected function create##CLASS_SINGULAR##($data)
+    {
+        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( $data );
+        $##VARIABLE_SINGULAR##->forceSave();
+
+        return $##VARIABLE_SINGULAR##;
     }
 
 }

@@ -5,7 +5,7 @@ class ##CLASS_SINGULAR##FormHelper {
 
     public function get##CLASS_PLURAL##AsSelectList()
     {
-        $##VARIABLE_SINGULAR##Repository = App::make('##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
         $##VARIABLE_PLURAL## = $##VARIABLE_SINGULAR##Repository->all();
 
         $results = array();

@@ -8,7 +8,9 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
 
     public function setUp()
     {
-        $this->$##VARIABLE_SINGULAR##Factory = new ##CLASS_SINGULAR##Factory();
+        parent::setUp();
+
+        $this->##VARIABLE_SINGULAR##Factory = new ##CLASS_SINGULAR##Factory();
     }
 
 
@@ -18,7 +20,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
      */
     public function testCreateFromUserInput()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $input = array(
             'name'          => 'Foo'
@@ -33,7 +35,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
         $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('fails')->once()->andReturn(false);
         App::instance('##CLASS_SINGULAR##Validator', $##VARIABLE_SINGULAR##ValidatorMock);
 
-        $##VARIABLE_SINGULAR##Response = $this->$##VARIABLE_SINGULAR##Factory->createFromUserInput( $input );
+        $##VARIABLE_SINGULAR##Response = $this->##VARIABLE_SINGULAR##Factory->createFromUserInput( $input );
 
         $this->assertTrue( $##VARIABLE_SINGULAR##Response->isSuccessful() );
         $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
@@ -49,7 +51,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
      */
     public function testCreateFromUserInput_no##CLASS_SINGULAR##CreatedIfErrorOccurs()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $input = array(
             'name'          => 'Foo'
@@ -61,7 +63,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
         $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('getErrors')->once()->andReturn(array( 'Foo', 'Bar' ));
         App::instance('##CLASS_SINGULAR##Validator', $##VARIABLE_SINGULAR##ValidatorMock);
 
-        $##VARIABLE_SINGULAR##Response = $this->$##VARIABLE_SINGULAR##Factory->createFromUserInput( $input );
+        $##VARIABLE_SINGULAR##Response = $this->##VARIABLE_SINGULAR##Factory->createFromUserInput( $input );
 
         $this->assertFalse( $##VARIABLE_SINGULAR##Response->isSuccessful() );
         $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
@@ -74,7 +76,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
      */
     public function testModifyFromUserInput()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
@@ -95,7 +97,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
         $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('fails')->once()->andReturn(false);
         App::instance('##CLASS_SINGULAR##Validator', $##VARIABLE_SINGULAR##ValidatorMock);
 
-        $##VARIABLE_SINGULAR##Response = $this->$##VARIABLE_SINGULAR##Factory->modifyFromUserInput( $##VARIABLE_SINGULAR##, $input );
+        $##VARIABLE_SINGULAR##Response = $this->##VARIABLE_SINGULAR##Factory->modifyFromUserInput( $##VARIABLE_SINGULAR##, $input );
 
         $this->assertTrue( $##VARIABLE_SINGULAR##Response->isSuccessful() );
         $##VARIABLE_SINGULAR## = $##VARIABLE_SINGULAR##Response->getModel();
@@ -108,7 +110,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
      */
     public function testModifyFromUserInput_noModificationsIfErrorOccurs()
     {
-        $this->_truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##VARIABLE_PLURAL##');
 
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
@@ -130,7 +132,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
         $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('getErrors')->once()->andReturn(array( 'Foo', 'Bar' ));
         App::instance('##CLASS_SINGULAR##Validator', $##VARIABLE_SINGULAR##ValidatorMock);
 
-        $##VARIABLE_SINGULAR##Response = $this->$##VARIABLE_SINGULAR##Factory->modifyFromUserInput( $##VARIABLE_SINGULAR##, $input );
+        $##VARIABLE_SINGULAR##Response = $this->##VARIABLE_SINGULAR##Factory->modifyFromUserInput( $##VARIABLE_SINGULAR##, $input );
 
         $this->assertFalse( $##VARIABLE_SINGULAR##Response->isSuccessful() );
         $##VARIABLE_SINGULAR## = $##VARIABLE_SINGULAR##Response->getModel();

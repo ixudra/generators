@@ -36,4 +36,9 @@ class ##CLASS_SINGULAR##Factory {
         return $response;
     }
 
+    protected function preProcessInput($input)
+    {
+        return $input;
+    }
+
 }

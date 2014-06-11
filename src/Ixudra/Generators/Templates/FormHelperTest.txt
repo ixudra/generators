@@ -42,7 +42,6 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseTestCase {
 
         $this->assertEquals(
             array(
-                ''                  => 'All',
                 self::##CONSTANT_SINGULAR##_ID_1     => 'Foo',
                 self::##CONSTANT_SINGULAR##_ID_2     => 'Bar'
             ), $result
