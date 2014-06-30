@@ -92,7 +92,7 @@ class GenerateResourceCommand extends Command {
             'validator'             => array(
                 'template'              => 'Validator.txt',
                 'path'                  => app_path('services/validation'),
-                'name'                  => '##VALUE##Validation.php'
+                'name'                  => '##VALUE##Validator.php'
             ),
             'validatorTest'         => array(
                 'template'              => 'ValidatorTest.txt',
