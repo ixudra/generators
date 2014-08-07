@@ -1,7 +1,7 @@
 <?php
 
 
-class ##CLASS_SINGULAR##FormHelperTest extends BaseTestCase {
+class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
 
     const ##CONSTANT_SINGULAR##_ID_1 = 15;
 

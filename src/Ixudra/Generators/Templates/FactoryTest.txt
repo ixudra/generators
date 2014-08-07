@@ -1,7 +1,7 @@
 <?php
 
 
-class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
+class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
 
     protected $##VARIABLE_SINGULAR##Factory;
 
@@ -80,7 +80,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseTestCase {
 
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
-            'name'          => 'Foo'
+                'name'      => 'Foo'
             )
         );
 

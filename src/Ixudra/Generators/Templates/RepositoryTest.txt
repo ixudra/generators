@@ -1,7 +1,7 @@
 <?php
 
 
-class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
+class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryTestCase {
 
     protected $##VARIABLE_SINGULAR##Repository;
 
