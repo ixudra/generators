@@ -5,8 +5,6 @@ class ##CLASS_SINGULAR##Controller extends BaseController {
 
     function __construct(Eloquent##CLASS_SINGULAR##Repository $##VARIABLE_SINGULAR##Repository, ##CLASS_SINGULAR##ViewFactory $##VARIABLE_SINGULAR##ViewFactory)
     {
-        parent::__construct();
-
         $this->##VARIABLE_SINGULAR##Repository = $##VARIABLE_SINGULAR##Repository;
         $this->##VARIABLE_SINGULAR##ViewFactory = $##VARIABLE_SINGULAR##ViewFactory;
     }
