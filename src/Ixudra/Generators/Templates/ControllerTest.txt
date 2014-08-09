@@ -1,7 +1,7 @@
 <?php
 
 
-class ##CLASS_SINGULAR##ControllerTest extends BaseTestCase {
+class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
     /**
      * @covers ##CLASS_SINGULAR##Controller::index()

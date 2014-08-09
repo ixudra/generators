@@ -10,6 +10,8 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
     {
         parent::setUp();
 
+        $this->truncateTables('##VARIABLE_PLURAL##');
+
         $this->##VARIABLE_SINGULAR##Repository = new Eloquent##CLASS_SINGULAR##Repository();
     }
 
@@ -19,8 +21,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
      */
     public function testAll()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
         $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
         $##VARIABLE_SINGULAR##3 = $this->create##CLASS_SINGULAR##( array('user_id' => 3) );
@@ -38,8 +38,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
      */
     public function testFind()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
 
         $result = $this->##VARIABLE_SINGULAR##Repository->find($##VARIABLE_SINGULAR##->id);
@@ -53,8 +51,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
      */
     public function testFind_returnsNullIf##CLASS_SINGULAR##DoesNotExist()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $result = $this->##VARIABLE_SINGULAR##Repository->find(100);
 
         $this->assertNull($result);
@@ -67,8 +63,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
      */
     public function testFindByFilter()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
         $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
         $##VARIABLE_SINGULAR##3 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
@@ -89,10 +83,8 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
      * @covers BaseRepository::preProcessFilters()
      * @covers BaseRepository::applyFilters()
      */
-    public function testFindByFilter_returnsEmptyArrayIfNo##CLASS_SINGULAR##sMatchFilter()
+    public function testFindByFilter_returnsEmptyArrayIfNo##CLASS_PLURAL##MatchFilter()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1 ) );
         $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2 ) );
 
@@ -101,15 +93,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseFunctionalRepositoryT
         $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->findByFilter($filter);
 
         $this->assertCount(0, $##VARIABLE_PLURAL##);
-    }
-
-
-    protected function create##CLASS_SINGULAR##($data)
-    {
-        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( $data );
-        $##VARIABLE_SINGULAR##->forceSave();
-
-        return $##VARIABLE_SINGULAR##;
     }
 
 }

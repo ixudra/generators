@@ -22,7 +22,7 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
     /**
      * @covers ##CLASS_SINGULAR##FormHelper::get##CLASS_PLURAL##AsSelectList()
      */
-    public function testGet##CLASS_SINGULAR##sAsSelectList()
+    public function testGet##CLASS_PLURAL##AsSelectList()
     {
         $##VARIABLE_SINGULAR##Mock1 = Mockery::mock('##CLASS_SINGULAR##')->makePartial();
         $##VARIABLE_SINGULAR##Mock1->shouldReceive('getAttribute')->once()->with('id')->andReturn(self::##CONSTANT_SINGULAR##_ID_1);
@@ -38,7 +38,7 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('all')->once()->andReturn($##VARIABLE_PLURAL##);
         App::instance('Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
 
-        $result = $this->##VARIABLE_SINGULAR##FormHelper->get##CLASS_SINGULAR##sAsSelectList();
+        $result = $this->##VARIABLE_SINGULAR##FormHelper->get##CLASS_PLURAL##AsSelectList();
 
         $this->assertEquals(
             array(

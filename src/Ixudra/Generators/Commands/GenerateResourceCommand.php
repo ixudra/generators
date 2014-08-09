@@ -51,7 +51,7 @@ class GenerateResourceCommand extends Command {
             ),
             'repositoryTest'        => array(
                 'template'              => 'RepositoryTest.txt',
-                'path'                  => app_path('tests/unit/repositories/Eloquent'),
+                'path'                  => app_path('tests/functional/repositories/Eloquent'),
                 'name'                  => 'Eloquent##VALUE##RepositoryTest.php'
             ),
             'Factory'               => array(
@@ -61,7 +61,7 @@ class GenerateResourceCommand extends Command {
             ),
             'FactoryTest'           => array(
                 'template'              => 'FactoryTest.txt',
-                'path'                  => app_path('tests/unit/services/creation'),
+                'path'                  => app_path('tests/functional/services/creation'),
                 'name'                  => '##VALUE##FactoryTest.php'
             ),
             'viewFactory'           => array(

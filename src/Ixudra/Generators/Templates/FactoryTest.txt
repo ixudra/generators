@@ -10,6 +10,8 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
     {
         parent::setUp();
 
+        $this->truncateTables('##VARIABLE_PLURAL##');
+
         $this->##VARIABLE_SINGULAR##Factory = new ##CLASS_SINGULAR##Factory();
     }
 
@@ -20,8 +22,6 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
      */
     public function testCreateFromUserInput()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $input = array(
             'name'          => 'Foo'
         );
@@ -51,8 +51,6 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
      */
     public function testCreateFromUserInput_no##CLASS_SINGULAR##CreatedIfErrorOccurs()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $input = array(
             'name'          => 'Foo'
         );
@@ -76,8 +74,6 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
      */
     public function testModifyFromUserInput()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
                 'name'      => 'Foo'
@@ -110,8 +106,6 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
      */
     public function testModifyFromUserInput_noModificationsIfErrorOccurs()
     {
-        $this->truncateTables('##VARIABLE_PLURAL##');
-
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
                 'name'      => 'Foo'
@@ -137,15 +131,6 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
         $this->assertFalse( $##VARIABLE_SINGULAR##Response->isSuccessful() );
         $##VARIABLE_SINGULAR## = $##VARIABLE_SINGULAR##Response->getModel();
         $this->assertEquals( 'Foo', $##VARIABLE_SINGULAR##->name );
-    }
-
-
-    protected function create##CLASS_SINGULAR##($data)
-    {
-        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( $data );
-        $##VARIABLE_SINGULAR##->forceSave();
-
-        return $##VARIABLE_SINGULAR##;
     }
 
 }
