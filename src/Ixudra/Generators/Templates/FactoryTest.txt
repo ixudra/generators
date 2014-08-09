@@ -55,8 +55,12 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
             'name'          => 'Foo'
         );
 
+        $processInput = array(
+            'name'          => 'Bar'
+        );
+
         $##VARIABLE_SINGULAR##ValidatorMock = Mockery::mock('##CLASS_SINGULAR##Validator');
-        $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('setAttributes')->once()->with($input)->andReturn(false);
+        $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('setAttributes')->once()->with($processInput)->andReturn(false);
         $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('fails')->once()->andReturn(true);
         $##VARIABLE_SINGULAR##ValidatorMock->shouldReceive('getErrors')->once()->andReturn(array( 'Foo', 'Bar' ));
         App::instance('##CLASS_SINGULAR##Validator', $##VARIABLE_SINGULAR##ValidatorMock);
