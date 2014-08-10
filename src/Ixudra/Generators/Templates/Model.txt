@@ -18,6 +18,8 @@ class ##CLASS_SINGULAR## extends BaseModel {
         'default'           => '##CLASS_SINGULAR##Validator'
     );
 
+    protected $translationKey = '##VARIABLE_SINGULAR##';
+
     protected $presenter = '##CLASS_SINGULAR##Presenter';
 
 
