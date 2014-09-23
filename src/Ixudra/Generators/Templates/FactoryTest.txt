@@ -56,7 +56,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
         );
 
         $processInput = array(
-            'name'          => 'Bar'
+            'name'          => 'Foo'
         );
 
         $##VARIABLE_SINGULAR##ValidatorMock = Mockery::mock('##CLASS_SINGULAR##Validator');
@@ -80,7 +80,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
     {
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
-                'name'      => 'Foo'
+                'name'          => 'Foo'
             )
         );
 
@@ -112,7 +112,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
     {
         $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##(
             array(
-                'name'      => 'Foo'
+                'name'          => 'Foo'
             )
         );
 
