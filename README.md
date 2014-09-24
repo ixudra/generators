@@ -41,7 +41,7 @@ The package provides one artisan command which you can use to generate a variety
     php artisan generate:resource foo bar
 ```
 
-The command accepts 2 parameters. The first parameter is required and should be the singular name of your resource. The second parameter is optional and should the plural name of your resource. If the second parameter is not provides, the package will use the singular name value and add an `s` to it by default.
+The command accepts 2 parameters. The first parameter is required and should be the singular name of your resource. The second parameter is optional and should the plural name of your resource. If the second parameter is not provided, the package will use the singular name value and add an `s` to it by default.
 
 
 That's all there is to it! Have fun!
