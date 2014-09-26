@@ -285,7 +285,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
      */
     public function testDestroy()
     {
-        $##VARIABLE_SINGULAR##Mock = Mockery::mock('marketSegment');
+        $##VARIABLE_SINGULAR##Mock = Mockery::mock('##CLASS_SINGULAR##');
 
         $modelResponse = new BaseModelResponse($##VARIABLE_SINGULAR##Mock);
         $modelResponse->addNotifications('success', array('##VARIABLE_SINGULAR##.delete.success'));
