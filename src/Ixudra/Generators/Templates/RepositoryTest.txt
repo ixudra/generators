@@ -10,7 +10,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
     {
         parent::setUp();
 
-        $this->truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##TABLE_NAME##');
 
         $this->##VARIABLE_SINGULAR##Repository = new Eloquent##CLASS_SINGULAR##Repository();
     }

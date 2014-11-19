@@ -2,6 +2,7 @@
 
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -10,6 +11,8 @@ class GenerateResourceCommand extends Command {
     protected $name = 'generate:resource';
 
     protected $description = 'Generate files for a resource based on a list of templates';
+
+    protected $tableName;
 
     protected $classSingular;
     protected $classPlural;
@@ -176,21 +179,51 @@ class GenerateResourceCommand extends Command {
 
     protected function deriveArguments()
     {
-        $this->variableSingular = strtolower( $this->argument('resource-singular') );
-        $this->variablePlural = strtolower( $this->argument('resource-plural') );
-        if( is_null($this->variablePlural) || empty($this->variablePlural) ) {
-            $this->variablePlural = $this->variableSingular .'s';
+        $this->tableName = strtolower( $this->getPluralResourceName() );
+
+        $this->classSingular = $this->getSingularClassName();
+        $this->classPlural = $this->getPluralClassName();
+
+        $this->variableSingular = lcfirst( $this->classSingular );
+        $this->variablePlural = lcfirst( $this->classPlural );
+
+        $this->constantSingular = strtoupper( $this->getSingularResourceName() );
+        $this->constantPlural = strtoupper( $this->getPluralResourceName() );
+    }
+
+    protected function getSingularResourceName()
+    {
+        return $this->argument('resource-singular');
+    }
+
+    protected function getPluralResourceName()
+    {
+        $tableNamePlural = $this->argument('resource-plural');
+        if( is_null($tableNamePlural) || empty($tableNamePlural) ) {
+            $tableNamePlural = $this->getSingularResourceName().'s';
         }
 
-        $this->classSingular = ucfirst( $this->variableSingular );
-        $this->classPlural = ucfirst( $this->variablePlural );
+        return $tableNamePlural;
+    }
 
-        $this->constantSingular = strtoupper( $this->variableSingular );
-        $this->constantPlural = strtoupper( $this->variablePlural );
+    protected function getSingularClassName()
+    {
+        return Str::studly( $this->argument('resource-singular') );
+    }
+
+    protected function getPluralClassName()
+    {
+        $classPlural = Str::studly( $this->argument('resource-plural') );
+        if( is_null($classPlural) || empty($classPlural) ) {
+            $classPlural = $this->classSingular .'s';
+        }
+
+        return $classPlural;
     }
 
     protected function replaceValues($template)
     {
+        $template = str_replace( '##TABLE_NAME##', $this->tableName, $template );
         $template = str_replace( '##CLASS_SINGULAR##', $this->classSingular, $template );
         $template = str_replace( '##CLASS_PLURAL##', $this->classPlural, $template );
         $template = str_replace( '##CONSTANT_SINGULAR##', $this->constantSingular, $template );

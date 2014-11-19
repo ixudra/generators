@@ -10,7 +10,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
     {
         parent::setUp();
 
-        $this->truncateTables('##VARIABLE_PLURAL##');
+        $this->truncateTables('##TABLE_NAME##');
 
         $this->##VARIABLE_SINGULAR##Factory = new ##CLASS_SINGULAR##Factory();
     }
@@ -41,9 +41,8 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
         $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
         $this->assertEquals( 1, $##VARIABLE_SINGULAR##Repository->all()->count() );
         $##VARIABLE_SINGULAR## = $##VARIABLE_SINGULAR##Response->getModel();
-        $this->assertInstanceOf( '##CLASS_SINGULAR##', $##VARIABLE_SINGULAR##);
+        $this->assertInstanceOf( '##CLASS_SINGULAR##', $##VARIABLE_SINGULAR## );
     }
-
 
     /**
      * @covers ##CLASS_SINGULAR##Factory::createFromUserInput()
