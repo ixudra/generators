@@ -12,7 +12,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', '##VARIABLE_PLURAL##');
+        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -36,7 +36,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('filter')->once()->with($expectedInput)->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('POST', '##VARIABLE_PLURAL##/filter', $input);
+        $response = $this->call('POST', 'admin/##VARIABLE_PLURAL##/filter', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -51,7 +51,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('create')->with(null)->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', '##VARIABLE_PLURAL##/create');
+        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/create');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -80,7 +80,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $userViewFactoryMock->shouldReceive('show')->with($user)->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $userViewFactoryMock);
 
-        $response = $this->call('POST', '##VARIABLE_PLURAL##', $input);
+        $response = $this->call('POST', 'admin/##VARIABLE_PLURAL##', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -109,7 +109,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('create')->with($input)->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('POST', '##VARIABLE_PLURAL##', $input);
+        $response = $this->call('POST', 'admin/##VARIABLE_PLURAL##', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -128,7 +128,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('show')->with('repositoryFoo')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', '##VARIABLE_PLURAL##/1');
+        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/1');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -147,7 +147,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('##VARIABLE_SINGULAR##NotFound')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', '##VARIABLE_PLURAL##/1');
+        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/1');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -166,7 +166,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('edit')->with('repositoryFoo', null)->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', '##VARIABLE_PLURAL##/1/edit');
+        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/1/edit');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -185,7 +185,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('##VARIABLE_SINGULAR##NotFound')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', '##VARIABLE_PLURAL##/1/edit');
+        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/1/edit');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -218,7 +218,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('show')->with($##VARIABLE_SINGULAR##)->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('PUT', '##VARIABLE_PLURAL##/1', $input);
+        $response = $this->call('PUT', 'admin/##VARIABLE_PLURAL##/1', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -241,7 +241,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('##VARIABLE_SINGULAR##NotFound')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('PUT', '##VARIABLE_PLURAL##/1', $input);
+        $response = $this->call('PUT', 'admin/##VARIABLE_PLURAL##/1', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -274,7 +274,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('edit')->with($##VARIABLE_SINGULAR##, $input)->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('PUT', '##VARIABLE_PLURAL##/1', $input);
+        $response = $this->call('PUT', 'admin/##VARIABLE_PLURAL##/1', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -301,7 +301,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('DELETE', '##VARIABLE_PLURAL##/1');
+        $response = $this->call('DELETE', 'admin/##VARIABLE_PLURAL##/1');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -320,7 +320,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('##VARIABLE_SINGULAR##NotFound')->once()->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('DELETE', '##VARIABLE_PLURAL##/1');
+        $response = $this->call('DELETE', 'admin/##VARIABLE_PLURAL##/1');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -347,7 +347,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('show')->once()->with($##VARIABLE_SINGULAR##Mock)->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('DELETE', '##VARIABLE_PLURAL##/1');
+        $response = $this->call('DELETE', 'admin/##VARIABLE_PLURAL##/1');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
