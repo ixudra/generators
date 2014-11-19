@@ -57,11 +57,11 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
 
     protected function setUpMocks()
     {
-        $##VARIABLE_SINGULAR##1 = new ##CLASS_SINGULAR##'();
+        $##VARIABLE_SINGULAR##1 = new ##CLASS_SINGULAR##();
         $##VARIABLE_SINGULAR##1->id = self::##CONSTANT_SINGULAR##_ID_1;
         $##VARIABLE_SINGULAR##1->name = 'Foo';
 
-        $##VARIABLE_SINGULAR##2 = new ##CLASS_SINGULAR##'();
+        $##VARIABLE_SINGULAR##2 = new ##CLASS_SINGULAR##();
         $##VARIABLE_SINGULAR##2->id = self::##CONSTANT_SINGULAR##_ID_2;
         $##VARIABLE_SINGULAR##2->name = 'Bar';
 

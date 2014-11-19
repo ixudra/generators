@@ -21,11 +21,11 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testAll()
     {
-        $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
-        $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
-        $##VARIABLE_SINGULAR##3 = $this->create##CLASS_SINGULAR##( array('user_id' => 3) );
-        $##VARIABLE_SINGULAR##4 = $this->create##CLASS_SINGULAR##( array('user_id' => 4) );
-        $##VARIABLE_SINGULAR##5 = $this->create##CLASS_SINGULAR##( array('user_id' => 5) );
+        $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 1 ) );
+        $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 2 ) );
+        $##VARIABLE_SINGULAR##3 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 3 ) );
+        $##VARIABLE_SINGULAR##4 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 4 ) );
+        $##VARIABLE_SINGULAR##5 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 5 ) );
 
         $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->all();
 
@@ -38,7 +38,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFind()
     {
-        $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
+        $##VARIABLE_SINGULAR## = $this->create##CLASS_SINGULAR##( array( 'user_id' => 1 ) );
 
         $result = $this->##VARIABLE_SINGULAR##Repository->find($##VARIABLE_SINGULAR##->id);
 
@@ -63,11 +63,11 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFindByFilter()
     {
-        $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
-        $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
-        $##VARIABLE_SINGULAR##3 = $this->create##CLASS_SINGULAR##( array('user_id' => 1) );
-        $##VARIABLE_SINGULAR##4 = $this->create##CLASS_SINGULAR##( array('user_id' => 2) );
-        $##VARIABLE_SINGULAR##5 = $this->create##CLASS_SINGULAR##( array('user_id' => 3) );
+        $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 1 ) );
+        $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 2 ) );
+        $##VARIABLE_SINGULAR##3 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 1 ) );
+        $##VARIABLE_SINGULAR##4 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 2 ) );
+        $##VARIABLE_SINGULAR##5 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 3 ) );
 
         $filter = array('user_id' => 2);
 
@@ -85,8 +85,8 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
      */
     public function testFindByFilter_returnsEmptyArrayIfNo##CLASS_PLURAL##MatchFilter()
     {
-        $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array('user_id' => 1 ) );
-        $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array('user_id' => 2 ) );
+        $##VARIABLE_SINGULAR##1 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 1 ) );
+        $##VARIABLE_SINGULAR##2 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 2 ) );
 
         $filter = array('user_id' => 3);
 
