@@ -9,17 +9,17 @@
 @section('content')
 
     <div class="row">
-        {{ Form::open(array('url' => '/##VARIABLE_PLURAL##/'.$##VARIABLE_SINGULAR##->id, 'method' => 'delete')) }}
-            {{ HTML::linkRoute('##VARIABLE_PLURAL##.edit', 'Edit', array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) }}
-            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+        {{ Form::open(array('url' => 'admin/##VARIABLE_PLURAL##/'.$##VARIABLE_SINGULAR##->id, 'method' => 'delete')) }}
+            {{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.edit', App::make('TranslationHelper')->translateRecursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) }}
+            {{ Form::submit(App::make('TranslationHelper')->translateRecursive('common.delete'), array('class' => 'btn btn-danger')) }}
         {{ Form:: close() }}
     </div>
 
     <div class="row">
         <div class="well well-large col-md-12">
-            <div class='col-md-12'>
-                <div class='col-md-4'>Foo:</div>
-                <div class='col-md-8'>Bar</div>
+            <div class='col-md-10'>
+                <div class='col-md-4'>{{ App::make('TranslationHelper')->translateRecursive('members.name') }}:</div>
+                <div class='col-md-6'>{{ $##VARIABLE_SINGULAR##->name }}</div>
             </div>
         </div>
     </div>

@@ -2,16 +2,16 @@
 
 
 @section('content-title')
-##CLASS_PLURAL##
+{{ App::make('TranslationHelper')->translateRecursive('admin.menu.title.index', array('model' => '##CLASS_PLURAL##')) }}
 @stop
 
 
 @section('content')
 
     <p>
-        {{ HTML::linkRoute('##VARIABLE_PLURAL##.create', 'New', array(), array('class' => 'btn btn-default')) }}
+        {{ HTML::linkRoute('admin.products.create', App::make('TranslationHelper')->translateRecursive('common.new'), array(), array('class' => 'btn btn-default')) }}
     </p>
 
-    @include('bootstrap.##VARIABLE_PLURAL##.list')
+    @include('bootstrap.##VARIABLE_PLURAL##.table')
 
 @stop

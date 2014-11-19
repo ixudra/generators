@@ -3,12 +3,16 @@
 
 class ##CLASS_SINGULAR##FormHelper {
 
-    public function get##CLASS_PLURAL##AsSelectList()
+    public function get##CLASS_PLURAL##AsSelectList($includeNull = false)
     {
         $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
         $##VARIABLE_PLURAL## = $##VARIABLE_SINGULAR##Repository->all();
 
         $results = array();
+        if( $includeNull ) {
+            $results[0] = App::make('TranslationHelper')->translateRecursive('form.##VARIABLE_SINGULAR##');
+        }
+
         foreach( $##VARIABLE_PLURAL## as $##VARIABLE_SINGULAR## ) {
             $results[ $##VARIABLE_SINGULAR##->id ] = $##VARIABLE_SINGULAR##->name;
         }

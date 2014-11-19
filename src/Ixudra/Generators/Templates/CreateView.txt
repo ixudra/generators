@@ -2,12 +2,12 @@
 
 
 @section('content-title')
-New ##VARIABLE_SINGULAR##
+{{ App::make('TranslationHelper')->translateRecursive('admin.menu.title.new', array('model' => '##VARIABLE_SINGULAR##')) }}
 @stop
 
 
 @section('content')
 
-@include('bootstrap.##VARIABLE_PLURAL##.form', array('url' => '/##VARIABLE_PLURAL##/', 'method' => 'post', 'input' => $input, 'formId' => 'create##CLASS_SINGULAR##', 'redirectUrl' => '##VARIABLE_PLURAL##.index', 'redirectParameters' => array()))
+@include('bootstrap.##VARIABLE_PLURAL##.form', array('url' => 'admin/##VARIABLE_PLURAL##/', 'method' => 'post', 'input' => $input, 'formId' => 'create##CLASS_SINGULAR##', 'redirectUrl' => 'admin/##VARIABLE_PLURAL##.index', 'redirectParameters' => array()))
 
 @stop
