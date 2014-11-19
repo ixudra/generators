@@ -3,7 +3,13 @@
 
     return array(
 
-        'files'     => array(
+        'templates'         => array(
+
+            'path'                  => base_path('vendor/ixudra/generators/src/Ixudra/Generators/Templates/')
+
+        ),
+
+        'files'             => array(
 
             'model'                 => array(
                 'template'              => 'Model.txt',
@@ -96,7 +102,7 @@
             )
         ),
 
-        'views'         => array(
+        'views'             => array(
 
             'indexView'             => array(
                 'template'              => 'IndexView.txt',

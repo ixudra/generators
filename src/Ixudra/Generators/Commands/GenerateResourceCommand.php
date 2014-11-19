@@ -121,7 +121,7 @@ class GenerateResourceCommand extends Command {
 
     protected function loadTemplate($name)
     {
-        $fileName = __DIR__.'/../Templates/'. $name;
+        $fileName = Config::get("generators::config.templates.path"). $name;
         if( !file_exists($fileName) ) {
             if( $this->failOnError() ) {
                 throw new \Exception('File not found: '. $fileName);
