@@ -26,8 +26,8 @@ class ##CLASS_SINGULAR##ValidatorTest extends BaseUnitTestCase {
     {
         $validator = $this->createValidator();
 
-        $this->assertTrue($validator->passes());
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertTrue( $validator->passes() );
+        $this->assertCount( 0, $validator->getFailures() );
     }
 
     /**
@@ -40,8 +40,8 @@ class ##CLASS_SINGULAR##ValidatorTest extends BaseUnitTestCase {
     {
         $validator = $this->createValidator();
 
-        $this->assertFalse($validator->fails());
-        $this->assertCount(0, $validator->getErrors());
+        $this->assertFalse( $validator->fails() );
+        $this->assertCount( 0, $validator->getFailures() );
     }
 
 
@@ -52,4 +52,5 @@ class ##CLASS_SINGULAR##ValidatorTest extends BaseUnitTestCase {
 
         return $validator;
     }
+
 }

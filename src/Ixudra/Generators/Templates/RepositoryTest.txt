@@ -69,7 +69,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_SINGULAR##4 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 2 ) );
         $##VARIABLE_SINGULAR##5 = $this->create##CLASS_SINGULAR##( array( 'user_id' => 3 ) );
 
-        $filter = array('user_id' => 2);
+        $filter = array( 'user_id' => 2 );
 
         $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->findByFilter($filter);
 

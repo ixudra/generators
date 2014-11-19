@@ -18,8 +18,8 @@
                             {{ App::make('TranslationHelper')->translateRecursive('common.actions') }} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>{{ HTML::linkRoute('admin.##VARIABLE_SINGULAR##.edit', App::make('TranslationHelper')->translateRecursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions')) }}</li>
-                            <li>{{ HTML::linkRoute('admin.##VARIABLE_SINGULAR##.show', App::make('TranslationHelper')->translateRecursive('common.delete'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions rest', 'data-method' => 'DELETE')) }}</li>
+                            <li>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.edit', App::make('TranslationHelper')->translateRecursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions')) }}</li>
+                            <li>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.show', App::make('TranslationHelper')->translateRecursive('common.delete'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions rest', 'data-method' => 'DELETE')) }}</li>
                         </ul>
                     </div>
                 </td>
