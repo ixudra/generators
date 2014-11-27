@@ -10,7 +10,7 @@ class ##CLASS_SINGULAR##FormHelper {
 
         $results = array();
         if( $includeNull ) {
-            $results[0] = App::make('TranslationHelper')->translateRecursive('form.##VARIABLE_SINGULAR##');
+            $results[0] = Translate::recursive('form.##VARIABLE_SINGULAR##');
         }
 
         foreach( $##VARIABLE_PLURAL## as $##VARIABLE_SINGULAR## ) {

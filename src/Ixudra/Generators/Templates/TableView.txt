@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>{{ App::make('TranslationHelper')->translateRecursive('members.name') }}</th>
-                <th>{{ App::make('TranslationHelper')->translateRecursive('common.actions') }}</th>
+                <th>{{ Translate::recursive('members.name') }}</th>
+                <th>{{ Translate::recursive('common.actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -15,11 +15,11 @@
                 <td class="table-small">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            {{ App::make('TranslationHelper')->translateRecursive('common.actions') }} <span class="caret"></span>
+                            {{ Translate::recursive('common.actions') }} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.edit', App::make('TranslationHelper')->translateRecursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions')) }}</li>
-                            <li>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.show', App::make('TranslationHelper')->translateRecursive('common.delete'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions rest', 'data-method' => 'DELETE')) }}</li>
+                            <li>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.edit', Translate::recursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions')) }}</li>
+                            <li>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.show', Translate::recursive('common.delete'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-actions rest', 'data-method' => 'DELETE')) }}</li>
                         </ul>
                     </div>
                 </td>

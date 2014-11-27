@@ -2,7 +2,7 @@
 
 
 @section('content-title')
-{{ App::make('TranslationHelper')->translateRecursive('admin.menu.title.new', array('model' => '##VARIABLE_SINGULAR##')) }}
+{{ Translate::recursive('admin.menu.title.new', array('model' => '##VARIABLE_SINGULAR##')) }}
 @stop
 
 
