@@ -11,7 +11,7 @@ class ##CLASS_SINGULAR##ValidatorTest extends BaseUnitTestCase {
         parent::setUp();
 
         $this->input = array(
-            // ...
+            'name'          => ''
         );
     }
 

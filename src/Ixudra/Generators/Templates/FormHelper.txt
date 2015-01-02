@@ -1,23 +1,14 @@
 <?php
 
 
-class ##CLASS_SINGULAR##FormHelper {
+class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper{
 
-    public function get##CLASS_PLURAL##AsSelectList($includeNull = false)
+    protected $repository;
+
+
+    public function __construct()
     {
-        $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
-        $##VARIABLE_PLURAL## = $##VARIABLE_SINGULAR##Repository->all();
-
-        $results = array();
-        if( $includeNull ) {
-            $results[0] = Translate::recursive('form.##VARIABLE_SINGULAR##');
-        }
-
-        foreach( $##VARIABLE_PLURAL## as $##VARIABLE_SINGULAR## ) {
-            $results[ $##VARIABLE_SINGULAR##->id ] = $##VARIABLE_SINGULAR##->name;
-        }
-
-        return $results;
+        $$this->repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
     }
 
 }

@@ -65,6 +65,12 @@
                 'name'                  => '##VALUE##InputHelper.php'
             ),
 
+            'inputHelperTest'       => array(
+                'template'              => base_path('vendor/ixudra/generators/src/Ixudra/Generators/Templates/InputHelperTest.txt'),
+                'path'                  => app_path('tests/unit/services/input'),
+                'name'                  => '##VALUE##InputHelper.php'
+            ),
+
             'formHelper'            => array(
                 'template'              => base_path('vendor/ixudra/generators/src/Ixudra/Generators/Templates/FormHelper.txt'),
                 'path'                  => app_path('services/form'),

@@ -3,21 +3,21 @@
 
 class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
 
-    public function index()
+    public function index($input = array())
     {
-        $##VARIABLE_SINGULAR##Repository = App::make('Eloquent##CLASS_SINGULAR##Repository');
-        $##VARIABLE_PLURAL## = $##VARIABLE_SINGULAR##Repository->all();
+        if( empty($input) ) {
+            $input = array(
+                'name'          => '',
+            );
+        }
 
-        $this->addParameter('##VARIABLE_PLURAL##', $##VARIABLE_PLURAL##);
-
-        return $this->makeView('bootstrap.##VARIABLE_PLURAL##.index');
+        return $this->prepareFilter($input, 'bootstrap.##VARIABLE_PLURAL##.index');
     }
 
     public function create($input)
     {
         if( $input == null ) {
-            $##VARIABLE_SINGULAR##InputHelper = App::make('##CLASS_SINGULAR##InputHelper');
-            $input = $##VARIABLE_SINGULAR##InputHelper->getDefaultInput();
+            $input = App::make('##CLASS_SINGULAR##InputHelper')->getDefaultInput();
         }
 
         return $this->prepareForm( $input, 'bootstrap.##VARIABLE_PLURAL##.create' );
@@ -33,8 +33,7 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
     public function edit($##VARIABLE_SINGULAR##, $input)
     {
         if( $input == null ) {
-            $##VARIABLE_SINGULAR##InputHelper = App::make('##CLASS_SINGULAR##InputHelper');
-            $input = $##VARIABLE_SINGULAR##InputHelper->getInputForModel( $##VARIABLE_SINGULAR## );
+            $input = App::make('##CLASS_SINGULAR##InputHelper')->getInputForModel( $##VARIABLE_SINGULAR## );
         }
 
         $this->addParameter('##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR##);
@@ -47,6 +46,17 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
         $this->notifyUser('error', array('##VARIABLE_SINGULAR##.error.notFound'));
 
         return $this->index();
+    }
+
+    protected function prepareFilter($input, $template)
+    {
+        $searchInput = App::make('##CLASS_SINGULAR##InputHelper')->getInputForSearch( $input );
+        $##VARIABLE_PLURAL## = App::make('Eloquent##CLASS_SINGULAR##Repository')->search( $searchInput, 25 );
+
+        $this->addParameter('##VARIABLE_PLURAL##', $##VARIABLE_PLURAL##);
+        $this->addParameter('input', $input);
+
+        return $this->makeView( $template );
     }
 
     protected function prepareForm($input, $template)

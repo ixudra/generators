@@ -17,10 +17,7 @@ class ##CLASS_SINGULAR##Controller extends BaseController {
 
     public function filter()
     {
-        $input = Input::all();
-        unset( $input[ '_token' ] );
-
-        return $this->##VARIABLE_SINGULAR##ViewFactory->filter($input );
+        return $this->##VARIABLE_SINGULAR##ViewFactory->index( Input::all() );
     }
 
     public function create()

@@ -24,16 +24,11 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     public function testFilter()
     {
         $input = array(
-            'Foo'       => 'Bar',
-            '_token'    => 'Foz'
-        );
-
-        $expectedInput = array(
             'Foo'       => 'Bar'
         );
 
         $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('##CLASS_SINGULAR##ViewFactory');
-        $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('filter')->once()->with($expectedInput)->andReturn('factoryFoo');
+        $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->with($input)->andReturn('factoryFoo');
         App::instance('##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
         $response = $this->call('POST', 'admin/##VARIABLE_PLURAL##/filter', $input);

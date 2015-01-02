@@ -1,16 +1,11 @@
 <?php
 
 
-class ##CLASS_SINGULAR##InputHelper implements InputHelperInterface {
+class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
 
     public function getDefaultInput()
     {
         return ##CLASS_SINGULAR##::getDefaults();
-    }
-
-    public function getInputForModel(BaseModel $model)
-    {
-        return $model->attributesToArray();
     }
 
 }

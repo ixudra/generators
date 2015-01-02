@@ -21,22 +21,19 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function testIndex()
     {
-        $##VARIABLE_SINGULAR##1 = new ##CLASS_SINGULAR##( array('name' => 'Foo') );
-        $##VARIABLE_SINGULAR##2 = new ##CLASS_SINGULAR##( array('name' => 'Bar') );
-        $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array($##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2) );
+        $input = array(
+            'name'          => '',
+        );
 
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('Eloquent##CLASS_SINGULAR##Repository');
-        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('all')->once()->andReturn($##VARIABLE_PLURAL##);
-        App::instance('Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        $this->createFilterMocks( $input );
 
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->index();
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.index' );
         $this->assertViewData( $view, 'messageType', '' );
         $this->assertViewData( $view, 'messageValues', array() );
-        $this->assertViewDataSize( $view, '##VARIABLE_PLURAL##', 2 );
-        $this->assertEquals( 'Foo', $view['##VARIABLE_PLURAL##'][0]->name );
-        $this->assertEquals( 'Bar', $view['##VARIABLE_PLURAL##'][1]->name );
+
+        $this->assertFilterMocks( $view, $input );
     }
 
     /**
@@ -47,10 +44,13 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function testCreate_usesInputIfInputIsNotNull()
     {
+        $this->createFormMocks();
+
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->create('Foo');
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.create' );
-        $this->assertViewData( $view, 'input', 'Foo' );
+
+        $this->assertFormMocks( $view, $input );
     }
 
     /**
@@ -65,10 +65,13 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getDefaultInput')->once()->andReturn('Foo');
         App::instance('##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
 
+        $this->createFormMocks();
+
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->create(null);
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.create' );
-        $this->assertViewData( $view, 'input', 'Foo' );
+
+        $this->assertFormMocks( $view, $input );
     }
 
     /**
@@ -101,11 +104,14 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForModel')->once()->andReturn('Bar');
         App::instance('##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
 
+        $this->createFormMocks();
+
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->edit($##VARIABLE_SINGULAR##, 'Bar');
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.edit' );
         $this->assertViewData( $view, '##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR## );
-        $this->assertViewData( $view, 'input', 'Bar' );
+
+        $this->assertFormMocks( $view, $input );
     }
 
     /**
@@ -122,11 +128,14 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array('name' => 'Bar') );
 
+        $this->createFormMocks();
+
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->edit($##VARIABLE_SINGULAR##, null);
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.edit' );
         $this->assertViewData( $view, '##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR## );
-        $this->assertViewData( $view, 'input', 'Bar');
+
+        $this->assertFormMocks( $view, $input );
     }
 
     /**
@@ -137,16 +146,56 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function test##CLASS_SINGULAR##NotFound()
     {
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('Eloquent##CLASS_SINGULAR##Repository');
-        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('all')->once()->andReturn('Foo');
-        App::instance('Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        $input = array(
+            'name'          => '',
+        );
+
+        $this->createFilterMocks( $input );
 
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->##VARIABLE_SINGULAR##NotFound();
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.index' );
         $this->assertViewData( $view, 'messageType', 'error' );
         $this->assertViewData( $view, 'messageValues', array('This ##VARIABLE_SINGULAR## cannot be found in the database.') );
-        $this->assertViewData( $view, '##VARIABLE_PLURAL##', 'Foo' );
+
+        $this->assertFilterMocks( $view, $input );
+    }
+
+    protected function createFilterMocks($input)
+
+        $##VARIABLE_SINGULAR##1 = new ##CLASS_SINGULAR##( array('name' => 'Foo') );
+        $##VARIABLE_SINGULAR##2 = new ##CLASS_SINGULAR##( array('name' => 'Bar') );
+        $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array($##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2) );
+
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('all')->once()->andReturn($##VARIABLE_PLURAL##);
+        App::instance('Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+
+        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock('##CLASS_SINGULAR##InputHelper');
+        $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForSearch')->once()->with($input)->andReturn('Foo_input');
+        App::instance('##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
+
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('search')->once()->with('Foo_input', 25)->andReturn($##VARIABLE_SINGULAR##s);
+        App::instance('Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+    }
+
+    protected function assertFilterMocks($view, $input)
+    {
+        $this->assertViewData( $view, 'input', $input );
+        $this->assertViewDataSize( $view, '##VARIABLE_PLURAL##', 2 );
+        $this->assertEquals( 'Foo', $view['##VARIABLE_PLURAL##'][0]->name );
+        $this->assertEquals( 'Bar', $view['##VARIABLE_PLURAL##'][1]->name );
+    }
+
+    protected function createFormMocks()
+    {
+        // ...
+    }
+
+    protected function assertFormMocks($view)
+    {
+        // ...
     }
 
 }

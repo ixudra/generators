@@ -11,7 +11,7 @@
         @foreach( $##VARIABLE_PLURAL## as $##VARIABLE_SINGULAR## )
             <tr>
                 <td>{{ $##VARIABLE_SINGULAR##->id }}</td>
-                <td>{{ $##VARIABLE_SINGULAR##->name }}</td>
+                <td>{{ HTML::linkRoute('admin.##VARIABLE_PLURAL##.show', $##VARIABLE_SINGULAR##->name, array($##VARIABLE_SINGULAR##->id)) }}</td>
                 <td class="table-small">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">

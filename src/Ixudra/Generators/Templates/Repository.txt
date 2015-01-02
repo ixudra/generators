@@ -3,22 +3,14 @@
 
 class Eloquent##CLASS_SINGULAR##Repository extends BaseRepository {
 
-    public function all()
+    protected function getModel()
     {
-        return ##CLASS_SINGULAR##::all();
+        return new ##VARIABLE_PLURAL##;
     }
 
-    public function find($id)
+    protected function getTable()
     {
-        return ##CLASS_SINGULAR##::find($id);
-    }
-
-    public function findByFilter($filters)
-    {
-        $##VARIABLE_PLURAL## = new ##CLASS_SINGULAR##;
-        $##VARIABLE_PLURAL## = $this->applyFilters( $##VARIABLE_PLURAL##, $filters );
-
-        return $##VARIABLE_PLURAL##->get();
+        return '##TABLE_NAME##';
     }
 
 }

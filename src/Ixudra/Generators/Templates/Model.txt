@@ -8,7 +8,7 @@ class ##CLASS_SINGULAR## extends BaseModel {
     use PresentableTrait;
 
 
-    protected $table = '##VARIABLE_PLURAL##';
+    protected $table = '##TABLE_NAME##';
 
     protected $guarded = array();
 
@@ -26,7 +26,7 @@ class ##CLASS_SINGULAR## extends BaseModel {
     public static function getDefaults()
     {
         return array(
-            // ...
+            'name'          => ''
         );
     }
 
