@@ -86,7 +86,7 @@ As of version 1.0.0, the package also supports custom templates. These templates
 
 All variables except the namespace are determined automatically based on the parameters which are passed along to the command when called. The namespace can be set in the package `config.php` files after it has been published.
 
-Using the previously mentioned `vendor:publish` command will also publish the default package templates into `the /resources/templates` directory within your Laravel application directory. However, you can store them anywhere you like on your system. To enable a custom template, all you need to do is change the path to the file in the package config file.
+Using the previously mentioned `vendor:publish` command will also publish the default package templates into the `/resources/templates` directory within your Laravel application directory. However, you can store them anywhere you like on your system. To enable a custom template, all you need to do is change the path to the file in the package config file.
 
 
 That's all there is to it! Have fun!
