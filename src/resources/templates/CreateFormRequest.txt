@@ -1,0 +1,19 @@
+<?php namespace ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##;
+
+
+use ##NAMESPACE##\Http\Requests\Request;
+use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+
+class Create##CLASS_SINGULAR##FormRequest extends Request {
+
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return ##CLASS_SINGULAR##::getRules();
+    }
+
+}

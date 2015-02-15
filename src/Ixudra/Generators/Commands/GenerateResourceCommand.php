@@ -31,19 +31,32 @@ class GenerateResourceCommand extends Command {
     {
         $this->deriveArguments();
 
-        foreach( Config::get("generators::config.files") as $file ) {
-            $template = $this->loadTemplate($file['template']);
-            $content = $this->replaceValues( $template );
-            $this->createFile( $file['name'], $file['path'], $content );
+        foreach( Config::get("generators.files") as $file ) {
+            $this->generateFile( $file['template'], $file['name'], $file['path'] );
         }
 
-        $path = app_path('views') . '/bootstrap/' . $this->variablePlural;
-        $this->createDirectory($path);
-        foreach( Config::get("generators::config.views") as $view ) {
-            $template = $this->loadTemplate($view['template']);
-            $content = $this->replaceValues( $template );
-            $this->createFile( $view['name'], $path, $content );
+        $viewDirectoryPath = Config::get('generators.paths.views') . $this->variablePlural;
+        $this->createDirectory($viewDirectoryPath);
+
+        foreach( Config::get("generators.views") as $view ) {
+            $this->generateFile( $view['template'], $view['name'], $viewDirectoryPath );
         }
+
+        $requestDirectoryPath = Config::get('generators.paths.requests') . $this->classPlural;
+        $this->createDirectory($requestDirectoryPath);
+
+        foreach( Config::get("generators.requests") as $view ) {
+            $this->generateFile( $view['template'], $view['name'], $requestDirectoryPath );
+        }
+
+        $this->info('Resources generated!');
+    }
+
+    protected function generateFile($template, $fileName, $path)
+    {
+        $file = $this->loadTemplate($template);
+        $content = $this->replaceValues( $file );
+        $this->createFile( $fileName, $path, $content );
     }
 
     protected function getArguments()
@@ -108,6 +121,7 @@ class GenerateResourceCommand extends Command {
 
     protected function replaceValues($template)
     {
+        $template = str_replace( '##NAMESPACE##', Config::get('generators.namespace'), $template );
         $template = str_replace( '##TABLE_NAME##', $this->tableName, $template );
         $template = str_replace( '##CLASS_SINGULAR##', $this->classSingular, $template );
         $template = str_replace( '##CLASS_PLURAL##', $this->classPlural, $template );
@@ -151,7 +165,7 @@ class GenerateResourceCommand extends Command {
             if( $this->failOnError() ) {
                 throw new \Exception('Target directory does not exist: '. $fileName);
             } else {
-                $this->error('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - target directory does not.');
+                $this->error('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - target directory does not exist.');
                 return;
             }
         }
@@ -164,10 +178,9 @@ class GenerateResourceCommand extends Command {
         if( file_exists($path) ) {
             if( $this->failOnError() ) {
                 throw new \Exception('Directory already exists: '. $path);
-            } else {
-                $this->error('Directory '. $path .' was not created - directory already exists.');
-                return;
             }
+
+            return;
         }
 
         mkdir($path);

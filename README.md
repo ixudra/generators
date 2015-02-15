@@ -1,10 +1,9 @@
 Generators
-==========
+==============
 
-Custom PHP resource generation library for the Laravel 4 framework - developed by Ixudra.
+Custom PHP resource generation library for the Laravel 5 framework - developed by Ixudra.
 
 This package can be used by anyone at any given time, but keep in mind that it is optimized for my personal custom workflow. It may not suit your project perfectly and modifications may be in order.
-
 
 
 
@@ -14,11 +13,11 @@ Pull this package in through Composer.
 
 ```js
 
-{
-    "require": {
-        "ixudra/generators": "1.0.*"
+    {
+        "require": {
+            "ixudra/generators": "5.*"
+        }
     }
-}
 
 ```
 
@@ -34,7 +33,6 @@ Add the service provider to your app.php file
     )
 
 ```
-
 
 
 
@@ -62,20 +60,21 @@ The package has several configuration options. In order to modify these, you wil
 
 ```php
 
-    php artisan config:publish ixudra:generators
+    php artisan vendor:publish
 
 ```
 
-The config file will be published to `app/config/packages/ixudra/generators/config.php` where you will be able to make all modifications necessary to make it work with you application.
+The config file will be published to `app/config/generators.php` where you will be able to make all modifications necessary to make it work with you application.
 
 
 ### Custom templates
 
-As of version 1.0.0, the package also supports custom templates. These templates may contain 7 different variables that you can use to customize your development flow:
+As of version 1.0.0, the package also supports custom templates. These templates may contain 8 different variables that you can use to customize your development flow:
 
 
 | Name                      | key                       | example: project  | example 2: product type   |
 |---------------------------|---------------------------|-------------------|---------------------------|
+| Application namespace     | ##NAMESPACE##             | Example           | Ixudra                    |
 | Table name                | ##TABLE_NAME##            | projects          | product_types             |
 | class name singular       | ##CLASS_SINGULAR##        | Project           | ProductType               |
 | class name plural         | ##CLASS_PLURAL##          | Projects          | ProductTypes              |
@@ -85,7 +84,9 @@ As of version 1.0.0, the package also supports custom templates. These templates
 | constant name plural      | ##CONSTANT_PLURAL##       | PROJECT           | PRODUCT_TYPES             |
 
 
-You can store these anywhere you like on your system. To enable a custom template, all you need to do is change the path to the file in the package config file.
+All variables except the namespace are determined automatically based on the parameters which are passed along to the command when called. The namespace can be set in the package `config.php` files after it has been published.
+
+Using the previously mentioned `vendor:publish` command will also publish the default package templates into `the /resources/templates` directory within your Laravel application directory. However, you can store them anywhere you like on your system. To enable a custom template, all you need to do is change the path to the file in the package config file.
 
 
 That's all there is to it! Have fun!

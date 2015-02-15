@@ -1,0 +1,20 @@
+<?php namespace ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##;
+
+
+use ##NAMESPACE##\Http\Requests\Request;
+
+class Filter##CLASS_SINGULAR##FormRequest extends Request {
+
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return array(
+            'name'                  => 'required'
+        );
+    }
+
+}

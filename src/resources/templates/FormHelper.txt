@@ -1,0 +1,14 @@
+<?php namespace ##NAMESPACE##\Services\Form;
+
+
+class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
+
+    protected $repository;
+
+
+    public function __construct()
+    {
+        $$this->repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+    }
+
+}

@@ -1,11 +1,13 @@
-<?php
+<?php namespace ##NAMESPACE##\Repositories\Eloquent;
 
+
+use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
 class Eloquent##CLASS_SINGULAR##Repository extends BaseRepository {
 
     protected function getModel()
     {
-        return new ##VARIABLE_PLURAL##;
+        return new ##CLASS_SINGULAR##;
     }
 
     protected function getTable()

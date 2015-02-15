@@ -1,5 +1,7 @@
-<?php
+<?php namespace ##NAMESPACE##\Services\Input;
 
+
+use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
 class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
 

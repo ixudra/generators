@@ -10,12 +10,12 @@ class ##CLASS_SINGULAR##InputHelperTest extends BaseUnitTestCase {
     {
         parent::setUp();
 
-        $this->##VARIABLE_SINGULAR##InputHelper = App::make('##CLASS_SINGULAR##InputHelper');
+        $this->##VARIABLE_SINGULAR##InputHelper = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper');
     }
 
 
     /**
-     * @covers ##CLASS_SINGULAR##InputHelper::getInputForSearch()
+     * @covers \##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper::getInputForSearch()
      */
     public function testGetInputForSearch()
     {

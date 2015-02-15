@@ -1,0 +1,67 @@
+<?php namespace ##NAMESPACE##\Services\Html;
+
+
+use App;
+
+use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+
+class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
+
+    public function index($input = array())
+    {
+        if( empty($input) ) {
+            $input = array(
+                //...
+            );
+        }
+
+        return $this->prepareFilter( 'bootstrap.##VARIABLE_PLURAL##.index', $input );
+    }
+
+    public function create($input = null)
+    {
+        if( $input == null ) {
+            $input = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper')->getDefaultInput();
+        }
+
+        return $this->prepareForm( 'bootstrap.##VARIABLE_PLURAL##.create', $input );
+    }
+
+    public function show(##CLASS_SINGULAR## $##VARIABLE_SINGULAR##)
+    {
+        $this->addParameter('##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR##);
+
+        return $this->makeView( 'bootstrap.##VARIABLE_PLURAL##.show' );
+    }
+
+    public function edit(##CLASS_SINGULAR## $##VARIABLE_SINGULAR##, $input = null)
+    {
+        if( $input == null ) {
+            $input = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper')->getInputForModel( $##VARIABLE_SINGULAR## );
+        }
+
+        $this->addParameter('##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR##);
+
+        return $this->prepareForm( 'bootstrap.##VARIABLE_PLURAL##.edit', $input );
+    }
+
+
+    protected function prepareFilter($template, $input)
+    {
+        $searchInput = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper')->getInputForSearch( $input );
+        $##VARIABLE_PLURAL## = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository')->search( $searchInput, 25 );
+
+        $this->addParameter('##VARIABLE_PLURAL##', $##VARIABLE_PLURAL##);
+        $this->addParameter('input', $input);
+
+        return $this->makeView( $template );
+    }
+
+    protected function prepareForm($template, $input)
+    {
+        $this->addParameter('input', $input);
+
+        return $this->makeView( $template );
+    }
+
+}

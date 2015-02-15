@@ -1,0 +1,18 @@
+<?php namespace ##NAMESPACE##\Services\Factories;
+
+
+use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+
+class ##CLASS_SINGULAR##Factory {
+
+    public function make($input)
+    {
+        return ##CLASS_SINGULAR##::create( $input );
+    }
+
+    public function modify($##VARIABLE_SINGULAR##, $input)
+    {
+        return $##VARIABLE_SINGULAR##->update( $input );
+    }
+
+}
