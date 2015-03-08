@@ -10,17 +10,6 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
     const ##CONSTANT_SINGULAR##_ID_2 = 17;
 
 
-    protected $##VARIABLE_SINGULAR##FormHelper;
-
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->##VARIABLE_SINGULAR##FormHelper = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper');
-    }
-
-
     /**
      * @covers \##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper::getAllAsSelectList()
      * @covers \##NAMESPACE##\Services\Form\BaseFormHelper::convertToSelectList()
@@ -29,7 +18,7 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
     {
         $this->setUpMocks();
 
-        $result = $this->##VARIABLE_SINGULAR##FormHelper->get##CLASS_PLURAL##AsSelectList();
+        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->get##CLASS_PLURAL##AsSelectList();
 
         $this->assertEquals(
             array(
@@ -47,7 +36,7 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
     {
         $this->setUpMocks();
 
-        $result = $this->##VARIABLE_SINGULAR##FormHelper->get##CLASS_PLURAL##AsSelectList(true);
+        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->get##CLASS_PLURAL##AsSelectList(true);
 
         $this->assertEquals(
             array(

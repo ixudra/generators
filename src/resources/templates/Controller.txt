@@ -3,9 +3,9 @@
 
 use Translate;
 
-use ##NAMESPACE##\Http\Requests\##CLASS_SINGULAR##\Filter##CLASS_SINGULAR##FormRequest;
-use ##NAMESPACE##\Http\Requests\##CLASS_SINGULAR##\Create##CLASS_SINGULAR##FormRequest;
-use ##NAMESPACE##\Http\Requests\##CLASS_SINGULAR##\Update##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest;
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 use ##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory;
 use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;

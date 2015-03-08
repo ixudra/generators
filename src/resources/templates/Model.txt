@@ -11,20 +11,15 @@ class ##CLASS_SINGULAR## extends Model {
 
     protected $table = '##TABLE_NAME##';
 
-    protected $fillable = [ 'name' ];
+    protected $fillable = array( 'name' );
 
     protected $guarded = array();
 
-    protected $hidden = [  ];
-
-    protected $validators = array(
-        'testing'           => 'TestingValidator',
-        'default'           => '##CLASS_SINGULAR##Validator'
-    );
+    protected $hidden = array();
 
     protected $translationKey = '##VARIABLE_SINGULAR##';
 
-    protected $presenter = '##CLASS_SINGULAR##Presenter';
+    protected $presenter = '\##NAMESPACE##\Presenters\##CLASS_SINGULAR##Presenter';
 
 
     public static function getRules()

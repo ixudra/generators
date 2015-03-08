@@ -25,7 +25,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     public function testIndex()
     {
         $input = array(
-            //...
+            'name'          => ''
         );
 
         $this->createFilterMocks( $input );

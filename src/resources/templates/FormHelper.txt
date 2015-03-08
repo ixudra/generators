@@ -1,6 +1,8 @@
 <?php namespace ##NAMESPACE##\Services\Form;
 
 
+use App;
+
 class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
 
     protected $repository;
@@ -8,7 +10,7 @@ class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
 
     public function __construct()
     {
-        $$this->repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $this->repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
     }
 
 }

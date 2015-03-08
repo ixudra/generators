@@ -79,7 +79,7 @@
             'inputHelperTest'       => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/InputHelperTest.txt'),
                 'path'                  => app_path('../tests/unit/Services/Input'),
-                'name'                  => '##VALUE##InputHelper.php'
+                'name'                  => '##VALUE##InputHelperTest.php'
             ),
 
             'formHelper'            => array(
