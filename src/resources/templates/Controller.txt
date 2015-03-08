@@ -10,7 +10,7 @@ use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 use ##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory;
 use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;
 
-class ##CLASS_SINGULAR##Controller extends Controller {
+class ##CLASS_SINGULAR##Controller extends BaseController {
 
     protected $##VARIABLE_SINGULAR##ViewFactory;
 

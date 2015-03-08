@@ -14,11 +14,11 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
      * @covers \##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper::getAllAsSelectList()
      * @covers \##NAMESPACE##\Services\Form\BaseFormHelper::convertToSelectList()
      */
-    public function testGet##CLASS_PLURAL##AsSelectList()
+    public function testGetAllAsSelectList()
     {
         $this->setUpMocks();
 
-        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->get##CLASS_PLURAL##AsSelectList();
+        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->getAllAsSelectList();
 
         $this->assertEquals(
             array(
@@ -32,15 +32,15 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
      * @covers \##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper::getAllAsSelectList()
      * @covers \##NAMESPACE##\Services\Form\BaseFormHelper::convertToSelectList()
      */
-    public function testGet##CLASS_PLURAL##AsSelectList_includesNullValueIfRequired()
+    public function testGetAllAsSelectList_includesNullValueIfRequired()
     {
         $this->setUpMocks();
 
-        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->get##CLASS_PLURAL##AsSelectList(true);
+        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->getAllAsSelectList(true);
 
         $this->assertEquals(
             array(
-                0                                    => 'Choose ...',
+                0                                    => '',
                 self::##CONSTANT_SINGULAR##_ID_1     => 'Foo',
                 self::##CONSTANT_SINGULAR##_ID_2     => 'Bar'
             ), $result
