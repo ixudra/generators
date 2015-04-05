@@ -3,6 +3,8 @@
 
 use App;
 
+use Ixudra\Core\Services\Form\BaseFormHelper;
+
 class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
 
     protected $repository;

@@ -1,9 +1,9 @@
 <?php
 
 
-use Laracasts\Presenter\Presenter;
+use Ixudra\Core\Presenters\BasePresenter
 
-class ##CLASS_SINGULAR##Presenter extends Presenter {
+class ##CLASS_SINGULAR##Presenter extends BasePresenter {
 
     // ...
 

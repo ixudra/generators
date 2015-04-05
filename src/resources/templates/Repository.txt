@@ -1,9 +1,10 @@
 <?php namespace ##NAMESPACE##\Repositories\Eloquent;
 
 
+use Ixudra\Core\Repositories\Eloquent\BaseEloquentRepository;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
-class Eloquent##CLASS_SINGULAR##Repository extends BaseRepository {
+class Eloquent##CLASS_SINGULAR##Repository extends BaseEloquentRepository {
 
     protected function getModel()
     {

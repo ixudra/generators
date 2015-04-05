@@ -3,6 +3,7 @@
 
 use App;
 
+use Ixudra\Core\Services\Html\BaseViewFactory;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
 class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {

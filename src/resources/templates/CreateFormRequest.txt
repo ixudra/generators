@@ -1,10 +1,10 @@
 <?php namespace ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##;
 
 
-use ##NAMESPACE##\Http\Requests\Request;
+use Ixudra\Core\Http\Requests\BaseRequest;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
-class Create##CLASS_SINGULAR##FormRequest extends Request {
+class Create##CLASS_SINGULAR##FormRequest extends BaseRequest {
 
     public function authorize()
     {

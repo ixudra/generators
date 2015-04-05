@@ -1,6 +1,7 @@
 <?php namespace ##NAMESPACE##\Services\Input;
 
 
+use Ixudra\Core\Services\Input\BaseInputHelper;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
 class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
