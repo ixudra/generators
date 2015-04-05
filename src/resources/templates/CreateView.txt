@@ -8,6 +8,6 @@
 
 @section('content')
 
-@include('bootstrap.##VARIABLE_PLURAL##.form', array('url' => 'admin/##VARIABLE_PLURAL##/', 'method' => 'post', 'input' => $input, 'formId' => 'create##CLASS_SINGULAR##', 'redirectUrl' => 'admin.##VARIABLE_PLURAL##.index', 'redirectParameters' => array()))
+    @include('bootstrap.##VARIABLE_PLURAL##.form', array('url' => 'admin/##VARIABLE_PLURAL##/', 'method' => 'post', 'input' => $input, 'formId' => 'create##CLASS_SINGULAR##', 'redirectUrl' => 'admin.##VARIABLE_PLURAL##.index', 'redirectParameters' => array()))
 
 @endsection
