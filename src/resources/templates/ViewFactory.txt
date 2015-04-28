@@ -1,4 +1,4 @@
-<?php namespace ##NAMESPACE##\Services\Html;
+<?php namespace ##NAMESPACE##\Services\Html##ADMIN##;
 
 
 use Ixudra\Core\Services\Html\BaseViewFactory;
@@ -58,16 +58,9 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
         return $this->makeView( $template );
     }
 
-    protected function prepareForm($template, $input)
-    {
-        $this->addParameter('input', $input);
-
-        return $this->makeView( $template );
-    }
-
     protected function prepareForm($template, $formName, $input)
     {
-        $requiredFields = App::make('\##NAMESPACE##o\Services\Validation\##CLASS_SINGULAR##ValidationHelper')->getRequiredFormFields( $formName );
+        $requiredFields = App::make('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper')->getRequiredFormFields( $formName );
 
         $this->addParameter('input', $input);
         $this->addParameter('requiredFields', $requiredFields);

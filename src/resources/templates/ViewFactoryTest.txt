@@ -12,13 +12,13 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     {
         parent::setUp();
 
-        $this->##VARIABLE_SINGULAR##ViewFactory = App::make('\##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory');
+        $this->##VARIABLE_SINGULAR##ViewFactory = App::make('\##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory');
     }
 
 
     /**
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::index()
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareFilter()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::index()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::prepareFilter()
      */
     public function testIndex()
     {
@@ -36,8 +36,8 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::create()
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::create()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::prepareForm()
      */
     public function testCreate_usesInputIfInputIsNotNull()
     {
@@ -51,8 +51,8 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::create()
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::create()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::prepareForm()
      */
     public function testCreate_usesDefaultValuesIfInputIsNull()
     {
@@ -70,7 +70,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::show()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::show()
      */
     public function testShow()
     {
@@ -84,8 +84,8 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::edit()
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::edit()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::prepareForm()
      */
     public function testEdit_usesInputValuesIfInputIsNotNull()
     {
@@ -102,8 +102,8 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::edit()
-     * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::edit()
+     * @covers \##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory::prepareForm()
      */
     public function testEdit_uses##CLASS_SINGULAR##ValuesIfInputIsNull()
     {
@@ -119,7 +119,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $this->assertViewName( $view, 'bootstrap.##VARIABLE_PLURAL##.edit' );
         $this->assertViewData( $view, '##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR## );
-        $this->assertViewData( $view, 'input', 'Bar');
+        $this->assertViewData( $view, 'input', 'Bar' );
         $this->assertFormMocks( $view );
     }
 

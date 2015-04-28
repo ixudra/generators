@@ -24,7 +24,7 @@
 
             'controller'            => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/Controller.txt'),
-                'path'                  => app_path('Http/Controllers'),
+                'path'                  => app_path('Http/Controllers') .'##ADMIN##',
                 'name'                  => '##VALUE##Controller.php'
             ),
 
@@ -60,7 +60,7 @@
 
             'viewFactory'           => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/ViewFactory.txt'),
-                'path'                  => app_path('Services/Html'),
+                'path'                  => app_path('Services/Html') .'##ADMIN##',
                 'name'                  => '##VALUE##ViewFactory.php'
             ),
 

@@ -70,6 +70,7 @@ class GenerateResourceCommand extends Command {
     protected function getOptions()
     {
         return array(
+            array('isAdmin', null, InputOption::VALUE_OPTIONAL, 'Move the controllers and view factories into an admin subdirectory', 'false'),
             array('allowOverwrite', null, InputOption::VALUE_OPTIONAL, 'Allow the generator to overwrite existing files', 'false'),
             array('failOnError', null, InputOption::VALUE_OPTIONAL, 'Halt the execution if an error is occurred', 'false')
         );
@@ -130,6 +131,13 @@ class GenerateResourceCommand extends Command {
         $template = str_replace( '##VARIABLE_SINGULAR##', $this->variableSingular, $template );
         $template = str_replace( '##VARIABLE_PLURAL##', $this->variablePlural, $template );
 
+        $admin = '';
+        if( $this->isAdmin() ) {
+            $admin = '\Admin';
+        }
+
+        $template = str_replace( '##ADMIN##', $admin, $template );
+
         return $template;
     }
 
@@ -149,6 +157,10 @@ class GenerateResourceCommand extends Command {
 
     protected function createFile($name, $path, $content)
     {
+        if( $this->isAdmin() ) {
+            $path = str_replace( '##ADMIN##', '/Admin', $path );
+        }
+
         $fileName = $path .'/'. str_replace( '##VALUE##', $this->classSingular, $name );
         if( file_exists($fileName) ) {
             if( $this->allowOverwrite() ) {
@@ -184,6 +196,11 @@ class GenerateResourceCommand extends Command {
         }
 
         mkdir($path);
+    }
+
+    protected function isAdmin()
+    {
+        return $this->option('isAdmin') === 'true';
     }
 
     protected function allowOverwrite()
