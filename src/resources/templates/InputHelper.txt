@@ -6,7 +6,7 @@ use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
 class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
 
-    public function getDefaultInput()
+    public function getDefaultInput($prefix = '')
     {
         return ##CLASS_SINGULAR##::getDefaults();
     }

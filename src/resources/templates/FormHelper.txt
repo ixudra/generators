@@ -1,9 +1,9 @@
 <?php namespace ##NAMESPACE##\Services\Form;
 
 
-use App;
-
 use Ixudra\Core\Services\Form\BaseFormHelper;
+
+use App;
 
 class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
 

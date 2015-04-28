@@ -1,8 +1,6 @@
 <?php namespace ##NAMESPACE##\Http\Controllers;
 
 
-use Translate;
-
 use Ixudra\Core\Http\Controllers\BaseController;
 use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest;
 use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest;
@@ -10,6 +8,8 @@ use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormReq
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 use ##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory;
 use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;
+
+use Translate;
 
 class ##CLASS_SINGULAR##Controller extends BaseController {
 
