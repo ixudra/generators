@@ -25,7 +25,7 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
             $input = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper')->getDefaultInput();
         }
 
-        return $this->prepareForm( 'bootstrap.##VARIABLE_PLURAL##.create', $input );
+        return $this->prepareForm( 'bootstrap.##VARIABLE_PLURAL##.create', 'create', $input );
     }
 
     public function show(##CLASS_SINGULAR## $##VARIABLE_SINGULAR##)
@@ -43,14 +43,14 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
 
         $this->addParameter('##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR##);
 
-        return $this->prepareForm( 'bootstrap.##VARIABLE_PLURAL##.edit', $input );
+        return $this->prepareForm( 'bootstrap.##VARIABLE_PLURAL##.edit', 'update', $input );
     }
 
 
     protected function prepareFilter($template, $input)
     {
         $searchInput = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper')->getInputForSearch( $input );
-        $##VARIABLE_PLURAL## = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository')->search( $searchInput, 25 );
+        $##VARIABLE_PLURAL## = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository')->search( $searchInput );
 
         $this->addParameter('##VARIABLE_PLURAL##', $##VARIABLE_PLURAL##);
         $this->addParameter('input', $input);
@@ -61,6 +61,16 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
     protected function prepareForm($template, $input)
     {
         $this->addParameter('input', $input);
+
+        return $this->makeView( $template );
+    }
+
+    protected function prepareForm($template, $formName, $input)
+    {
+        $requiredFields = App::make('\##NAMESPACE##o\Services\Validation\##CLASS_SINGULAR##ValidationHelper')->getRequiredFormFields( $formName );
+
+        $this->addParameter('input', $input);
+        $this->addParameter('requiredFields', $requiredFields);
 
         return $this->makeView( $template );
     }

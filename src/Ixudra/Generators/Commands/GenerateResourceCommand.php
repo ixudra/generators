@@ -31,21 +31,21 @@ class GenerateResourceCommand extends Command {
     {
         $this->deriveArguments();
 
-        foreach( Config::get("generators.files") as $file ) {
+        foreach( Config::get('generators.files') as $file ) {
             $this->generateFile( $file['template'], $file['name'], $file['path'] );
         }
 
         $viewDirectoryPath = Config::get('generators.paths.views') . $this->variablePlural;
         $this->createDirectory($viewDirectoryPath);
 
-        foreach( Config::get("generators.views") as $view ) {
+        foreach( Config::get('generators.views') as $view ) {
             $this->generateFile( $view['template'], $view['name'], $viewDirectoryPath );
         }
 
         $requestDirectoryPath = Config::get('generators.paths.requests') . $this->classPlural;
         $this->createDirectory($requestDirectoryPath);
 
-        foreach( Config::get("generators.requests") as $view ) {
+        foreach( Config::get('generators.requests') as $view ) {
             $this->generateFile( $view['template'], $view['name'], $requestDirectoryPath );
         }
 

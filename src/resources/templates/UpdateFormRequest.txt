@@ -13,7 +13,8 @@ class Update##CLASS_SINGULAR##FormRequest extends BaseRequest {
 
     public function rules()
     {
-        return ##CLASS_SINGULAR##::getRules();
+        return App::make('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper')
+            ->getFormValidationRules( 'update' );
     }
 
 }

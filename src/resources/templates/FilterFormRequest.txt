@@ -12,9 +12,8 @@ class Filter##CLASS_SINGULAR##FormRequest extends BaseRequest {
 
     public function rules()
     {
-        return array(
-            'name'                  => 'required'
-        );
+        return App::make('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper')
+            ->getFilterValidationRules();
     }
 
 }

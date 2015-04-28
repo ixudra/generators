@@ -19,8 +19,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     /**
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::index()
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareFilter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::addParameter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::makeView()
      */
     public function testIndex()
     {
@@ -40,8 +38,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     /**
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::create()
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::addParameter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::makeView()
      */
     public function testCreate_usesInputIfInputIsNotNull()
     {
@@ -57,8 +53,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     /**
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::create()
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::addParameter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::makeView()
      */
     public function testCreate_usesDefaultValuesIfInputIsNull()
     {
@@ -77,8 +71,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::show()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::addParameter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::makeView()
      */
     public function testShow()
     {
@@ -94,8 +86,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     /**
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::edit()
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::addParameter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::makeView()
      */
     public function testEdit_usesInputValuesIfInputIsNotNull()
     {
@@ -114,8 +104,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     /**
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::edit()
      * @covers \##NAMESPACE##\Services\Html\##CLASS_SINGULAR##ViewFactory::prepareForm()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::addParameter()
-     * @covers \##NAMESPACE##\Services\Html\BaseViewFactory::makeView()
      */
     public function testEdit_uses##CLASS_SINGULAR##ValuesIfInputIsNull()
     {
@@ -148,7 +136,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array( $##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2 ) );
 
         $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
-        $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('search')->once()->with($searchInput, 25)->andReturn($##VARIABLE_PLURAL##);
+        $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('search')->once()->with($searchInput)->andReturn($##VARIABLE_PLURAL##);
         App::instance('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##InputHelperMock);
     }
 
