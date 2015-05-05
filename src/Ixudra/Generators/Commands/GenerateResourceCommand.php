@@ -157,9 +157,11 @@ class GenerateResourceCommand extends Command {
 
     protected function createFile($name, $path, $content)
     {
+        $pathSuffix = '';
         if( $this->isAdmin() ) {
-            $path = str_replace( '##ADMIN##', '/Admin', $path );
+            $pathSuffix = '/Admin';
         }
+        $path = str_replace( '##ADMIN##', $pathSuffix, $path );
 
         $fileName = $path .'/'. str_replace( '##VALUE##', $this->classSingular, $name );
         if( file_exists($fileName) ) {
