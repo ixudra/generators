@@ -13,6 +13,8 @@ use Translate;
 
 class ##CLASS_SINGULAR##Controller extends BaseController {
 
+    protected $##VARIABLE_SINGULAR##Repository;
+
     protected $##VARIABLE_SINGULAR##ViewFactory;
 
 

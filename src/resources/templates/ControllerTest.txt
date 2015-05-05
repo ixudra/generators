@@ -9,7 +9,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::index()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::index()
      */
     public function testIndex()
     {
@@ -24,7 +24,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::filter()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::filter()
      */
     public function testFilter_get()
     {
@@ -47,7 +47,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::filter()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::filter()
      */
     public function testFilter_post()
     {
@@ -71,7 +71,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::create()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::create()
      */
     public function testCreate()
     {
@@ -86,7 +86,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::store()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::store()
      */
     public function testStore()
     {
@@ -122,7 +122,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::show()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::show()
      */
     public function testShow()
     {
@@ -143,7 +143,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::show()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::show()
      */
     public function testShow_returns##CLASS_SINGULAR##NotFoundIfRepositoryReturnsNull()
     {
@@ -155,7 +155,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::edit()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::edit()
      */
     public function testEdit()
     {
@@ -176,7 +176,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::edit()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::edit()
      */
     public function testEdit_returns##CLASS_SINGULAR##NotFoundIfRepositoryReturnsNull()
     {
@@ -188,7 +188,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::update()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::update()
      */
     public function testUpdate()
     {
@@ -228,7 +228,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::update()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::update()
      */
     public function testUpdate_returns##CLASS_SINGULAR##NotFoundIfRepositoryReturnsNull()
     {
@@ -240,7 +240,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::destroy()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::destroy()
      */
     public function testDestroy()
     {
@@ -267,7 +267,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     }
 
     /**
-     * @covers \##NAMESPACE##\Http##ADMIN##\Controllers\##CLASS_SINGULAR##Controller::destroy()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN##\##CLASS_SINGULAR##Controller::destroy()
      */
     public function testDestroy_returnsToIndexIf##CLASS_SINGULAR##IsNotFound()
     {

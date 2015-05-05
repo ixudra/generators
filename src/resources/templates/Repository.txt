@@ -16,4 +16,20 @@ class Eloquent##CLASS_SINGULAR##Repository extends BaseEloquentRepository {
         return '##TABLE_NAME##';
     }
 
+    public function search($filters, $resultsPerPage = 25)
+    {
+        $results = $this->getModel();
+
+        if( array_key_exists('query', $filters) && $filters[ 'query' ] != '' ) {
+            $results = $results
+                ->where('name', 'like', $filters[ 'query' ]);
+        }
+
+        return $results
+            ->select($this->getTable() .'.*')
+            ->paginate($resultsPerPage)
+            ->appends($filters)
+            ->appends('size', $resultsPerPage);
+    }
+
 }

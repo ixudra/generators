@@ -2,7 +2,8 @@
 
 
 use Ixudra\Core\Http\Requests\BaseRequest;
-use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+
+use App;
 
 class Create##CLASS_SINGULAR##FormRequest extends BaseRequest {
 
