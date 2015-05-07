@@ -12,7 +12,6 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
 
     /**
      * @covers \##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper::getAllAsSelectList()
-     * @covers \##NAMESPACE##\Services\Form\BaseFormHelper::convertToSelectList()
      */
     public function testGetAllAsSelectList()
     {
@@ -30,7 +29,6 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
 
     /**
      * @covers \##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper::getAllAsSelectList()
-     * @covers \##NAMESPACE##\Services\Form\BaseFormHelper::convertToSelectList()
      */
     public function testGetAllAsSelectList_includesNullValueIfRequired()
     {

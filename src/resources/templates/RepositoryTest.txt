@@ -50,7 +50,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
     }
 
     /**
-     * @covers Eloquent##CLASS_SINGULAR##Repository::find()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::find()
      */
     public function testFind_returnsNullIf##CLASS_SINGULAR##DoesNotExist()
     {
@@ -61,8 +61,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::findByFilter()
-     * @covers \##NAMESPACE##\Repositories\Eloquent\BaseRepository::preProcessFilters()
-     * @covers \##NAMESPACE##\Repositories\Eloquent\BaseRepository::applyFilters()
      */
     public function testFindByFilter()
     {
@@ -83,8 +81,6 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::findByFilter()
-     * @covers \##NAMESPACE##\Repositories\Eloquent\BaseRepository::preProcessFilters()
-     * @covers \##NAMESPACE##\Repositories\Eloquent\BaseRepository::applyFilters()
      */
     public function testFindByFilter_returnsEmptyArrayIfNo##CLASS_PLURAL##MatchFilter()
     {

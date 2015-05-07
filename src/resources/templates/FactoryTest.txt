@@ -20,9 +20,9 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
 
 
     /**
-     * @covers \##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory::create()
+     * @covers \##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory::make()
      */
-    public function testCreate()
+    public function testMake()
     {
         $input = array(
             'name'                  => 'Foo',
