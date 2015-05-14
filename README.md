@@ -94,3 +94,20 @@ Using the previously mentioned `vendor:publish` command will also publish the de
 
 
 That's all there is to it! Have fun!
+
+
+
+
+## License
+
+This package is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+
+
+## Contact
+
+Jan Oris (developer)
+
+- Email: jan.oris@ixudra.be
+- Telephone: +32 496 94 20 57
