@@ -23,7 +23,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     public function testIndex()
     {
         $input = array(
-            'name'          => ''
+            'query'         => ''
         );
 
         $this->createFilterMocks( $input );
@@ -148,7 +148,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $this->assertEquals( 'Bar', $view['##VARIABLE_PLURAL##'][1]->name );
     }
 
-    protected function createFormMocks()
+    protected function createFormMocks($formName)
     {
         $##VARIABLE_SINGULAR##ValidationServiceMock = Mockery::mock('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper');
         $##VARIABLE_SINGULAR##ValidationServiceMock->shouldReceive('getRequiredFormFields')->once()->with($formName)->andReturn( 'Foo_required_fields' );
