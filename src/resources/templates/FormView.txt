@@ -2,7 +2,7 @@
 
     <div class="well well-large">
         <div class="form-group {{ $errors->has($prefix . 'name') ? 'has-error' : '' }} {{ in_array($prefix . 'name', $requiredFields) ? 'required' : '' }}">
-            {!! Form::label($prefix . 'name', Translate::recursive('members.street') .': ', array('class' => 'control-label col-lg-3')) !!}
+            {!! Form::label($prefix . 'name', Translate::recursive('members.name') .': ', array('class' => 'control-label col-lg-3')) !!}
             <div class="col-lg-8">
                 {!! Form::text($prefix . 'name', $input[$prefix . 'name'], array('class' => 'form-control')) !!}
                 {!! $errors->first($prefix . 'name', '<span class="help-block">:message</span>') !!}
