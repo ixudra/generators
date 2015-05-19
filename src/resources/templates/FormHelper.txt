@@ -2,6 +2,7 @@
 
 
 use Ixudra\Core\Services\Form\BaseFormHelper;
+use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 
 use App;
 
@@ -10,9 +11,9 @@ class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
     protected $repository;
 
 
-    public function __construct()
+    public function __construct(Eloquent##CLASS_SINGULAR##Repository $##VARIABLE_SINGULAR##Repository)
     {
-        $this->repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $this->repository = $##VARIABLE_SINGULAR##Repository;
     }
 
 }

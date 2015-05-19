@@ -58,9 +58,9 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
 
         $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array( $##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2 ) );
 
-        $##VARIABLE_SINGULAR##Repository = Mockery::mock('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##Repository = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
         $##VARIABLE_SINGULAR##Repository->shouldReceive('all')->once()->andReturn($##VARIABLE_PLURAL##);
-        App::instance('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##Repository);
+        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##Repository);
     }
 
 }
