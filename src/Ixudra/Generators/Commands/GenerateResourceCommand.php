@@ -18,34 +18,11 @@ class GenerateResourceCommand extends BaseGenerateCommand {
 
     public function fire()
     {
-        $this->deriveArguments();
-
-        foreach( Config::get('generators.files') as $file ) {
-            $this->generateFile( $file['template'], $file['name'], $file['path'] );
-        }
-
-        $viewDirectoryPath = Config::get('generators.paths.views') . $this->variablePlural;
-        $this->createDirectory($viewDirectoryPath);
-
-        foreach( Config::get('generators.views') as $view ) {
-            $this->generateFile( $view['template'], $view['name'], $viewDirectoryPath );
-        }
-
-        $requestDirectoryPath = Config::get('generators.paths.requests') . $this->classPlural;
-        $this->createDirectory($requestDirectoryPath);
-
-        foreach( Config::get('generators.requests') as $view ) {
-            $this->generateFile( $view['template'], $view['name'], $requestDirectoryPath );
+        foreach( Config::get('generators.files') as $key => $file ) {
+            $this->generateFile( $key );
         }
 
         $this->info('Resources generated!');
-    }
-
-    protected function generateFile($template, $fileName, $path)
-    {
-        $file = $this->loadTemplate($template);
-        $content = $this->replaceValues( $file );
-        $this->createFile( $fileName, $path, $content );
     }
 
     protected function getArguments()
@@ -53,6 +30,20 @@ class GenerateResourceCommand extends BaseGenerateCommand {
         return array(
             array('resource-singular', InputArgument::REQUIRED, 'Singular value of the resource', null),
             array('resource-plural', InputArgument::OPTIONAL, 'Plural value of the resource', null)
+        );
+    }
+
+    protected function generateFile($key, $path = null)
+    {
+        $this->call('generate:file',
+            array(
+                'file'              => $key,
+                'resource-singular' => $this->argument('resource-singular'),
+                'resource-plural'   => $this->argument('resource-plural'),
+                '--isAdmin'         => $this->option('isAdmin'),
+                '--allowOverwrite'  => $this->option('allowOverwrite'),
+                '--path'            => $path,
+            )
         );
     }
 

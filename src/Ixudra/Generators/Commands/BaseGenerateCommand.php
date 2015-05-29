@@ -34,21 +34,7 @@ abstract class BaseGenerateCommand extends Command {
     }
 
 
-    protected function generateFile($template, $fileName, $path)
-    {
-        $file = $this->loadTemplate($template);
-        $content = $this->replaceValues( $file );
-        $this->createFile( $fileName, $path, $content );
-    }
-
-    protected function getArguments()
-    {
-        return array(
-            array('file', InputArgument::REQUIRED, 'Identifier of the file that needs to be generated', null),
-            array('resource-singular', InputArgument::REQUIRED, 'Singular value of the resource', null),
-            array('resource-plural', InputArgument::OPTIONAL, 'Plural value of the resource', null)
-        );
-    }
+    //- Arguments and options ---
 
     protected function getOptions()
     {
@@ -59,19 +45,23 @@ abstract class BaseGenerateCommand extends Command {
         );
     }
 
-    protected function deriveArguments()
+    protected function isAdmin()
     {
-        $this->tableName = strtolower( $this->getPluralResourceName() );
-
-        $this->classSingular = $this->getSingularClassName();
-        $this->classPlural = $this->getPluralClassName();
-
-        $this->variableSingular = lcfirst( $this->classSingular );
-        $this->variablePlural = lcfirst( $this->classPlural );
-
-        $this->constantSingular = strtoupper( $this->getSingularResourceName() );
-        $this->constantPlural = strtoupper( $this->getPluralResourceName() );
+        return $this->option('isAdmin') === 'true';
     }
+
+    protected function allowOverwrite()
+    {
+        return $this->option('allowOverwrite') === 'true';
+    }
+
+    protected function failOnError()
+    {
+        return $this->option('failOnError') === 'true';
+    }
+
+
+    //- Value deduction ---
 
     protected function getSingularResourceName()
     {
@@ -97,106 +87,24 @@ abstract class BaseGenerateCommand extends Command {
     {
         $classPlural = Str::studly( $this->argument('resource-plural') );
         if( is_null($classPlural) || empty($classPlural) ) {
-            $classPlural = $this->classSingular .'s';
+            $classPlural = $this->getSingularClassName() .'s';
         }
 
         return $classPlural;
     }
 
-    protected function replaceValues($template)
+    protected function getSingularVariableName()
     {
-        $template = str_replace( '##NAMESPACE##', Config::get('generators.namespace'), $template );
-        $template = str_replace( '##TABLE_NAME##', $this->tableName, $template );
-        $template = str_replace( '##CLASS_SINGULAR##', $this->classSingular, $template );
-        $template = str_replace( '##CLASS_PLURAL##', $this->classPlural, $template );
-        $template = str_replace( '##CONSTANT_SINGULAR##', $this->constantSingular, $template );
-        $template = str_replace( '##CONSTANT_PLURAL##', $this->constantPlural, $template );
-        $template = str_replace( '##VARIABLE_SINGULAR##', $this->variableSingular, $template );
-        $template = str_replace( '##VARIABLE_PLURAL##', $this->variablePlural, $template );
-
-        $admin = '';
-        if( $this->isAdmin() ) {
-            $admin = '\Admin';
-        }
-
-        $template = str_replace( '##ADMIN##', $admin, $template );
-
-        return $template;
+        return lcfirst( $this->getSingularClassName() );
     }
 
-    protected function loadTemplate($fileName)
+    protected function getPluralVariableName()
     {
-        if( !file_exists($fileName) ) {
-            if( $this->failOnError() ) {
-                throw new \Exception('File not found: '. $fileName);
-            } else {
-                $this->error('File not found: '. $fileName);
-                return null;
-            }
-        }
-
-        return file_get_contents($fileName);
+        return lcfirst( $this->getPluralClassName() );
     }
 
-    protected function createFile($name, $path, $content)
-    {
-        $pathSuffix = '';
-        if( $this->isAdmin() ) {
-            $pathSuffix = '/Admin';
-        }
-        $path = str_replace( '##ADMIN##', $pathSuffix, $path );
 
-        $fileName = $path .'/'. str_replace( '##VALUE##', $this->classSingular, $name );
-        if( file_exists($fileName) ) {
-            if( $this->allowOverwrite() ) {
-                unlink($fileName);
-            } else if( $this->failOnError() ) {
-                throw new \Exception('File already exists: '. $fileName);
-            } else {
-                $this->error('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - file already exists.');
-                return;
-            }
-        }
-
-        if( !file_exists($path) ) {
-            if( $this->failOnError() ) {
-                throw new \Exception('Target directory does not exist: '. $fileName);
-            } else {
-                $this->error('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - target directory does not exist.');
-                return;
-            }
-        }
-
-        file_put_contents($fileName, $content);
-    }
-
-    protected function createDirectory($path)
-    {
-        if( file_exists($path) ) {
-            if( $this->failOnError() ) {
-                throw new \Exception('Directory already exists: '. $path);
-            }
-
-            return;
-        }
-
-        mkdir($path);
-    }
-
-    protected function isAdmin()
-    {
-        return $this->option('isAdmin') === 'true';
-    }
-
-    protected function allowOverwrite()
-    {
-        return $this->option('allowOverwrite') === 'true';
-    }
-
-    protected function failOnError()
-    {
-        return $this->option('failOnError') === 'true';
-    }
+    //- Error reporting ---
 
     protected function addError($message)
     {
