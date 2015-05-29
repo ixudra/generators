@@ -28,7 +28,7 @@ class ##CLASS_SINGULAR##InputHelperTest extends BaseUnitTestCase {
 
         $this->assertEquals(
             array(
-            'name'          => '',
+                'name'          => '',
             ), $result
         );
     }

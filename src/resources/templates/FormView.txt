@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => $url, 'method' => $method, 'id' => $formId, 'class' => 'form-horizontal', 'role' => 'form')) !!}
+{!! Form::open(array('route' => $url, 'method' => $method, 'id' => $formId, 'class' => 'form-horizontal', 'role' => 'form')) !!}
 
     <div class="well well-large">
         <div class="form-group {{ $errors->has($prefix . 'name') ? 'has-error' : '' }} {{ in_array($prefix . 'name', $requiredFields) ? 'required' : '' }}">

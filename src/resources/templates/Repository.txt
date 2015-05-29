@@ -25,11 +25,7 @@ class Eloquent##CLASS_SINGULAR##Repository extends BaseEloquentRepository {
                 ->where('name', 'like', $filters[ 'query' ]);
         }
 
-        return $results
-            ->select($this->getTable() .'.*')
-            ->paginate($resultsPerPage)
-            ->appends($filters)
-            ->appends('size', $resultsPerPage);
+        return $this->paginated($filters, $resultsPerPage, $results);
     }
 
 }

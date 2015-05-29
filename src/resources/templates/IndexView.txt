@@ -10,12 +10,12 @@
 
     <div class="row">
         <p>
-            {!! HTML::linkRoute('admin.##VARIABLE_PLURAL##.create', Translate::recursive('common.new'), array(), array('class' => 'btn btn-default')) !!}
+            {!! HTML::linkRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create', Translate::recursive('common.new'), array(), array('class' => 'btn btn-default')) !!}
         </p>
     </div>
 
-    @include('bootstrap.##VARIABLE_PLURAL##.filter')
+    @include('bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.filter')
 
-    @include('bootstrap.##VARIABLE_PLURAL##.table')
+    @include('bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.table')
 
 @endsection

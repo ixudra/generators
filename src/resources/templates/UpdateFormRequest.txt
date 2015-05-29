@@ -1,4 +1,4 @@
-<?php namespace ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##;
+<?php namespace ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##;
 
 
 use Ixudra\Core\Http\Requests\BaseRequest;

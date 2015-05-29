@@ -9,8 +9,8 @@
 @section('content')
 
     <div class="row">
-        {!! Form::open(array('url' => '/admin/##VARIABLE_PLURAL##/'. $##VARIABLE_SINGULAR##->id, 'method' => 'delete')) !!}
-            {!! HTML::linkRoute('admin.##VARIABLE_PLURAL##.edit', Translate::recursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) !!}
+        {!! Form::open(array('route' => array('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', $##VARIABLE_SINGULAR##->id), 'method' => 'delete')) !!}
+            {!! HTML::linkRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit', Translate::recursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) !!}
             {!! Form::submit(Translate::recursive('common.delete'), array('class' => 'btn btn-danger')) !!}
         {!! Form:: close() !!}
     </div>

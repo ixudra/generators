@@ -25,7 +25,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
     public function testMake()
     {
         $input = array(
-            'name'                  => 'Foo',
+            'name'                  => 'Foo_name',
         );
 
         $##VARIABLE_SINGULAR## = $this->##VARIABLE_SINGULAR##Factory->make( $input );
@@ -42,20 +42,20 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
     {
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##(
             array(
-                'name'                  => 'Foo',
+                'name'                  => 'Foo_name',
             )
         );
         $##VARIABLE_SINGULAR##->save();
 
         $input = array(
-            'name'                  => 'Bar',
+            'name'                  => 'Bar_name',
         );
 
         $this->##VARIABLE_SINGULAR##Factory->modify( $##VARIABLE_SINGULAR##, $input );
 
         $##VARIABLE_SINGULAR##Repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
         $this->assertEquals( 1, $##VARIABLE_SINGULAR##Repository->all()->count() );
-        $this->assertEquals( 'Bar', $##VARIABLE_SINGULAR##Repository->all()->first()->name );
+        $this->assertEquals( 'Bar_name', $##VARIABLE_SINGULAR##Repository->all()->first()->name );
     }
 
 }

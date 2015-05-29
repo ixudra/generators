@@ -112,7 +112,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $paginator = $this->##VARIABLE_SINGULAR##Repository->search($filters, 50, true);
         $##VARIABLE_PLURAL## = $paginator->getCollection();
 
-        $this->assertCount(5, $##VARIABLE_PLURAL##);
+        $this->assertCount(2, $##VARIABLE_PLURAL##);
         $this->assertCollectionWithOnlyInstancesOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
         $this->assertCollectionContains( array($##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##4), $##VARIABLE_PLURAL## );
     }

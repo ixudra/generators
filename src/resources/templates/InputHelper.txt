@@ -8,7 +8,7 @@ class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
 
     public function getDefaultInput($prefix = '')
     {
-        return ##CLASS_SINGULAR##::getDefaults();
+        return $this->getPrefixedInput( ##CLASS_SINGULAR##::getDefaults(), $prefix );
     }
 
 }

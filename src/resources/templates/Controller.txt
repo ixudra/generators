@@ -1,12 +1,12 @@
-<?php namespace ##NAMESPACE##\Http\Controllers##ADMIN##;
+<?php namespace ##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##;
 
 
 use Ixudra\Core\Http\Controllers\BaseController;
-use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest;
-use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest;
-use ##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest;
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
-use ##NAMESPACE##\Services\Html##ADMIN##\##CLASS_SINGULAR##ViewFactory;
+use ##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory;
 use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;
 
 use Translate;
