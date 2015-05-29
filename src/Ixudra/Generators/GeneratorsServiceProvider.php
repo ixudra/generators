@@ -3,6 +3,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Ixudra\Generators\Commands\GenerateResourceCommand;
+use Ixudra\Generators\Commands\GenerateFileCommand;
 
 class GeneratorsServiceProvider extends ServiceProvider {
 
@@ -34,6 +35,14 @@ class GeneratorsServiceProvider extends ServiceProvider {
             }
         );
         $this->commands('generate.resource');
+
+        $this->app['generate.file'] = $this->app->share(
+            function($app)
+            {
+                return new GenerateFileCommand();
+            }
+        );
+        $this->commands('generate.file');
     }
 
 }
