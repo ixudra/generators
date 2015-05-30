@@ -7,9 +7,10 @@ This package can be used by anyone at any given time, but keep in mind that it i
 
 
 
+
 ## Installation
 
-Pull this package in through Composer.
+Pull this package in through Composer:
 
 ```js
 
@@ -21,7 +22,7 @@ Pull this package in through Composer.
 
 ```
 
-Add the service provider to your app.php file
+Add the service provider to your app.php file:
 
 ```php
 
@@ -36,19 +37,39 @@ Add the service provider to your app.php file
 
 
 
+
 ## Usage
 
-The package provides one artisan command which you can use to generate a variety of resource files. To run the command, type the following into your CLI:
+The package provides two artisan commands which you can use to generate a variety of resource files. The first command allows you generate a single file based on the specified template:
 
 ```php
 
-    php artisan generate:resource foo bar
+    php artisan generate:file fileType resourceSingular resourcePlural
 
 ```
 
-The command accepts 2 parameters. The first parameter is required and should be the singular name of your resource. The second parameter is optional and should the plural name of your resource. If the second parameter is not provided, the package will use the singular name value and add an `s` to it by default.
+The command accepts 3 parameters: 
+
+ - `fileType`: identifier of the file that needs to be generated - required
+ - `resourceSingular`: the singular name of your resource - required
+ - `resourcePlural`: the plural name of your resource - optional
+ 
+The file type parameter needs to match a key that is available in the package configuration file. Some examples that are available by default are `Model`, `Controller`, `ControllerTest`, ...
+ 
+If the resource plural parameter is not provided, the package will use the singular name value and add an `s` to it by default.
 
 If you have a resource name that consists of multiple components, you should use underscores to connect the individual components (e.g. `product type` will become `product_type`). That way, the generator will be able to generate the correct constant names and table name for your resource.
+
+Instead of generating a single file, you can also generate all files which are listed in the package configuration file:
+
+```php
+
+    php artisan generate:resource resourceSingular resourcePlural
+
+```
+
+The command parameters are identical to those of the `generate:file` command.
+
 
 
 
@@ -63,7 +84,7 @@ The package has several configuration options. In order to modify these, you wil
     // Publish all resources from all packages
     php artisan vendor:publish
     
-    // Publish only the resources of the pckage
+    // Publish only the resources of the package
     php artisan vendor:publish --provider="Ixudra\\Generators\\GeneratorsServiceProvider"
 
 ```
@@ -78,7 +99,7 @@ As of version 1.0.0, the package also supports custom templates. These templates
 
 | Name                      | key                       | example: project  | example 2: product type   |
 |---------------------------|---------------------------|-------------------|---------------------------|
-| Application namespace     | ##NAMESPACE##             | Example           | Ixudra                    |
+| Application namespace     | ##NAMESPACE##             | App               | Ixudra                    |
 | Table name                | ##TABLE_NAME##            | projects          | product_types             |
 | class name singular       | ##CLASS_SINGULAR##        | Project           | ProductType               |
 | class name plural         | ##CLASS_PLURAL##          | Projects          | ProductTypes              |
@@ -91,6 +112,22 @@ As of version 1.0.0, the package also supports custom templates. These templates
 All variables except the namespace are determined automatically based on the parameters which are passed along to the command when called. The namespace can be set in the package `config.php` files after it has been published.
 
 Using the previously mentioned `vendor:publish` command will also publish the default package templates into the `/resources/templates` directory within your Laravel application directory. However, you can store them anywhere you like on your system. To enable a custom template, all you need to do is change the path to the file in the package config file.
+
+
+### Admin option
+
+The package also allows for you to generate a file or resource specifically for the admin backend. This can be done by adding the `--isAdmin=true` option to the `generate:resource` or `generate:file` commands. There are 4 different parameters that can be used to modify the templates for the admin backend:
+
+
+| Name                      | key                               | value if printed      |
+|---------------------------|-----------------------------------|-----------------------|
+| resource folder path      | ##ADMIN_RESOURCE_FOLDER_PATH##    | /admin                |
+| resource dot path         | ##ADMIN_RESOURCE_DOT_PATH##       | admin.                |
+| namespace path            | ##ADMIN_NAMESPACE_PATH##          | \Admin                |
+| class path                | ##ADMIN_CLASS_PATH##              | /Admin                |
+
+
+If the `--isAdmin` flag is not provided, the admin variables will be ignored and replace with empty strings.
 
 
 That's all there is to it! Have fun!
