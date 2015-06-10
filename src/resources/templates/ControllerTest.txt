@@ -144,6 +144,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
     /**
      * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::show()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::modelNotFound()
      */
     public function testShow_returns##CLASS_SINGULAR##NotFoundIfRepositoryReturnsNull()
     {
@@ -177,6 +178,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
     /**
      * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::edit()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::modelNotFound()
      */
     public function testEdit_returns##CLASS_SINGULAR##NotFoundIfRepositoryReturnsNull()
     {
@@ -229,12 +231,21 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
     /**
      * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::update()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::modelNotFound()
      */
     public function testUpdate_returns##CLASS_SINGULAR##NotFoundIfRepositoryReturnsNull()
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
+        $input = array(
+            '_token'        => 'Foo_token',
+            'Foo'           => 'Bar',
+        );
+
+        $update##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest');
+        App::instance('##NAMESPACE##\Http\Requests\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest', $update##CLASS_SINGULAR##RequestFormMock);
+
+        $response = $this->call('PUT', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
 
         $this->assertModelNotFound($response);
     }
@@ -268,6 +279,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
     /**
      * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::destroy()
+     * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::modelNotFound()
      */
     public function testDestroy_returnsToIndexIf##CLASS_SINGULAR##IsNotFound()
     {
