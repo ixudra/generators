@@ -38,13 +38,13 @@
                 'name'                  => 'Eloquent##VALUE##RepositoryTest.php'
             ),
 
-            'Factory'               => array(
+            'factory'               => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/Factory.txt'),
                 'path'                  => app_path('Services/Factories'),
                 'name'                  => '##VALUE##Factory.php'
             ),
 
-            'FactoryTest'           => array(
+            'factoryTest'           => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FactoryTest.txt'),
                 'path'                  => app_path('../tests/functional/Services/Factories'),
                 'name'                  => '##VALUE##FactoryTest.php'
