@@ -1,6 +1,11 @@
 @extends('bootstrap.layouts.master')
 
 
+@section('page-title')
+    {{ $##VARIABLE_SINGULAR##->name }}
+@endsection
+
+
 @section('content-title')
     {{ $##VARIABLE_SINGULAR##->name }}
 @endsection

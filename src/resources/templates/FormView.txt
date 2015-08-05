@@ -1,13 +1,12 @@
-{!! Form::open(array('route' => $url, 'method' => $method, 'id' => $formId, 'class' => 'form-horizontal', 'role' => 'form')) !!}
+{!! Form::open(array('route' => $route, 'method' => $method, 'id' => $formId, 'class' => 'form-horizontal', 'role' => 'form')) !!}
 
     <div class="well well-large">
-        <div class="form-group {{ $errors->has($prefix . 'name') ? 'has-error' : '' }} {{ in_array($prefix . 'name', $requiredFields) ? 'required' : '' }}">
+        {!! Form::openFormGroup('name', $errors, $requiredFields) !!}
             {!! Form::label($prefix . 'name', Translate::recursive('members.name') .': ', array('class' => 'control-label col-lg-3')) !!}
             <div class="col-lg-8">
                 {!! Form::text($prefix . 'name', $input[$prefix . 'name'], array('class' => 'form-control')) !!}
-                {!! $errors->first($prefix . 'name', '<span class="help-block">:message</span>') !!}
             </div>
-        </div>
+        {!! Form::closeFormGroup('name', $errors) !!}
     </div>
     <div class="action-button">
         {!! Form::submit(Translate::recursive('common.submit'), array('class' => 'btn btn-primary')) !!}

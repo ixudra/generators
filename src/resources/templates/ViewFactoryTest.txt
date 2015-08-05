@@ -74,7 +74,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function testShow()
     {
-        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array(  'name' => 'Foo' ) );
+        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array( 'name' => 'Foo' ) );
 
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->show($##VARIABLE_SINGULAR##);
 
@@ -111,7 +111,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForModel')->once()->andReturn('Bar');
         App::instance('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
 
-        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array('name' => 'Bar') );
+        $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array( 'name' => 'Bar' ) );
 
         $this->createFormMocks('update');
 
