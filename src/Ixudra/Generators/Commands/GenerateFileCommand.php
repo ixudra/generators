@@ -1,8 +1,6 @@
 <?php namespace Ixudra\Generators\Commands;
 
 
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use InvalidArgumentException;
@@ -16,12 +14,20 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
     protected $description = 'Generate a single file for a resource based on a specific template';
 
+    protected $signature = 'generate:file
+                        {file : Identifier of the file that needs to be generated}
+                        {resource-singular : Singular value of the resource}
+                        {resource-plural? : Plural value of the resource}
+                        {--admin : Move the controllers and view factories into an admin subdirectory}
+                        {--allowOverwrite : Allow the generator to overwrite existing files}
+                        {--path= : The directory in which the file needs to be stored}';
+
 
     public function fire()
     {
         $result = false;
         $error = '';
-        $fileKey = $this->getFileKey();
+        $fileKey = $this->argument('file');
 
         $this->printStartMessage( $fileKey );
 
@@ -31,7 +37,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
                 throw new InvalidArgumentException('No template found matching specified key '. $fileKey);
             }
 
-            $file = Config::get('generators.files.'. $this->getFileKey() );
+            $file = Config::get('generators.files.'. $fileKey );
 
             $path = $this->option('path');
             if( is_null($path) ) {
@@ -104,7 +110,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
         $adminResourceDotPath = '';
         $adminNamespacePath = '';
         $adminClassPath = '';
-        if( $this->isAdmin() ) {
+        if( $this->option('admin') ) {
             $adminResourceFolderPath = '/admin';
             $adminResourceDotPath = 'admin.';
             $adminNamespacePath = '\Admin';
@@ -126,7 +132,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
         $fileName = $path .'/'. str_replace( '##VALUE##', $this->classSingular, $name );
         if( File::exists( $fileName ) ) {
-            if( !$this->allowOverwrite() ) {
+            if( !$this->option('allowOverwrite') ) {
                 throw new Exception('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - file already exists.');
             }
 
@@ -146,33 +152,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
             return;
         }
 
-        File::makeDirectory( $path );
-    }
-
-
-    //- Arguments and options ---
-
-    protected function getArguments()
-    {
-        return array(
-            array('file', InputArgument::REQUIRED, 'Identifier of the file that needs to be generated', null),
-            array('resource-singular', InputArgument::REQUIRED, 'Singular value of the resource', null),
-            array('resource-plural', InputArgument::OPTIONAL, 'Plural value of the resource', null)
-        );
-    }
-
-    protected function getOptions()
-    {
-        return array(
-            array('isAdmin', null, InputOption::VALUE_OPTIONAL, 'Move the controllers and view factories into an admin subdirectory', 'false'),
-            array('allowOverwrite', null, InputOption::VALUE_OPTIONAL, 'Allow the generator to overwrite existing files', 'false'),
-            array('path', null, InputOption::VALUE_OPTIONAL, 'The directory in which the file needs to be stored', null)
-        );
-    }
-
-    protected function getFileKey()
-    {
-        return $this->argument('file');
+        File::makeDirectory( $path, 493, true );
     }
 
 

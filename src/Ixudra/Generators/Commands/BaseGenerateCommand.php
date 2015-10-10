@@ -34,33 +34,6 @@ abstract class BaseGenerateCommand extends Command {
     }
 
 
-    //- Arguments and options ---
-
-    protected function getOptions()
-    {
-        return array(
-            array('isAdmin', null, InputOption::VALUE_OPTIONAL, 'Move the controllers and view factories into an admin subdirectory', 'false'),
-            array('allowOverwrite', null, InputOption::VALUE_OPTIONAL, 'Allow the generator to overwrite existing files', 'false'),
-            array('failOnError', null, InputOption::VALUE_OPTIONAL, 'Halt the execution if an error is occurred', 'false')
-        );
-    }
-
-    protected function isAdmin()
-    {
-        return $this->option('isAdmin') === 'true';
-    }
-
-    protected function allowOverwrite()
-    {
-        return $this->option('allowOverwrite') === 'true';
-    }
-
-    protected function failOnError()
-    {
-        return $this->option('failOnError') === 'true';
-    }
-
-
     //- Value deduction ---
 
     protected function getSingularResourceName()
