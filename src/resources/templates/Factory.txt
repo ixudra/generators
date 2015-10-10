@@ -6,14 +6,14 @@ use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
 class ##CLASS_SINGULAR##Factory extends BaseFactory {
 
-    public function make($input)
+    public function make($input, $prefix = '')
     {
-        return ##CLASS_SINGULAR##::create( $input );
+        return ##CLASS_SINGULAR##::create( $this->extractInput( $input, ##CLASS_SINGULAR##::getDefaults(), $prefix, true );
     }
 
-    public function modify($##VARIABLE_SINGULAR##, $input)
+    public function modify($##VARIABLE_SINGULAR##, $input, $prefix = '')
     {
-        return $##VARIABLE_SINGULAR##->update( $input );
+        return $##VARIABLE_SINGULAR##->update( $this->extractInput( $input, ##CLASS_SINGULAR##::getDefaults(), $prefix );
     }
 
 }

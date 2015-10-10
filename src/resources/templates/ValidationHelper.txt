@@ -13,7 +13,7 @@ class ##CLASS_SINGULAR##ValidationHelper extends BaseValidationHelper {
         );
     }
 
-    public function getFormValidationRules($formName)
+    public function getFormValidationRules($formName, $prefix = '')
     {
         return ##CLASS_SINGULAR##::getRules();
     }
