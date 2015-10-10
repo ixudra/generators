@@ -1,15 +1,14 @@
 <?php namespace Ixudra\Generators\Commands;
 
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Str;
-
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
-
-use Config;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\HttpFoundation\ParameterBag;
+
+use InvalidArgumentException;
+use Exception;
+use Config;
+use File;
 
 class GenerateFileCommand extends BaseGenerateCommand {
 
@@ -29,7 +28,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
         try {
             $this->deriveArguments();
             if( !Config::has('generators.files.'. $fileKey) ) {
-                throw new \InvalidArgumentException('No template found matching specified key '. $fileKey);
+                throw new InvalidArgumentException('No template found matching specified key '. $fileKey);
             }
 
             $file = Config::get('generators.files.'. $this->getFileKey() );
@@ -40,7 +39,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
             }
 
             $result = $this->generateFile( $file[ 'template' ], $file[ 'name' ], $path );
-        } catch(\Exception $e) {
+        } catch(Exception $e) {
             $error = $e->getMessage();
             $this->addError( $error );
         }
@@ -83,11 +82,11 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
     protected function loadTemplate($fileName)
     {
-        if( !file_exists($fileName) ) {
-            throw new \Exception('File not found: '. $fileName);
+        if( !File::exists( $fileName ) ) {
+            throw new Exception('File not found: '. $fileName);
         }
 
-        return file_get_contents( $fileName );
+        return File::get( $fileName );
     }
 
     protected function replaceValues($template)
@@ -126,28 +125,28 @@ class GenerateFileCommand extends BaseGenerateCommand {
         $this->createDirectory( $path );
 
         $fileName = $path .'/'. str_replace( '##VALUE##', $this->classSingular, $name );
-        if( file_exists($fileName) ) {
+        if( File::exists( $fileName ) ) {
             if( !$this->allowOverwrite() ) {
-                throw new \Exception('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - file already exists.');
+                throw new Exception('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - file already exists.');
             }
 
-            unlink( $fileName );
+            File::delete( $fileName );
         }
 
-        if( !file_exists($path) ) {
-            throw new \Exception('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - target directory does not exist.');
+        if( !File::exists( $path ) ) {
+            throw new Exception('File '. str_replace( '##VALUE##', $this->classSingular, $name ) .' was not created - target directory does not exist.');
         }
 
-        file_put_contents( $fileName, $content );
+        File::put( $fileName, $content );
     }
 
     protected function createDirectory($path)
     {
-        if( file_exists($path) ) {
+        if( File::exists($path) ) {
             return;
         }
 
-        mkdir($path, '0777', true);
+        File::makeDirectory( $path );
     }
 
 
