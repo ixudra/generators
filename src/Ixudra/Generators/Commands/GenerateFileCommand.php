@@ -19,6 +19,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
                         {resource-singular : Singular value of the resource}
                         {resource-plural? : Plural value of the resource}
                         {--admin : Move the controllers and view factories into an admin subdirectory}
+                        {--test : Also create the appropriate test class}
                         {--allowOverwrite : Allow the generator to overwrite existing files}
                         {--path= : The directory in which the file needs to be stored}';
 
@@ -45,6 +46,9 @@ class GenerateFileCommand extends BaseGenerateCommand {
             }
 
             $result = $this->generateFile( $file[ 'template' ], $file[ 'name' ], $path );
+            if( $this->option('test') ) {
+                $this->generateTest( $fileKey );
+            }
         } catch(Exception $e) {
             $error = $e->getMessage();
             $this->addError( $error );
@@ -55,6 +59,18 @@ class GenerateFileCommand extends BaseGenerateCommand {
         } else {
             $this->printErrorMessage( $fileKey, $error );
         }
+    }
+
+    protected function generateTest($fileKey)
+    {
+        $testKey = $fileKey .'Test';
+        if( !Config::has('generators.files.'. $testKey) ) {
+            return;
+        }
+
+        $file = Config::get('generators.files.'. $testKey );
+
+        $result = $this->generateFile( $file[ 'template' ], $file[ 'name' ], $file[ 'path' ] );
     }
 
 

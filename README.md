@@ -84,8 +84,11 @@ The package has several configuration options. In order to modify these, you wil
     // Publish all resources from all packages
     php artisan vendor:publish
     
-    // Publish only the resources of the package
-    php artisan vendor:publish --provider="Ixudra\\Generators\\GeneratorsServiceProvider"
+    // Publish the package config file
+    php artisan vendor:publish --provider="Ixudra\\Generators\\GeneratorsServiceProvider" --tag="config"
+    
+    // Publish the package templates
+    php artisan vendor:publish --provider="Ixudra\\Generators\\GeneratorsServiceProvider" --tag="templates"
 
 ```
 
@@ -98,6 +101,8 @@ As of version 1.0.0, the package also supports custom templates. These templates
 
 
 | Name                      | key                       | example: project  | example 2: product type   |
+|---------------------------|---------------------------|-------------------|---------------------------|
+| Resource name             |                           | project           | product_type              |
 |---------------------------|---------------------------|-------------------|---------------------------|
 | Application namespace     | ##NAMESPACE##             | App               | Ixudra                    |
 | Table name                | ##TABLE_NAME##            | projects          | product_types             |
@@ -116,7 +121,7 @@ Using the previously mentioned `vendor:publish` command will also publish the de
 
 ### Admin option
 
-The package also allows for you to generate a file or resource specifically for the admin backend. This can be done by adding the `--isAdmin=true` option to the `generate:resource` or `generate:file` commands. There are 4 different parameters that can be used to modify the templates for the admin backend:
+The package also allows for you to generate a file or resource specifically for the admin backend. This can be done by adding the `--admin` option to the `generate:resource` or `generate:file` commands. There are 4 different parameters that can be used to modify the templates for the admin backend:
 
 
 | Name                      | key                               | value if printed      |
@@ -127,7 +132,12 @@ The package also allows for you to generate a file or resource specifically for 
 | class path                | ##ADMIN_CLASS_PATH##              | /Admin                |
 
 
-If the `--isAdmin` flag is not provided, the admin variables will be ignored and replace with empty strings.
+If the `--admin` flag is not provided, the admin variables will be ignored and replace with empty strings.
+
+
+### Test option
+
+Additionally, you can also add a `--test` option to the `generate:file` command. When applied, the package will also generate the appropriate test class that comes with the resource. 
 
 
 That's all there is to it! Have fun!

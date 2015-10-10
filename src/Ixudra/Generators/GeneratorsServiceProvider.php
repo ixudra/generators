@@ -15,15 +15,21 @@ class GeneratorsServiceProvider extends ServiceProvider {
         $this->registerGenerateResourceCommand();
 
         $configPath = __DIR__ . '/../../config/config.php';
-        $resourcePath = __DIR__ .'/../../resources/templates';
 
         $this->mergeConfigFrom($configPath, 'generators');
-        $this->publishes(
-            array(
-                $configPath         => config_path('generators.php'),
+
+        $this->publishes(array(
+            $configPath         => config_path('generators.php'),
+        ), 'config');
+    }
+
+    public function boot()
+    {
+        $resourcePath = __DIR__ .'/../../resources/templates';
+
+        $this->publishes(array(
                 $resourcePath       => app_path('../resources/templates'),
-            )
-        );
+        ), 'templates');
     }
 
     protected function registerGenerateResourceCommand()
