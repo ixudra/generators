@@ -17,7 +17,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->andReturn('factoryFoo');
         App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##');
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -40,7 +40,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->with($input)->andReturn('factoryFoo');
         App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/filter?foo=bar');
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/filter?foo=bar');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -64,7 +64,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->with($input)->andReturn('factoryFoo');
         App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('POST', 'admin/##VARIABLE_PLURAL##/filter', $input);
+        $response = $this->call('POST', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/filter', $input);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -79,7 +79,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('create')->once()->andReturn('factoryFoo');
         App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/create');
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/create');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -108,11 +108,11 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.create.success')->andReturn('Foo_message');
 
-        $response = $this->call('POST', 'admin/##VARIABLE_PLURAL##', $input);
+        $response = $this->call('POST', '##ADMIN_URL_PATH####VARIABLE_PLURAL##', $input);
 
         $this->assertTrue($response->isRedirect());
         $this->assertRedirectedToRoute(
-            'admin.##VARIABLE_PLURAL##.show',
+            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show',
             array(self::##CONSTANT_SINGULAR##_ID),
             array(
                 'messageType'       => 'success',
@@ -136,7 +136,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('show')->with($##VARIABLE_SINGULAR##)->once()->andReturn('factoryFoo');
         App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -150,7 +150,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
 
         $this->assertModelNotFound($response);
     }
@@ -170,7 +170,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('edit')->with($##VARIABLE_SINGULAR##)->once()->andReturn('factoryFoo');
         App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'/edit');
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'/edit');
 
         $this->assertTrue($response->isOk());
         $this->assertEquals('factoryFoo', $response->getContent());
@@ -184,7 +184,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('GET', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'/edit');
+        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'/edit');
 
         $this->assertModelNotFound($response);
     }
@@ -216,11 +216,11 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.edit.success')->andReturn('Foo_message');
 
-        $response = $this->call('PUT', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
+        $response = $this->call('PUT', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
 
         $this->assertTrue($response->isRedirect());
         $this->assertRedirectedToRoute(
-            'admin.##VARIABLE_PLURAL##.show',
+            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show',
             array(self::##CONSTANT_SINGULAR##_ID),
             array(
                 'messageType'       => 'success',
@@ -245,7 +245,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
         $update##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest');
         App::instance('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest', $update##CLASS_SINGULAR##RequestFormMock);
 
-        $response = $this->call('PUT', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
+        $response = $this->call('PUT', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
 
         $this->assertModelNotFound($response);
     }
@@ -264,11 +264,11 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.delete.success')->andReturn('Foo_message');
 
-        $response = $this->call('DELETE', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'?_token=Foo_token');
+        $response = $this->call('DELETE', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'?_token=Foo_token');
 
         $this->assertTrue($response->isRedirect());
         $this->assertRedirectedToRoute(
-            'admin.##VARIABLE_PLURAL##.index',
+            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index',
             array(),
             array(
                 'messageType' => 'success',
@@ -285,7 +285,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('DELETE', 'admin/##VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'?_token=Foo_token');
+        $response = $this->call('DELETE', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'?_token=Foo_token');
 
         $this->assertModelNotFound($response);
     }
@@ -303,7 +303,7 @@ class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
     {
         $this->assertTrue($response->isRedirect());
         $this->assertRedirectedToRoute(
-            'admin.##VARIABLE_PLURAL##.index',
+            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index',
             array(),
             array(
                 'messageType' => 'error',

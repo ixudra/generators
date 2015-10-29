@@ -126,17 +126,20 @@ class GenerateFileCommand extends BaseGenerateCommand {
         $adminResourceDotPath = '';
         $adminNamespacePath = '';
         $adminClassPath = '';
+        $adminUrlPath = '';
         if( $this->option('admin') ) {
             $adminResourceFolderPath = '/admin';
             $adminResourceDotPath = 'admin.';
             $adminNamespacePath = '\Admin';
             $adminClassPath = '/Admin';
+            $adminUrlPath = 'admin/';
         }
 
         $template = str_replace( '##ADMIN_RESOURCE_FOLDER_PATH##', $adminResourceFolderPath, $template );
         $template = str_replace( '##ADMIN_RESOURCE_DOT_PATH##', $adminResourceDotPath, $template );
         $template = str_replace( '##ADMIN_NAMESPACE_PATH##', $adminNamespacePath, $template );
         $template = str_replace( '##ADMIN_CLASS_PATH##', $adminClassPath, $template );
+        $template = str_replace( '##ADMIN_URL_PATH##', $adminUrlPath, $template );
 
         return $template;
     }

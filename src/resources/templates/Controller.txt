@@ -44,7 +44,7 @@ class ##CLASS_SINGULAR##Controller extends BaseController {
     {
         $##VARIABLE_SINGULAR## = $##VARIABLE_SINGULAR##Factory->make( $request->getInput() );
 
-        return $this->redirect( 'admin.##VARIABLE_PLURAL##.show', array('id' => $##VARIABLE_SINGULAR##->id), 'success', array( Translate::model( '##VARIABLE_SINGULAR##.create.success' ) ) );
+        return $this->redirect( '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', array('id' => $##VARIABLE_SINGULAR##->id), 'success', array( Translate::model( '##VARIABLE_SINGULAR##.create.success' ) ) );
     }
 
     public function show($id)
@@ -76,7 +76,7 @@ class ##CLASS_SINGULAR##Controller extends BaseController {
 
         $##VARIABLE_SINGULAR##Factory->modify( $##VARIABLE_SINGULAR##, $request->getInput() );
 
-        return $this->redirect( 'admin.##VARIABLE_PLURAL##.show', array('id' => $id), 'success', array( Translate::model( '##VARIABLE_SINGULAR##.edit.success' ) ) );
+        return $this->redirect( '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', array('id' => $id), 'success', array( Translate::model( '##VARIABLE_SINGULAR##.edit.success' ) ) );
     }
 
     public function destroy($id)
@@ -88,12 +88,12 @@ class ##CLASS_SINGULAR##Controller extends BaseController {
 
         $##VARIABLE_SINGULAR##->delete();
 
-        return $this->redirect( 'admin.##VARIABLE_PLURAL##.index', array(), 'success', array( Translate::model( '##VARIABLE_SINGULAR##.delete.success' ) ) );
+        return $this->redirect( '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index', array(), 'success', array( Translate::model( '##VARIABLE_SINGULAR##.delete.success' ) ) );
     }
 
     protected function modelNotFound()
     {
-        return $this->redirect( 'admin.##VARIABLE_PLURAL##.index', array(), 'error', array( Translate::model( '##VARIABLE_SINGULAR##.error.notFound' ) ) );
+        return $this->redirect( '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index', array(), 'error', array( Translate::model( '##VARIABLE_SINGULAR##.error.notFound' ) ) );
     }
 
 }

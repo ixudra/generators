@@ -130,6 +130,7 @@ The package also allows for you to generate a file or resource specifically for 
 | resource dot path         | ##ADMIN_RESOURCE_DOT_PATH##       | admin.                |
 | namespace path            | ##ADMIN_NAMESPACE_PATH##          | \Admin                |
 | class path                | ##ADMIN_CLASS_PATH##              | /Admin                |
+| url path                  | ##ADMIN_URL_PATH##                | admin/                |
 
 
 If the `--admin` flag is not provided, the admin variables will be ignored and replace with empty strings.
