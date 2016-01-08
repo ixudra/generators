@@ -28,11 +28,14 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $this->createFilterMocks( $input );
 
+        $this->setViewExpectations( '##TEST_THEME##.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index',
+            array(
+                'input'             => $input,
+                '##VARIABLE_PLURAL##'     => '##CLASS_SINGULAR##List',
+            )
+        );
+
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->index();
-
-        $this->assertViewName( $view, 'bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index' );
-
-        $this->assertFilterMocks( $view, $input );
     }
 
     /**
@@ -43,11 +46,14 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     {
         $this->createFormMocks('create');
 
-        $view = $this->##VARIABLE_SINGULAR##ViewFactory->create('Foo');
+        $this->setViewExpectations( '##TEST_THEME##.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create',
+            array(
+                'input'             => 'Foo',
+                'requiredFields'    => 'Foo_required_fields',
+            )
+        );
 
-        $this->assertViewName( $view, 'bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create' );
-        $this->assertViewData( $view, 'input', 'Foo' );
-        $this->assertFormMocks( $view );
+        $view = $this->##VARIABLE_SINGULAR##ViewFactory->create('Foo');
     }
 
     /**
@@ -62,11 +68,14 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $this->createFormMocks('create');
 
-        $view = $this->##VARIABLE_SINGULAR##ViewFactory->create( null );
+        $this->setViewExpectations( '##TEST_THEME##.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create',
+            array(
+                'input'             => 'Foo',
+                'requiredFields'    => 'Foo_required_fields',
+            )
+        );
 
-        $this->assertViewName( $view, 'bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create' );
-        $this->assertViewData( $view, 'input', 'Foo' );
-        $this->assertFormMocks( $view );
+        $view = $this->##VARIABLE_SINGULAR##ViewFactory->create( null );
     }
 
     /**
@@ -76,11 +85,13 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     {
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array( 'name' => 'Foo' ) );
 
-        $view = $this->##VARIABLE_SINGULAR##ViewFactory->show($##VARIABLE_SINGULAR##);
+        $this->setViewExpectations( '##TEST_THEME##.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show',
+            array(
+                '##VARIABLE_SINGULAR##'          => $##VARIABLE_SINGULAR##,
+            )
+        );
 
-        $this->assertViewName( $view, 'bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show' );
-        $this->assertViewData( $view, '##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR## );
-        $this->assertEquals( 'Foo', $view['##VARIABLE_SINGULAR##']->name );
+        $view = $this->##VARIABLE_SINGULAR##ViewFactory->show($##VARIABLE_SINGULAR##);
     }
 
     /**
@@ -93,12 +104,15 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $this->createFormMocks('update');
 
-        $view = $this->##VARIABLE_SINGULAR##ViewFactory->edit($##VARIABLE_SINGULAR##, 'Bar');
+        $this->setViewExpectations( '##TEST_THEME##.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit',
+            array(
+                'input'             => 'Bar',
+                '##VARIABLE_SINGULAR##'          => $##VARIABLE_SINGULAR##,
+                'requiredFields'    => 'Foo_required_fields',
+            )
+        );
 
-        $this->assertViewName( $view, 'bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit' );
-        $this->assertViewData( $view, '##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR## );
-        $this->assertViewData( $view, 'input', 'Bar' );
-        $this->assertFormMocks( $view );
+        $view = $this->##VARIABLE_SINGULAR##ViewFactory->edit($##VARIABLE_SINGULAR##, 'Bar');
     }
 
     /**
@@ -113,14 +127,17 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array( 'name' => 'Bar' ) );
 
+        $this->setViewExpectations( '##TEST_THEME##.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit',
+            array(
+                'input'             => 'Bar',
+                '##VARIABLE_SINGULAR##'          => $##VARIABLE_SINGULAR##,
+                'requiredFields'    => 'Foo_required_fields',
+            )
+        );
+
         $this->createFormMocks('update');
 
         $view = $this->##VARIABLE_SINGULAR##ViewFactory->edit($##VARIABLE_SINGULAR##, null);
-
-        $this->assertViewName( $view, 'bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit' );
-        $this->assertViewData( $view, '##VARIABLE_SINGULAR##', $##VARIABLE_SINGULAR## );
-        $this->assertViewData( $view, 'input', 'Bar' );
-        $this->assertFormMocks( $view );
     }
 
     protected function createFilterMocks($input)
@@ -131,21 +148,9 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForSearch')->once()->with($input)->andReturn($searchInput);
         App::instance('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
 
-        $##VARIABLE_SINGULAR##1 = new ##CLASS_SINGULAR##( array( 'name' => 'Foo' ) );
-        $##VARIABLE_SINGULAR##2 = new ##CLASS_SINGULAR##( array( 'name' => 'Bar' ) );
-        $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array( $##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2 ) );
-
         $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
-        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('search')->once()->with($searchInput)->andReturn($##VARIABLE_PLURAL##);
+        $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('search')->once()->with($searchInput)->andReturn('##CLASS_SINGULAR##List');
         App::instance('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
-    }
-
-    protected function assertFilterMocks($view, $input)
-    {
-        $this->assertViewData( $view, 'input', $input );
-        $this->assertViewDataSize( $view, '##VARIABLE_PLURAL##', 2 );
-        $this->assertEquals( 'Foo', $view['##VARIABLE_PLURAL##'][0]->name );
-        $this->assertEquals( 'Bar', $view['##VARIABLE_PLURAL##'][1]->name );
     }
 
     protected function createFormMocks($formName)
@@ -153,11 +158,6 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
         $##VARIABLE_SINGULAR##ValidationServiceMock = Mockery::mock('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper');
         $##VARIABLE_SINGULAR##ValidationServiceMock->shouldReceive('getRequiredFormFields')->once()->with($formName)->andReturn( 'Foo_required_fields' );
         App::instance('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper', $##VARIABLE_SINGULAR##ValidationServiceMock);
-    }
-
-    protected function assertFormMocks($view)
-    {
-        $this->assertViewData( $view, 'requiredFields', 'Foo_required_fields' );
     }
 
 }
