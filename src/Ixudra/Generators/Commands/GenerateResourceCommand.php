@@ -28,7 +28,7 @@ class GenerateResourceCommand extends BaseGenerateCommand {
             $this->generateFile( $key );
         }
 
-        $this->info('Resources generated!');
+        $this->info(' - Resources generated!');
     }
 
     protected function generateFile($key, $path = null)
