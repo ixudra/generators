@@ -12,7 +12,7 @@ class ##CLASS_SINGULAR##ViewFactory extends BaseViewFactory {
     {
         if( empty($input) ) {
             $input = array(
-                'query'         => ''
+                'query'         => '',
             );
         }
 
