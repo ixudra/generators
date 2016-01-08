@@ -22,7 +22,7 @@
 
             'controllerTest'        => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/ControllerTest.txt'),
-                'path'                  => app_path('../tests/unit/Http/Controllers'),
+                'path'                  => app_path('../tests/unit/Http/Controllers') .'/##ADMIN_CLASS_PATH##',
                 'name'                  => '##VALUE##ControllerTest.php'
             ),
 
@@ -58,7 +58,7 @@
 
             'viewFactoryTest'       => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/ViewFactoryTest.txt'),
-                'path'                  => app_path('../tests/unit/Services/Html'),
+                'path'                  => app_path('../tests/unit/Services/Html') .'/##ADMIN_CLASS_PATH##',
                 'name'                  => '##VALUE##ViewFactoryTest.php'
             ),
 
