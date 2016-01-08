@@ -3,7 +3,7 @@
 
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
-class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
+class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
 
     const ##CONSTANT_SINGULAR##_ID = 10;
 
