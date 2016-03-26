@@ -2,6 +2,7 @@
 
 
 use Ixudra\Core\Http\Requests\BaseRequest;
+use ##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper;
 
 use App;
 
@@ -14,7 +15,7 @@ class Filter##CLASS_SINGULAR##FormRequest extends BaseRequest {
 
     public function rules()
     {
-        return App::make('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper')
+        return App::make( ##CLASS_SINGULAR##ValidationHelper::class )
             ->getFilterValidationRules();
     }
 

@@ -25,7 +25,7 @@ class Eloquent##CLASS_SINGULAR##Repository extends BaseEloquentRepository {
                 ->where('name', 'like', $filters[ 'query' ]);
         }
 
-        return $this->paginated($results, $filters, $resultsPerPage);
+        return $this->paginated( $results, $filters, $resultsPerPage );
     }
 
 }
