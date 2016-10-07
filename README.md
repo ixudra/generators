@@ -29,7 +29,7 @@ Add the service provider to your app.php file:
     providers     => array(
 
         //...
-        'Ixudra\Generators\GeneratorsServiceProvider',
+        \Ixudra\Generators\GeneratorsServiceProvider::class,
 
     )
 
