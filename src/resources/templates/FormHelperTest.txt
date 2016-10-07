@@ -1,7 +1,10 @@
 <?php
 
 
+use Illuminate\Support\Collection;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
+use ##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper;
 
 class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
 
@@ -17,7 +20,7 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
     {
         $this->setUpMocks();
 
-        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->getAllAsSelectList();
+        $result = App::make( ##CLASS_SINGULAR##FormHelper::class )->getAllAsSelectList();
 
         $this->assertEquals(
             array(
@@ -34,7 +37,7 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
     {
         $this->setUpMocks();
 
-        $result = App::make('\##NAMESPACE##\Services\Form\##CLASS_SINGULAR##FormHelper')->getAllAsSelectList(true);
+        $result = App::make( ##CLASS_SINGULAR##FormHelper::class )->getAllAsSelectList(true);
 
         $this->assertEquals(
             array(
@@ -56,11 +59,11 @@ class ##CLASS_SINGULAR##FormHelperTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##2->id = self::##CONSTANT_SINGULAR##_ID_2;
         $##VARIABLE_SINGULAR##2->name = 'Bar';
 
-        $##VARIABLE_PLURAL## = new \Illuminate\Support\Collection( array( $##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2 ) );
+        $##VARIABLE_PLURAL## = new Collection( array( $##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##2 ) );
 
-        $##VARIABLE_SINGULAR##Repository = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##Repository = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##Repository->shouldReceive('all')->once()->andReturn($##VARIABLE_PLURAL##);
-        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##Repository);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class, $##VARIABLE_SINGULAR##Repository );
     }
 
 }

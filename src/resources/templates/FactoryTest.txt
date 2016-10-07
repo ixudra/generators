@@ -1,6 +1,7 @@
 <?php
 
 
+use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 
@@ -30,7 +31,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
 
         $##VARIABLE_SINGULAR## = $this->##VARIABLE_SINGULAR##Factory->make( $input );
 
-        $##VARIABLE_SINGULAR##Repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##Repository = App::make( Eloquent##CLASS_SINGULAR##Repository::class );
         $this->assertEquals( 1, $##VARIABLE_SINGULAR##Repository->all()->count() );
         $this->assertInstanceOf( '\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_SINGULAR## );
     }
@@ -53,7 +54,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
 
         $this->##VARIABLE_SINGULAR##Factory->modify( $##VARIABLE_SINGULAR##, $input );
 
-        $##VARIABLE_SINGULAR##Repository = App::make('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##Repository = App::make( Eloquent##CLASS_SINGULAR##Repository::class );
         $this->assertEquals( 1, $##VARIABLE_SINGULAR##Repository->all()->count() );
         $this->assertEquals( 'Bar_name', $##VARIABLE_SINGULAR##Repository->all()->first()->name );
     }

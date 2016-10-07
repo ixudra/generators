@@ -2,6 +2,10 @@
 
 
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
+use ##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory;
+use ##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper;
+use ##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper;
 
 class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
 
@@ -12,7 +16,7 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     {
         parent::setUp();
 
-        $this->##VARIABLE_SINGULAR##ViewFactory = App::make('\##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
+        $this->##VARIABLE_SINGULAR##ViewFactory = App::make( ##CLASS_SINGULAR##ViewFactory::class );
     }
 
 
@@ -62,9 +66,9 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function testCreate_usesDefaultValuesIfInputIsNull()
     {
-        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper');
+        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock( ##CLASS_SINGULAR##InputHelper::class );
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getDefaultInput')->once()->andReturn('Foo');
-        App::instance('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
+        App::instance( ##CLASS_SINGULAR##InputHelper::class, $##VARIABLE_SINGULAR##InputHelperMock );
 
         $this->createFormMocks('create');
 
@@ -121,9 +125,9 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
      */
     public function testEdit_uses##CLASS_SINGULAR##ValuesIfInputIsNull()
     {
-        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper');
+        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock( ##CLASS_SINGULAR##InputHelper::class );
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForModel')->once()->andReturn('Bar');
-        App::instance('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
+        App::instance( ##CLASS_SINGULAR##InputHelper::class, $##VARIABLE_SINGULAR##InputHelperMock );
 
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##( array( 'name' => 'Bar' ) );
 
@@ -144,20 +148,20 @@ class ##CLASS_SINGULAR##ViewFactoryTest extends BaseViewFactoryTestCase {
     {
         $searchInput = array( 'Fow' => 'Baw' );
 
-        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper');
+        $##VARIABLE_SINGULAR##InputHelperMock = Mockery::mock( ##CLASS_SINGULAR##InputHelper::class );
         $##VARIABLE_SINGULAR##InputHelperMock->shouldReceive('getInputForSearch')->once()->with($input)->andReturn($searchInput);
-        App::instance('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper', $##VARIABLE_SINGULAR##InputHelperMock);
+        App::instance( ##CLASS_SINGULAR##InputHelper::class, $##VARIABLE_SINGULAR##InputHelperMock );
 
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('search')->once()->with($searchInput)->andReturn('##CLASS_SINGULAR##List');
-        App::instance('\##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class, $##VARIABLE_SINGULAR##RepositoryMock );
     }
 
     protected function createFormMocks($formName)
     {
-        $##VARIABLE_SINGULAR##ValidationServiceMock = Mockery::mock('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper');
+        $##VARIABLE_SINGULAR##ValidationServiceMock = Mockery::mock( ##CLASS_SINGULAR##ValidationHelper::class );
         $##VARIABLE_SINGULAR##ValidationServiceMock->shouldReceive('getRequiredFormFields')->once()->with($formName)->andReturn( 'Foo_required_fields' );
-        App::instance('\##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper', $##VARIABLE_SINGULAR##ValidationServiceMock);
+        App::instance( ##CLASS_SINGULAR##ValidationHelper::class, $##VARIABLE_SINGULAR##ValidationServiceMock );
     }
 
 }

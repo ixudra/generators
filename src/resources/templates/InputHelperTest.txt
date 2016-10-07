@@ -1,6 +1,8 @@
 <?php
 
 
+use ##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper;
+
 class ##CLASS_SINGULAR##InputHelperTest extends BaseUnitTestCase {
 
     protected $##VARIABLE_SINGULAR##InputHelper;
@@ -10,7 +12,7 @@ class ##CLASS_SINGULAR##InputHelperTest extends BaseUnitTestCase {
     {
         parent::setUp();
 
-        $this->##VARIABLE_SINGULAR##InputHelper = App::make('\##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper');
+        $this->##VARIABLE_SINGULAR##InputHelper = App::make( ##CLASS_SINGULAR##InputHelper::class );
     }
 
 
