@@ -34,7 +34,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->all();
 
         $this->assertCount(5, $##VARIABLE_PLURAL##);
-        $this->assertContainsOnlyInstancesOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
+        $this->assertContainsOnlyInstancesOf(##CLASS_SINGULAR##::class, $##VARIABLE_PLURAL##);
     }
 
     /**
@@ -46,7 +46,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
         $result = $this->##VARIABLE_SINGULAR##Repository->find($##VARIABLE_SINGULAR##->id);
 
-        $this->assertInstanceOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $result);
+        $this->assertInstanceOf(##CLASS_SINGULAR##::class, $result);
         $this->assertEquals('##CLASS_SINGULAR## 1', $result->name);
     }
 
@@ -76,7 +76,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_PLURAL## = $this->##VARIABLE_SINGULAR##Repository->findByFilter($filter);
 
         $this->assertCount(1, $##VARIABLE_PLURAL##);
-        $this->assertCollectionWithOnlyInstancesOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
+        $this->assertCollectionWithOnlyInstancesOf(##CLASS_SINGULAR##::class, $##VARIABLE_PLURAL##);
         $this->assertCollectionContains( array($##VARIABLE_SINGULAR##2), $##VARIABLE_PLURAL## );
     }
 
@@ -116,7 +116,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_PLURAL## = $paginator->getCollection();
 
         $this->assertCount(2, $##VARIABLE_PLURAL##);
-        $this->assertCollectionWithOnlyInstancesOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
+        $this->assertCollectionWithOnlyInstancesOf(##CLASS_SINGULAR##::class, $##VARIABLE_PLURAL##);
         $this->assertCollectionContains( array($##VARIABLE_SINGULAR##1, $##VARIABLE_SINGULAR##4), $##VARIABLE_PLURAL## );
     }
 
@@ -139,7 +139,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_PLURAL## = $paginator->getCollection();
 
         $this->assertCount(5, $##VARIABLE_PLURAL##);
-        $this->assertCollectionWithOnlyInstancesOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
+        $this->assertCollectionWithOnlyInstancesOf(##CLASS_SINGULAR##::class, $##VARIABLE_PLURAL##);
     }
 
     /**
@@ -161,7 +161,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
         $##VARIABLE_PLURAL## = $paginator->getCollection();
 
         $this->assertCount(2, $##VARIABLE_PLURAL##);
-        $this->assertCollectionWithOnlyInstancesOf('\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_PLURAL##);
+        $this->assertCollectionWithOnlyInstancesOf(##CLASS_SINGULAR##::class, $##VARIABLE_PLURAL##);
     }
 
 }

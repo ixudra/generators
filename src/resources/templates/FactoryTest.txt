@@ -33,7 +33,7 @@ class ##CLASS_SINGULAR##FactoryTest extends BaseFunctionalTestCase {
 
         $##VARIABLE_SINGULAR##Repository = App::make( Eloquent##CLASS_SINGULAR##Repository::class );
         $this->assertEquals( 1, $##VARIABLE_SINGULAR##Repository->all()->count() );
-        $this->assertInstanceOf( '\##NAMESPACE##\Models\##CLASS_SINGULAR##', $##VARIABLE_SINGULAR## );
+        $this->assertInstanceOf( ##CLASS_SINGULAR##::class, $##VARIABLE_SINGULAR## );
     }
 
     /**
