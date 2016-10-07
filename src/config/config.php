@@ -103,20 +103,38 @@
 
             'createFormRequest'     => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/CreateFormRequest.txt'),
-                'path'                  => app_path('Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##/',
+                'path'                  => app_path('Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##',
                 'name'                  => 'Create##VALUE##FormRequest.php'
+            ),
+
+            'createFormRequestTest' => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/CreateFormRequestTest.txt'),
+                'path'                  => app_path('../tests/unit/Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##',
+                'name'                  => 'Create##VALUE##FormRequestTest.php'
             ),
 
             'updateFormRequest'     => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/UpdateFormRequest.txt'),
-                'path'                  => app_path('Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##/',
+                'path'                  => app_path('Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##',
                 'name'                  => 'Update##VALUE##FormRequest.php'
+            ),
+
+            'updateFormRequestTest' => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/UpdateFormRequestTest.txt'),
+                'path'                  => app_path('../tests/unit/Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##',
+                'name'                  => 'Update##VALUE##FormRequestTest.php'
             ),
 
             'filterFormRequest'     => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FilterFormRequest.txt'),
-                'path'                  => app_path('Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##/',
+                'path'                  => app_path('Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##',
                 'name'                  => 'Filter##VALUE##FormRequest.php'
+            ),
+
+            'filterFormRequestTest' => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FilterFormRequestTest.txt'),
+                'path'                  => app_path('../tests/unit/Http/Requests') .'##ADMIN_CLASS_PATH##/##CLASS_PLURAL##',
+                'name'                  => 'Filter##VALUE##FormRequestTest.php'
             ),
 
 
@@ -124,49 +142,49 @@
 
             'indexView'             => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/IndexView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'index.blade.php'
             ),
 
             'listView'              => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/ListView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'list.blade.php'
             ),
 
             'tableView'             => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/TableView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'table.blade.php'
             ),
 
             'showView'              => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/ShowView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'show.blade.php'
             ),
 
             'createView'            => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/CreateView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'create.blade.php'
             ),
 
             'editView'              => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/EditView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'edit.blade.php'
             ),
 
             'formView'              => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FormView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'form.blade.php'
             ),
 
             'filterView'            => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FilterView.txt'),
-                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##/',
+                'path'                  => app_path('../resources/views') .'/bootstrap##ADMIN_RESOURCE_FOLDER_PATH##/##VARIABLE_PLURAL##',
                 'name'                  => 'filter.blade.php'
             ),
 
