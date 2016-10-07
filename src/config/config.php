@@ -92,6 +92,12 @@
                 'name'                  => '##VALUE##ValidationHelper.php'
             ),
 
+            'validationHelperTest'  => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/ValidationHelperTest.txt'),
+                'path'                  => app_path('../tests/unit/Services/Validation'),
+                'name'                  => '##VALUE##ValidationHelperTest.php'
+            ),
+
             'presenter'             => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/Presenter.txt'),
                 'path'                  => app_path('Presenters'),

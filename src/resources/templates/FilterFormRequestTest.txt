@@ -12,7 +12,7 @@ class Filter##CLASS_SINGULAR##FormRequestTest extends BaseUnitTestCase {
     public function testRules()
     {
         $rules = array(
-            'Foo'       => 'Bar',
+            'query'         => 'Foo',
         );
 
         $##VARIABLE_SINGULAR##ValidationHelper = Mockery::mock( ##CLASS_SINGULAR##ValidationHelper::class );

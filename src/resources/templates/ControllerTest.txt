@@ -2,8 +2,15 @@
 
 
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use ##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller;
+use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest;
+use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;
+use ##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory;
+use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 
-class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
+class ##CLASS_SINGULAR##ControllerTest extends BaseControllerTestCase {
 
     const ##CONSTANT_SINGULAR##_ID = 10;
 
@@ -13,14 +20,14 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
      */
     public function testIndex()
     {
-        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
+        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock( ##CLASS_SINGULAR##ViewFactory::class );
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->andReturn('factoryFoo');
-        App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
+        App::instance( ##CLASS_SINGULAR##ViewFactory::class , $##VARIABLE_SINGULAR##ViewFactoryMock );
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->index();
 
-        $this->assertTrue($response->isOk());
-        $this->assertEquals('factoryFoo', $response->getContent());
+        $this->assertEquals( 'factoryFoo', $response );
     }
 
     /**
@@ -32,42 +39,18 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
             'Foo'       => 'Bar',
         );
 
-        $filter##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest');
+        $filter##CLASS_SINGULAR##RequestFormMock = Mockery::mock( Filter##CLASS_SINGULAR##FormRequest::class );
         $filter##CLASS_SINGULAR##RequestFormMock->shouldReceive('getInput')->once()->andReturn($input);
-        App::instance('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest', $filter##CLASS_SINGULAR##RequestFormMock);
+        App::instance( Filter##CLASS_SINGULAR##FormRequest::class , $filter##CLASS_SINGULAR##RequestFormMock);
 
-        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
+        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock( ##CLASS_SINGULAR##ViewFactory::class );
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->with($input)->andReturn('factoryFoo');
-        App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
+        App::instance( ##CLASS_SINGULAR##ViewFactory::class , $##VARIABLE_SINGULAR##ViewFactoryMock );
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/filter?foo=bar');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->filter( $filter##CLASS_SINGULAR##RequestFormMock );
 
-        $this->assertTrue($response->isOk());
-        $this->assertEquals('factoryFoo', $response->getContent());
-    }
-
-    /**
-     * @covers \##NAMESPACE##\Http\Controllers##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##Controller::filter()
-     */
-    public function testFilter_post()
-    {
-        $input = array(
-            '_token'    => 'Foo_token',
-            'Foo'       => 'Bar',
-        );
-
-        $filter##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest');
-        $filter##CLASS_SINGULAR##RequestFormMock->shouldReceive('getInput')->once()->andReturn($input);
-        App::instance('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Filter##CLASS_SINGULAR##FormRequest', $filter##CLASS_SINGULAR##RequestFormMock);
-
-        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('App\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
-        $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('index')->once()->with($input)->andReturn('factoryFoo');
-        App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
-
-        $response = $this->call('POST', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/filter', $input);
-
-        $this->assertTrue($response->isOk());
-        $this->assertEquals('factoryFoo', $response->getContent());
+        $this->assertEquals( 'factoryFoo', $response );
     }
 
     /**
@@ -75,14 +58,14 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
      */
     public function testCreate()
     {
-        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
+        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock( ##CLASS_SINGULAR##ViewFactory::class );
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('create')->once()->andReturn('factoryFoo');
-        App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
+        App::instance( ##CLASS_SINGULAR##ViewFactory::class , $##VARIABLE_SINGULAR##ViewFactoryMock );
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/create');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->create();
 
-        $this->assertTrue($response->isOk());
-        $this->assertEquals('factoryFoo', $response->getContent());
+        $this->assertEquals( 'factoryFoo', $response );
     }
 
     /**
@@ -98,27 +81,22 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##();
         $##VARIABLE_SINGULAR##->id = self::##CONSTANT_SINGULAR##_ID;
 
-        $create##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest');
+        $create##CLASS_SINGULAR##RequestFormMock = Mockery::mock( Create##CLASS_SINGULAR##FormRequest::class );
         $create##CLASS_SINGULAR##RequestFormMock->shouldReceive('getInput')->once()->andReturn($input);
-        App::instance('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest', $create##CLASS_SINGULAR##RequestFormMock);
+        App::instance( Create##CLASS_SINGULAR##FormRequest::class , $create##CLASS_SINGULAR##RequestFormMock);
 
-        $userFactoryMock = Mockery::mock('##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory');
-        $userFactoryMock->shouldReceive('make')->once()->with($input)->andReturn($##VARIABLE_SINGULAR##);
-        App::instance('##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory', $userFactoryMock);
+        $##VARIABLE_SINGULAR##FactoryMock = Mockery::mock( ##CLASS_SINGULAR##Factory::class );
+        $##VARIABLE_SINGULAR##FactoryMock->shouldReceive('make')->once()->with($input)->andReturn($##VARIABLE_SINGULAR##);
+        App::instance( ##CLASS_SINGULAR##Factory::class , $##VARIABLE_SINGULAR##FactoryMock);
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.create.success')->andReturn('Foo_message');
 
-        $response = $this->call('POST', '##ADMIN_URL_PATH####VARIABLE_PLURAL##', $input);
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->store( $create##CLASS_SINGULAR##RequestFormMock, $##VARIABLE_SINGULAR##FactoryMock );
 
-        $this->assertTrue($response->isRedirect());
-        $this->assertRedirectedToRoute(
-            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show',
-            array(self::##CONSTANT_SINGULAR##_ID),
-            array(
-                'messageType'       => 'success',
-                'messages'          => array('Foo_message')
-            )
-        );
+        $this->assertTrue( $response->isRedirect() );
+        $this->assertEquals( 302, $response->getStatusCode() );
+        $this->assertEquals( $this->appUrl .'/##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $response->getTargetUrl() );
     }
 
     /**
@@ -128,18 +106,18 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
     {
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##();
 
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('find')->with(self::##CONSTANT_SINGULAR##_ID)->once()->andReturn($##VARIABLE_SINGULAR##);
-        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class , $##VARIABLE_SINGULAR##RepositoryMock );
 
-        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
+        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock( ##CLASS_SINGULAR##ViewFactory::class );
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('show')->with($##VARIABLE_SINGULAR##)->once()->andReturn('factoryFoo');
-        App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
+        App::instance( ##CLASS_SINGULAR##ViewFactory::class , $##VARIABLE_SINGULAR##ViewFactoryMock );
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->show( self::##CONSTANT_SINGULAR##_ID );
 
-        $this->assertTrue($response->isOk());
-        $this->assertEquals('factoryFoo', $response->getContent());
+        $this->assertEquals( 'factoryFoo', $response );
     }
 
     /**
@@ -150,9 +128,10 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID);
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->show( self::##CONSTANT_SINGULAR##_ID );
 
-        $this->assertModelNotFound($response);
+        $this->assertModelNotFound( $response );
     }
 
     /**
@@ -162,18 +141,18 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
     {
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##();
 
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('find')->with(self::##CONSTANT_SINGULAR##_ID)->once()->andReturn($##VARIABLE_SINGULAR##);
-        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class , $##VARIABLE_SINGULAR##RepositoryMock );
 
-        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory');
+        $##VARIABLE_SINGULAR##ViewFactoryMock = Mockery::mock( ##CLASS_SINGULAR##ViewFactory::class );
         $##VARIABLE_SINGULAR##ViewFactoryMock->shouldReceive('edit')->with($##VARIABLE_SINGULAR##)->once()->andReturn('factoryFoo');
-        App::instance('##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory', $##VARIABLE_SINGULAR##ViewFactoryMock);
+        App::instance( ##CLASS_SINGULAR##ViewFactory::class , $##VARIABLE_SINGULAR##ViewFactoryMock );
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'/edit');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->edit( self::##CONSTANT_SINGULAR##_ID );
 
-        $this->assertTrue($response->isOk());
-        $this->assertEquals('factoryFoo', $response->getContent());
+        $this->assertEquals( 'factoryFoo', $response );
     }
 
     /**
@@ -184,9 +163,10 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('GET', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'/edit');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->edit( self::##CONSTANT_SINGULAR##_ID );
 
-        $this->assertModelNotFound($response);
+        $this->assertModelNotFound( $response );
     }
 
     /**
@@ -202,31 +182,26 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
         $##VARIABLE_SINGULAR## = new ##CLASS_SINGULAR##();
         $##VARIABLE_SINGULAR##->id = self::##CONSTANT_SINGULAR##_ID;
 
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('find')->with(self::##CONSTANT_SINGULAR##_ID)->once()->andReturn($##VARIABLE_SINGULAR##);
-        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class , $##VARIABLE_SINGULAR##RepositoryMock);
 
-        $update##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest');
+        $update##CLASS_SINGULAR##RequestFormMock = Mockery::mock( Update##CLASS_SINGULAR##FormRequest::class );
         $update##CLASS_SINGULAR##RequestFormMock->shouldReceive('getInput')->once()->andReturn($input);
-        App::instance('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest', $update##CLASS_SINGULAR##RequestFormMock);
+        App::instance( Update##CLASS_SINGULAR##FormRequest::class , $update##CLASS_SINGULAR##RequestFormMock);
 
-        $userFactoryMock = Mockery::mock('##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory');
-        $userFactoryMock->shouldReceive('modify')->once()->with($##VARIABLE_SINGULAR##, $input);
-        App::instance('##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory', $userFactoryMock);
+        $##VARIABLE_SINGULAR##FactoryMock = Mockery::mock( ##CLASS_SINGULAR##Factory::class );
+        $##VARIABLE_SINGULAR##FactoryMock->shouldReceive('modify')->once()->with($##VARIABLE_SINGULAR##, $input);
+        App::instance( ##CLASS_SINGULAR##Factory::class , $##VARIABLE_SINGULAR##FactoryMock);
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.edit.success')->andReturn('Foo_message');
 
-        $response = $this->call('PUT', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->update( self::##CONSTANT_SINGULAR##_ID, $update##CLASS_SINGULAR##RequestFormMock, $##VARIABLE_SINGULAR##FactoryMock );
 
-        $this->assertTrue($response->isRedirect());
-        $this->assertRedirectedToRoute(
-            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show',
-            array(self::##CONSTANT_SINGULAR##_ID),
-            array(
-                'messageType'       => 'success',
-                'messages'          => array('Foo_message')
-            )
-        );
+        $this->assertTrue( $response->isRedirect() );
+        $this->assertEquals( 302, $response->getStatusCode() );
+        $this->assertEquals( $this->appUrl .'/##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $response->getTargetUrl() );
     }
 
     /**
@@ -237,17 +212,16 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
     {
         $this->setupModelNotFound();
 
-        $input = array(
-            '_token'        => 'Foo_token',
-            'Foo'           => 'Bar',
-        );
+        $update##CLASS_SINGULAR##RequestFormMock = Mockery::mock( Update##CLASS_SINGULAR##FormRequest::class );
+        App::instance( Update##CLASS_SINGULAR##FormRequest::class , $update##CLASS_SINGULAR##RequestFormMock);
 
-        $update##CLASS_SINGULAR##RequestFormMock = Mockery::mock('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest');
-        App::instance('##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Update##CLASS_SINGULAR##FormRequest', $update##CLASS_SINGULAR##RequestFormMock);
+        $##VARIABLE_SINGULAR##FactoryMock = Mockery::mock( ##CLASS_SINGULAR##Factory::class );
+        App::instance( ##CLASS_SINGULAR##Factory::class , $##VARIABLE_SINGULAR##FactoryMock);
 
-        $response = $this->call('PUT', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID, $input);
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->update( self::##CONSTANT_SINGULAR##_ID, $update##CLASS_SINGULAR##RequestFormMock, $##VARIABLE_SINGULAR##FactoryMock );
 
-        $this->assertModelNotFound($response);
+        $this->assertModelNotFound( $response );
     }
 
     /**
@@ -255,26 +229,21 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
      */
     public function testDestroy()
     {
-        $##VARIABLE_SINGULAR##Mock = Mockery::mock('##NAMESPACE##\Models\##CLASS_SINGULAR##');
+        $##VARIABLE_SINGULAR##Mock = Mockery::mock( ##CLASS_SINGULAR##::class );
         $##VARIABLE_SINGULAR##Mock->shouldReceive('delete')->once();
 
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('find')->with(self::##CONSTANT_SINGULAR##_ID)->once()->andReturn($##VARIABLE_SINGULAR##Mock);
-        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class , $##VARIABLE_SINGULAR##RepositoryMock);
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.delete.success')->andReturn('Foo_message');
 
-        $response = $this->call('DELETE', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'?_token=Foo_token');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->destroy( self::##CONSTANT_SINGULAR##_ID );
 
-        $this->assertTrue($response->isRedirect());
-        $this->assertRedirectedToRoute(
-            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index',
-            array(),
-            array(
-                'messageType' => 'success',
-                'messages'    => array( 'Foo_message' )
-            )
-        );
+        $this->assertTrue( $response->isRedirect() );
+        $this->assertEquals( 302, $response->getStatusCode() );
+        $this->assertEquals( $this->appUrl .'/##ADMIN_URL_PATH####VARIABLE_PLURAL##', $response->getTargetUrl() );
     }
 
     /**
@@ -285,31 +254,26 @@ class ##CLASS_SINGULAR##ControllerTest extends ##CONTROLLER_TEST_CASE## {
     {
         $this->setupModelNotFound();
 
-        $response = $this->call('DELETE', '##ADMIN_URL_PATH####VARIABLE_PLURAL##/'. self::##CONSTANT_SINGULAR##_ID .'?_token=Foo_token');
+        $controller = App::make( ##CLASS_SINGULAR##Controller::class );
+        $response = $controller->destroy( self::##CONSTANT_SINGULAR##_ID );
 
         $this->assertModelNotFound($response);
     }
 
     protected function setupModelNotFound()
     {
-        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository');
+        $##VARIABLE_SINGULAR##RepositoryMock = Mockery::mock( Eloquent##CLASS_SINGULAR##Repository::class );
         $##VARIABLE_SINGULAR##RepositoryMock->shouldReceive('find')->with(self::##CONSTANT_SINGULAR##_ID)->once()->andReturn(null);
-        App::instance('##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository', $##VARIABLE_SINGULAR##RepositoryMock);
+        App::instance( Eloquent##CLASS_SINGULAR##Repository::class , $##VARIABLE_SINGULAR##RepositoryMock);
 
         Translate::shouldReceive('model')->with('##VARIABLE_SINGULAR##.error.notFound')->andReturn('Foo_message');
     }
 
     protected function assertModelNotFound($response)
     {
-        $this->assertTrue($response->isRedirect());
-        $this->assertRedirectedToRoute(
-            '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index',
-            array(),
-            array(
-                'messageType' => 'error',
-                'messages'    => array( 'Foo_message' )
-            )
-        );
+        $this->assertTrue( $response->isRedirect() );
+        $this->assertEquals( 302, $response->getStatusCode() );
+        $this->assertEquals( $this->appUrl .'/##ADMIN_URL_PATH####VARIABLE_PLURAL##', $response->getTargetUrl() );
     }
 
 }

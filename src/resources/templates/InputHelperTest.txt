@@ -17,6 +17,21 @@ class ##CLASS_SINGULAR##InputHelperTest extends BaseUnitTestCase {
 
 
     /**
+     * @covers \##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper::getDefaultInput()
+     * @covers \##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper::getPrefixedInput()
+     */
+    public function testGetDefaultInput()
+    {
+        $expected = array(
+            '##VARIABLE_SINGULAR##_name'        => '',
+        );
+
+        $result = $this->##VARIABLE_SINGULAR##InputHelper->getDefaultInput( '##VARIABLE_SINGULAR##' );
+
+        $this->assertEquals( $expected, $result );
+    }
+
+    /**
      * @covers \##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper::getInputForSearch()
      */
     public function testGetInputForSearch()

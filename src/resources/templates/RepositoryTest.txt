@@ -21,6 +21,7 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::all()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::getModel()
      */
     public function testAll()
     {
@@ -96,6 +97,8 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::search()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::getTable()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::paginated()
      */
     public function testSearch()
     {
@@ -119,6 +122,8 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::search()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::getTable()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::paginated()
      */
     public function testSearch_returnsAllResultsIfNoFiltersProvided()
     {
@@ -139,6 +144,8 @@ class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 
     /**
      * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::search()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::getTable()
+     * @covers \##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository::paginated()
      */
     public function testSearch_usesPagination()
     {
