@@ -209,10 +209,16 @@
                 'name'                  => 'FlowStep.php'
             ),
 
-            'flowStep'        => array(
+            'flowStep'              => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FlowStep.txt'),
                 'path'                  => app_path('Flows') .'/##FLOW_CLASS##/Steps',
                 'name'                  => '##FLOW_STEP_CLASS##Step.php'
+            ),
+
+            'flowStepView'          => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FlowStepView.txt'),
+                'path'                  => app_path('../resources/views') .'/bootstrap/flows/##FLOW_VARIABLE##/##FLOW_STEP_VARIABLE##',
+                'name'                  => 'step.blade.php'
             ),
 
         ),
@@ -282,6 +288,13 @@
                 'flowHandler',
                 'baseFlowStep',
                 'flowStep',
+                'flowStepView',
+            ),
+
+
+            'flowStep'              => array(
+                'flowStep',
+                'flowStepView',
             ),
 
         ),

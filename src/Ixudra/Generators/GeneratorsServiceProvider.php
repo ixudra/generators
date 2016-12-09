@@ -6,6 +6,7 @@ use Ixudra\Generators\Commands\GenerateResourceCommand;
 use Ixudra\Generators\Commands\GenerateGroupCommand;
 use Ixudra\Generators\Commands\GenerateFileCommand;
 use Ixudra\Generators\Commands\GenerateFlowCommand;
+use Ixudra\Generators\Commands\GenerateFlowStepCommand;
 use Ixudra\Generators\Commands\GenerateFlowFileCommand;
 
 class GeneratorsServiceProvider extends ServiceProvider {
@@ -68,6 +69,14 @@ class GeneratorsServiceProvider extends ServiceProvider {
             }
         );
         $this->commands('generate.flow');
+
+        $this->app['generate.flowStep'] = $this->app->share(
+            function($app)
+            {
+                return new GenerateFlowStepCommand();
+            }
+        );
+        $this->commands('generate.flowStep');
 
         $this->app['generate.flowFile'] = $this->app->share(
             function($app)
