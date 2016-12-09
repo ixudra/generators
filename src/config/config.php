@@ -194,6 +194,96 @@
                 'name'                  => 'filter.blade.php'
             ),
 
-        )
+
+            // Flow
+
+            'flowHandler'           => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FlowHandler.txt'),
+                'path'                  => app_path('Http/Flows') .'/##FLOW_CLASS##',
+                'name'                  => 'FlowHandler.php'
+            ),
+
+            'baseFlowStep'          => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/BaseFlowStep.txt'),
+                'path'                  => app_path('Http/Flows') .'/##FLOW_CLASS##',
+                'name'                  => 'FlowStep.php'
+            ),
+
+            'flowStep'        => array(
+                'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FlowStep.txt'),
+                'path'                  => app_path('Http/Flows') .'/##FLOW_CLASS##/Steps',
+                'name'                  => '##VALUE##Step.php'
+            ),
+
+        ),
+
+        'groups'            => array(
+
+            'resource'          => array(
+                'model',
+                'controller',
+                'controllerTest',
+                'repository',
+                'repositoryTest',
+                'factory',
+                'factoryTest',
+                'viewFactory',
+                'viewFactoryTest',
+                'inputHelper',
+                'inputHelperTest',
+                'formHelper',
+                'formHelperTest',
+                'validationHelper',
+                'validationHelperTest',
+                'presenter',
+                'createFormRequest',
+                'createFormRequestTest',
+                'updateFormRequest',
+                'updateFormRequestTest',
+                'filterFormRequest',
+                'filterFormRequestTest',
+                'indexView',
+                'listView',
+                'tableView',
+                'showView',
+                'createView',
+                'editView',
+                'formView',
+                'filterView',
+            ),
+
+            'dataObject'        => array(
+                'model',
+                'repository',
+                'repositoryTest',
+                'factory',
+                'factoryTest',
+                'inputHelper',
+                'inputHelperTest',
+                'formHelper',
+                'formHelperTest',
+                'validationHelper',
+                'validationHelperTest',
+                'presenter',
+            ),
+
+            'views'             => array(
+                'indexView',
+                'listView',
+                'tableView',
+                'showView',
+                'createView',
+                'editView',
+                'formView',
+                'filterView',
+            ),
+
+            'flow'              => array(
+                'flowHandler',
+                'baseFlowStep',
+                'flowStep',
+            ),
+
+        ),
 
     );

@@ -1,12 +1,6 @@
 <?php namespace Ixudra\Generators\Commands;
 
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Str;
-
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
-
 use Config;
 
 class GenerateResourceCommand extends BaseGenerateCommand {
@@ -24,8 +18,8 @@ class GenerateResourceCommand extends BaseGenerateCommand {
 
     public function fire()
     {
-        foreach( Config::get('generators.files') as $key => $file ) {
-            $this->generateFile( $key );
+        foreach( Config::get('generators.groups.resource') as $file ) {
+            $this->generateFile( $file );
         }
 
         $this->info(' - Resources generated!');

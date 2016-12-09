@@ -76,6 +76,21 @@ abstract class BaseGenerateCommand extends Command {
         return lcfirst( $this->getPluralClassName() );
     }
 
+    protected function generateFile($key, $path = null)
+    {
+        $this->call('generate:file',
+            array(
+                'file'              => $key,
+                'resource-singular' => $this->argument('resource-singular'),
+                'resource-plural'   => $this->argument('resource-plural'),
+                '--admin'           => $this->option('admin'),
+                '--allowOverwrite'  => $this->option('allowOverwrite'),
+                '--path'            => $path,
+            )
+        );
+    }
+
+
 
     //- Error reporting ---
 

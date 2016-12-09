@@ -1,0 +1,28 @@
+<?php namespace #NAMESPACE##\Flows\##FLOW_CLASS##;
+
+
+use Ixudra\Wizard\Flows\BaseFlowHandler;
+use Ixudra\Wizard\Flows\FlowHandlerInterface;
+
+class FlowHandler extends BaseFlowHandler implements FlowHandlerInterface {
+
+    public function isAllowed($input = array())
+    {
+        return true;
+    }
+
+    protected function getStepsForBreadcrumbs()
+    {
+        return array(
+            'first-step'                    => array(
+                'title'                         => 'wizard::flows.##FLOW_VARIABLE##.firstStep.breadcrumb',
+                'params'                        => array()
+            ),
+            'second-step'                   => array(
+                'title'                         => 'wizard::flows.##FLOW_VARIABLE##.secondStep.breadcrumb',
+                'params'                        => array()
+            ),
+        );
+    }
+
+}

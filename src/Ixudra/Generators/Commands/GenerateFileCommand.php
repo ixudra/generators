@@ -45,7 +45,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
                 $path = $file[ 'path' ];
             }
 
-            $result = $this->generateFile( $file[ 'template' ], $file[ 'name' ], $path );
+            $result = $this->generateFromTemplate( $file[ 'template' ], $file[ 'name' ], $path );
             if( $this->option('test') ) {
                 $this->generateTest( $fileKey );
             }
@@ -70,7 +70,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
         $file = Config::get('generators.files.'. $testKey );
 
-        $result = $this->generateFile( $file[ 'template' ], $file[ 'name' ], $file[ 'path' ] );
+        $result = $this->generateFromTemplate( $file[ 'template' ], $file[ 'name' ], $file[ 'path' ] );
     }
 
 
@@ -93,7 +93,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
     //- File generation ---
 
-    protected function generateFile($template, $fileName, $path)
+    protected function generateFromTemplate($template, $fileName, $path)
     {
         $file = $this->loadTemplate($template);
         $content = $this->replaceValues( $file );

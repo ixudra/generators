@@ -3,7 +3,10 @@
 
 use Illuminate\Support\ServiceProvider;
 use Ixudra\Generators\Commands\GenerateResourceCommand;
+use Ixudra\Generators\Commands\GenerateGroupCommand;
 use Ixudra\Generators\Commands\GenerateFileCommand;
+use Ixudra\Generators\Commands\GenerateFlowCommand;
+use Ixudra\Generators\Commands\GenerateFlowFileCommand;
 
 class GeneratorsServiceProvider extends ServiceProvider {
 
@@ -12,7 +15,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->registerGenerateResourceCommand();
+        $this->registerCommands();
 
         $configPath = __DIR__ . '/../../config/config.php';
 
@@ -32,7 +35,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
         ), 'templates');
     }
 
-    protected function registerGenerateResourceCommand()
+    protected function registerCommands()
     {
         $this->app['generate.resource'] = $this->app->share(
             function($app)
@@ -42,6 +45,14 @@ class GeneratorsServiceProvider extends ServiceProvider {
         );
         $this->commands('generate.resource');
 
+        $this->app['generate.group'] = $this->app->share(
+            function($app)
+            {
+                return new GenerateGroupCommand();
+            }
+        );
+        $this->commands('generate.group');
+
         $this->app['generate.file'] = $this->app->share(
             function($app)
             {
@@ -49,6 +60,22 @@ class GeneratorsServiceProvider extends ServiceProvider {
             }
         );
         $this->commands('generate.file');
+
+        $this->app['generate.flow'] = $this->app->share(
+            function($app)
+            {
+                return new GenerateFlowCommand();
+            }
+        );
+        $this->commands('generate.flow');
+
+        $this->app['generate.flowFile'] = $this->app->share(
+            function($app)
+            {
+                return new GenerateFlowFileCommand();
+            }
+        );
+        $this->commands('generate.flowFile');
     }
 
 }
