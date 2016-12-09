@@ -20,6 +20,13 @@ class GenerateFlowFileCommand extends GenerateFileCommand {
                         {--allowOverwrite : Allow the generator to overwrite existing files}
                         {--path= : The directory in which the file needs to be stored}';
 
+    protected $flowClass;
+    protected $flowVariable;
+
+    protected $stepClass;
+    protected $stepVariable;
+    protected $stepBreadcrumb;
+
 
     public function fire()
     {
@@ -65,7 +72,7 @@ class GenerateFlowFileCommand extends GenerateFileCommand {
 
         $this->stepClass = Str::studly( $this->argument('step') );
         $this->stepVariable = lcfirst( Str::studly( $this->argument('step') ) );
-        $this->stepbreadcrumb = str_replace('_', '-', Str::studly( $this->argument('step') ) );
+        $this->stepBreadcrumb = str_replace( '_', '-', $this->argument('step') );
     }
 
 
@@ -74,11 +81,11 @@ class GenerateFlowFileCommand extends GenerateFileCommand {
     protected function replaceValues($template)
     {
         $template = str_replace( '##NAMESPACE##', Config::get('generators.namespace'), $template );
-        $template = str_replace( '##FLOW_CLASS##', $this->tableName, $template );
-        $template = str_replace( '##FLOW_VARIABLE##', $this->classSingular, $template );
-        $template = str_replace( '##STEP_CLASS##', $this->classPlural, $template );
-        $template = str_replace( '##STEP_VARIABLE##', $this->constantSingular, $template );
-        $template = str_replace( '##STEP_BREADCRUMB##', $this->constantPlural, $template );
+        $template = str_replace( '##FLOW_CLASS##', $this->flowClass, $template );
+        $template = str_replace( '##FLOW_VARIABLE##', $this->flowVariable, $template );
+        $template = str_replace( '##FLOW_STEP_CLASS##', $this->stepClass, $template );
+        $template = str_replace( '##FLOW_STEP_VARIABLE##', $this->stepVariable, $template );
+        $template = str_replace( '##FLOW_STEP_BREADCRUMB##', $this->stepBreadcrumb, $template );
 
         return $template;
     }

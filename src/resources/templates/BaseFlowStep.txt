@@ -1,4 +1,4 @@
-<?php namespace #NAMESPACE##\Flows\##FLOW##;
+<?php namespace ##NAMESPACE##\Flows\##FLOW_CLASS##;
 
 
 use Ixudra\Wizard\Flows\BaseFlowStep;

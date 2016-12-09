@@ -113,6 +113,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
     protected function replaceValues($template)
     {
+        dd('wrong');
         $template = str_replace( '##NAMESPACE##', Config::get('generators.namespace'), $template );
         $template = str_replace( '##TABLE_NAME##', $this->tableName, $template );
         $template = str_replace( '##CLASS_SINGULAR##', $this->classSingular, $template );
@@ -152,6 +153,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
 
     protected function createFile($name, $path, $content)
     {
+        $name = $this->replaceValues( $name );
         $path = $this->replaceValues( $path );
         $this->createDirectory( $path );
 

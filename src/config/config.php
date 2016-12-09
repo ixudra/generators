@@ -199,20 +199,20 @@
 
             'flowHandler'           => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FlowHandler.txt'),
-                'path'                  => app_path('Http/Flows') .'/##FLOW_CLASS##',
+                'path'                  => app_path('Flows') .'/##FLOW_CLASS##',
                 'name'                  => 'FlowHandler.php'
             ),
 
             'baseFlowStep'          => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/BaseFlowStep.txt'),
-                'path'                  => app_path('Http/Flows') .'/##FLOW_CLASS##',
+                'path'                  => app_path('Flows') .'/##FLOW_CLASS##',
                 'name'                  => 'FlowStep.php'
             ),
 
             'flowStep'        => array(
                 'template'              => base_path('vendor/ixudra/generators/src/resources/templates/FlowStep.txt'),
-                'path'                  => app_path('Http/Flows') .'/##FLOW_CLASS##/Steps',
-                'name'                  => '##VALUE##Step.php'
+                'path'                  => app_path('Flows') .'/##FLOW_CLASS##/Steps',
+                'name'                  => '##FLOW_STEP_CLASS##Step.php'
             ),
 
         ),

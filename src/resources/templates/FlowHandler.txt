@@ -1,10 +1,9 @@
-<?php namespace #NAMESPACE##\Flows\##FLOW_CLASS##;
+<?php namespace ##NAMESPACE##\Flows\##FLOW_CLASS##;
 
 
 use Ixudra\Wizard\Flows\BaseFlowHandler;
-use Ixudra\Wizard\Flows\FlowHandlerInterface;
 
-class FlowHandler extends BaseFlowHandler implements FlowHandlerInterface {
+class FlowHandler extends BaseFlowHandler {
 
     public function isAllowed($input = array())
     {
@@ -15,11 +14,11 @@ class FlowHandler extends BaseFlowHandler implements FlowHandlerInterface {
     {
         return array(
             'first-step'                    => array(
-                'title'                         => 'wizard::flows.##FLOW_VARIABLE##.firstStep.breadcrumb',
+                'title'                         => 'flows.##FLOW_VARIABLE##.firstStep.breadcrumb',
                 'params'                        => array()
             ),
             'second-step'                   => array(
-                'title'                         => 'wizard::flows.##FLOW_VARIABLE##.secondStep.breadcrumb',
+                'title'                         => 'flows.##FLOW_VARIABLE##.secondStep.breadcrumb',
                 'params'                        => array()
             ),
         );

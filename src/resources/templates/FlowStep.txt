@@ -1,7 +1,6 @@
 <?php namespace ##NAMESPACE##\Flows\##FLOW_CLASS##\Steps;
 
 
-use Ixudra\Wizard\Flows\FlowStepInterface;
 use Ixudra\Wizard\Models\Flow;
 use Ixudra\Wizard\Services\Html\FlowViewFactory;
 use ##NAMESPACE##\Flows\##FLOW_CLASS##\FlowStep;
