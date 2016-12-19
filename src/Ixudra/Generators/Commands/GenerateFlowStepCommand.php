@@ -13,7 +13,7 @@ class GenerateFlowStepCommand extends GenerateGroupCommand {
 
     protected $description = 'Generate a flow based on a specific template';
 
-    protected $signature = 'generate:flow
+    protected $signature = 'generate:flow-step
                         {flow : Name of the flow}
                         {step : Name of the flow step (does not apply to all files)}
                         {--allowOverwrite : Allow the generator to overwrite existing files}';
