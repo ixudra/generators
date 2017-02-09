@@ -38,7 +38,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
 
     protected function registerCommands()
     {
-        $this->app['generate.resource'] = $this->app->share(
+        $this->app['generate.resource'] = $this->app->singleton(
             function($app)
             {
                 return new GenerateResourceCommand();
@@ -46,7 +46,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
         );
         $this->commands('generate.resource');
 
-        $this->app['generate.group'] = $this->app->share(
+        $this->app['generate.group'] = $this->app->singleton(
             function($app)
             {
                 return new GenerateGroupCommand();
@@ -54,7 +54,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
         );
         $this->commands('generate.group');
 
-        $this->app['generate.file'] = $this->app->share(
+        $this->app['generate.file'] = $this->app->singleton(
             function($app)
             {
                 return new GenerateFileCommand();
@@ -62,7 +62,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
         );
         $this->commands('generate.file');
 
-        $this->app['generate.flow'] = $this->app->share(
+        $this->app['generate.flow'] = $this->app->singleton(
             function($app)
             {
                 return new GenerateFlowCommand();
@@ -70,7 +70,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
         );
         $this->commands('generate.flow');
 
-        $this->app['generate.flowStep'] = $this->app->share(
+        $this->app['generate.flowStep'] = $this->app->singleton(
             function($app)
             {
                 return new GenerateFlowStepCommand();
@@ -78,7 +78,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
         );
         $this->commands('generate.flowStep');
 
-        $this->app['generate.flowFile'] = $this->app->share(
+        $this->app['generate.flowFile'] = $this->app->singleton(
             function($app)
             {
                 return new GenerateFlowFileCommand();
