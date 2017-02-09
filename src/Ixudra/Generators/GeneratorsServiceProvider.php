@@ -32,45 +32,45 @@ class GeneratorsServiceProvider extends ServiceProvider {
         $resourcePath = __DIR__ .'/../../resources/templates';
 
         $this->publishes(array(
-                $resourcePath       => app_path('../resources/templates'),
+            $resourcePath       => app_path('../resources/templates'),
         ), 'templates');
     }
 
     protected function registerCommands()
     {
         $this->app->singleton( 'command.ixudra.generate.resource', function($app) {
-                return $app[ 'Ixudra\Generators\Commands\GenerateResourceCommand' ];
-            }
+            return $app[ GenerateResourceCommand::class ];
+        }
         );
         $this->commands('command.ixudra.generate.resource');
 
         $this->app->singleton( 'command.ixudra.generate.group', function($app) {
-                return $app[ 'Ixudra\Generators\Commands\GenerateGroupCommand' ];
-            }
+            return $app[ GenerateGroupCommand::class ];
+        }
         );
         $this->commands('command.ixudra.generate.group');
 
         $this->app->singleton( 'command.ixudra.generate.file', function($app) {
-                return $app[ 'Ixudra\Generators\Commands\GenerateFileCommand' ];
-            }
+            return $app[ GenerateFileCommand::class ];
+        }
         );
         $this->commands('command.ixudra.generate.file');
 
         $this->app->singleton( 'command.ixudra.generate.flow', function($app) {
-                return $app[ 'Ixudra\Generators\Commands\GenerateFlowCommand' ];
-            }
+            return $app[ GenerateFlowCommand::class ];
+        }
         );
         $this->commands('command.ixudra.generate.flow');
 
         $this->app->singleton( 'command.ixudra.generate.flowStep', function($app) {
-                return $app[ 'Ixudra\Generators\Commands\GenerateFlowStepCommand' ];
-            }
+            return $app[ GenerateFlowStepCommand::class ];
+        }
         );
         $this->commands('command.ixudra.generate.flowStep');
 
         $this->app->singleton( 'command.ixudra.generate.flowFile', function($app) {
-                return $app[ 'Ixudra\Generators\Commands\GenerateFlowFileCommand' ];
-            }
+            return $app[ GenerateFlowFileCommand::class ];
+        }
         );
         $this->commands('command.ixudra.generate.flowFile');
     }
