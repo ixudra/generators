@@ -18,7 +18,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
     {
         $this->registerCommands();
 
-        $configPath = __DIR__ . '/../../config/config.php';
+        $configPath = __DIR__ . '/config/config.php';
 
         $this->mergeConfigFrom($configPath, 'generators');
 
@@ -29,7 +29,7 @@ class GeneratorsServiceProvider extends ServiceProvider {
 
     public function boot()
     {
-        $resourcePath = __DIR__ .'/../../resources/templates';
+        $resourcePath = __DIR__ .'/resources/templates';
 
         $this->publishes(array(
             $resourcePath       => app_path('../resources/templates'),
