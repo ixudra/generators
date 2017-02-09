@@ -39,38 +39,38 @@ class GeneratorsServiceProvider extends ServiceProvider {
     protected function registerCommands()
     {
         $this->app->singleton( 'command.ixudra.generate.resource', function($app) {
-            return $app[ GenerateResourceCommand::class ];
-        }
+                return $app[ GenerateResourceCommand::class ];
+            }
         );
         $this->commands('command.ixudra.generate.resource');
 
         $this->app->singleton( 'command.ixudra.generate.group', function($app) {
-            return $app[ GenerateGroupCommand::class ];
-        }
+                return $app[ GenerateGroupCommand::class ];
+            }
         );
         $this->commands('command.ixudra.generate.group');
 
         $this->app->singleton( 'command.ixudra.generate.file', function($app) {
-            return $app[ GenerateFileCommand::class ];
-        }
+                return $app[ GenerateFileCommand::class ];
+            }
         );
         $this->commands('command.ixudra.generate.file');
 
         $this->app->singleton( 'command.ixudra.generate.flow', function($app) {
-            return $app[ GenerateFlowCommand::class ];
-        }
+                return $app[ GenerateFlowCommand::class ];
+            }
         );
         $this->commands('command.ixudra.generate.flow');
 
         $this->app->singleton( 'command.ixudra.generate.flowStep', function($app) {
-            return $app[ GenerateFlowStepCommand::class ];
-        }
+                return $app[ GenerateFlowStepCommand::class ];
+            }
         );
         $this->commands('command.ixudra.generate.flowStep');
 
         $this->app->singleton( 'command.ixudra.generate.flowFile', function($app) {
-            return $app[ GenerateFlowFileCommand::class ];
-        }
+                return $app[ GenerateFlowFileCommand::class ];
+            }
         );
         $this->commands('command.ixudra.generate.flowFile');
     }
