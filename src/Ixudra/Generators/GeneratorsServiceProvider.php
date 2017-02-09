@@ -38,53 +38,41 @@ class GeneratorsServiceProvider extends ServiceProvider {
 
     protected function registerCommands()
     {
-        $this->app['generate.resource'] = $this->app->singleton(
-            function($app)
-            {
-                return new GenerateResourceCommand();
+        $this->app->singleton( 'command.ixudra.generate.resource', function($app) {
+                return $app[ 'Ixudra\Generators\Commands\GenerateResourceCommand' ];
             }
         );
-        $this->commands('generate.resource');
+        $this->commands('command.ixudra.generate.resource');
 
-        $this->app['generate.group'] = $this->app->singleton(
-            function($app)
-            {
-                return new GenerateGroupCommand();
+        $this->app->singleton( 'command.ixudra.generate.group', function($app) {
+                return $app[ 'Ixudra\Generators\Commands\GenerateGroupCommand' ];
             }
         );
-        $this->commands('generate.group');
+        $this->commands('command.ixudra.generate.group');
 
-        $this->app['generate.file'] = $this->app->singleton(
-            function($app)
-            {
-                return new GenerateFileCommand();
+        $this->app->singleton( 'command.ixudra.generate.file', function($app) {
+                return $app[ 'Ixudra\Generators\Commands\GenerateFileCommand' ];
             }
         );
-        $this->commands('generate.file');
+        $this->commands('command.ixudra.generate.file');
 
-        $this->app['generate.flow'] = $this->app->singleton(
-            function($app)
-            {
-                return new GenerateFlowCommand();
+        $this->app->singleton( 'command.ixudra.generate.flow', function($app) {
+                return $app[ 'Ixudra\Generators\Commands\GenerateFlowCommand' ];
             }
         );
-        $this->commands('generate.flow');
+        $this->commands('command.ixudra.generate.flow');
 
-        $this->app['generate.flowStep'] = $this->app->singleton(
-            function($app)
-            {
-                return new GenerateFlowStepCommand();
+        $this->app->singleton( 'command.ixudra.generate.flowStep', function($app) {
+                return $app[ 'Ixudra\Generators\Commands\GenerateFlowStepCommand' ];
             }
         );
-        $this->commands('generate.flowStep');
+        $this->commands('command.ixudra.generate.flowStep');
 
-        $this->app['generate.flowFile'] = $this->app->singleton(
-            function($app)
-            {
-                return new GenerateFlowFileCommand();
+        $this->app->singleton( 'command.ixudra.generate.flowFile', function($app) {
+                return $app[ 'Ixudra\Generators\Commands\GenerateFlowFileCommand' ];
             }
         );
-        $this->commands('generate.flowFile');
+        $this->commands('command.ixudra.generate.flowFile');
     }
 
 }
