@@ -28,7 +28,7 @@ class GenerateFlowFileCommand extends GenerateFileCommand {
     protected $stepBreadcrumb;
 
 
-    public function fire()
+    public function handle()
     {
         $result = false;
         $error = '';

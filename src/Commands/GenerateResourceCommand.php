@@ -16,7 +16,7 @@ class GenerateResourceCommand extends BaseGenerateCommand {
                         {--allowOverwrite : Allow the generator to overwrite existing files}';
 
 
-    public function fire()
+    public function handle()
     {
         foreach( Config::get('generators.groups.resource') as $file ) {
             $this->generateFile( $file );

@@ -21,7 +21,7 @@ Pull this package in through Composer:
 
     {
         "require": {
-            "ixudra/generators": "5.*"
+            "ixudra/generators": "6.*"
         }
     }
 

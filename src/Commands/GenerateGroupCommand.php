@@ -18,7 +18,7 @@ class GenerateGroupCommand extends BaseGenerateCommand {
                         {--allowOverwrite : Allow the generator to overwrite existing files}';
 
 
-    public function fire()
+    public function handle()
     {
         $groupKey = $this->argument('group');
         if( !Config::has('generators.groups.'. $groupKey) ) {

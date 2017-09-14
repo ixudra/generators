@@ -19,7 +19,7 @@ class GenerateFlowCommand extends GenerateGroupCommand {
                         {--allowOverwrite : Allow the generator to overwrite existing files}';
 
 
-    public function fire()
+    public function handle()
     {
         foreach( Config::get('generators.groups.flow') as $file ) {
             $this->generateFile( $file );

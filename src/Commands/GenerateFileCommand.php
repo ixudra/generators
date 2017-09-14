@@ -24,7 +24,7 @@ class GenerateFileCommand extends BaseGenerateCommand {
                         {--path= : The directory in which the file needs to be stored}';
 
 
-    public function fire()
+    public function handle()
     {
         $result = false;
         $error = '';
