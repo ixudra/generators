@@ -273,6 +273,15 @@
                 'presenter',
             ),
 
+            'requests'          => array(
+                'createFormRequest',
+                'createFormRequestTest',
+                'updateFormRequest',
+                'updateFormRequestTest',
+                'filterFormRequest',
+                'filterFormRequestTest',
+            ),
+
             'views'             => array(
                 'indexView',
                 'listView',
@@ -291,8 +300,7 @@
                 'flowStepView',
             ),
 
-
-            'flowStep'              => array(
+            'flowStep'          => array(
                 'flowStep',
                 'flowStepView',
             ),

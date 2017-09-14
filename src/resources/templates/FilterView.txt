@@ -8,10 +8,12 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                {!! Form::iconSubmit(Translate::recursive('common.search'), 'search', array('class' => 'btn btn-primary')) !!}
-                {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index', Translate::recursive('common.clear'), 'remove', array(), array('class' => 'btn btn-default')) !!}
+        <div class="col-md-12">
+            <div class="form-group pull-right">
+                <div class="col-md-12">
+                    {!! Form::iconSubmit(Translate::recursive('common.search'), 'search', array('class' => 'btn btn-primary')) !!}
+                    {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index', Translate::recursive('common.clear'), 'remove', array(), array('class' => 'btn btn-default')) !!}
+                </div>
             </div>
         </div>
     {!! Form::close() !!}
