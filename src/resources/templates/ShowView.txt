@@ -15,8 +15,8 @@
 
     <div class="row">
         {!! Form::open(array('route' => array('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', $##VARIABLE_SINGULAR##->id), 'method' => 'delete')) !!}
-            {!! HTML::linkRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit', Translate::recursive('common.edit'), array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) !!}
-            {!! Form::submit(Translate::recursive('common.delete'), array('class' => 'btn btn-danger')) !!}
+            {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.edit', Translate::recursive('common.edit'), 'edit', array($##VARIABLE_SINGULAR##->id), array('class' => 'btn btn-default')) !!}
+            {!! Form::iconSubmit(Translate::recursive('common.delete'), 'trash', array('class' => 'btn btn-danger')) !!}
         {!! Form:: close() !!}
     </div>
 

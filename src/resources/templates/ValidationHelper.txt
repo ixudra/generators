@@ -9,7 +9,7 @@ class ##CLASS_SINGULAR##ValidationHelper extends BaseValidationHelper {
     public function getFilterValidationRules()
     {
         return array(
-            'query'         => ''
+            'query'         => '',
         );
     }
 

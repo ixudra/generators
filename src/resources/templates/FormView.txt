@@ -2,8 +2,8 @@
 
     <div class="well well-large">
         {!! Form::openFormGroup('name', $errors, $requiredFields) !!}
-            {!! Form::label($prefix . 'name', Translate::recursive('members.name') .': ', array('class' => 'control-label col-lg-3')) !!}
-            <div class="col-lg-8">
+            {!! Form::label($prefix . 'name', Translate::recursive('members.name') .': ', array('class' => 'control-label col-md-3')) !!}
+            <div class="col-md-8">
                 {!! Form::text($prefix . 'name', $input[$prefix . 'name'], array('class' => 'form-control')) !!}
             </div>
         {!! Form::closeFormGroup('name', $errors) !!}

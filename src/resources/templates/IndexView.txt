@@ -15,7 +15,7 @@
 
     <div class="row">
         <p>
-            {!! HTML::linkRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create', Translate::recursive('common.new'), array(), array('class' => 'btn btn-default')) !!}
+            {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create', Translate::recursive('common.new'), 'plus', array(), array('class' => 'btn btn-primary')) !!}
         </p>
     </div>
 

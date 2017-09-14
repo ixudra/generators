@@ -10,7 +10,7 @@ use ##NAMESPACE##\Services\Factories\##CLASS_SINGULAR##Factory;
 use ##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##\##CLASS_SINGULAR##ViewFactory;
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 
-class ##CLASS_SINGULAR##ControllerTest extends BaseControllerTestCase {
+class ##CLASS_SINGULAR##ControllerTest extends BaseUnitTestCase {
 
     const ##CONSTANT_SINGULAR##_ID = 10;
 
