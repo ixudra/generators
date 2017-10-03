@@ -18,6 +18,9 @@ class ##CLASS_SINGULAR##Controller extends BaseController {
     protected $##VARIABLE_SINGULAR##ViewFactory;
 
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(Eloquent##CLASS_SINGULAR##Repository $##VARIABLE_SINGULAR##Repository, ##CLASS_SINGULAR##ViewFactory $##VARIABLE_SINGULAR##ViewFactory)
     {
         $this->##VARIABLE_SINGULAR##Repository = $##VARIABLE_SINGULAR##Repository;

@@ -25,6 +25,9 @@ class ##CLASS_SINGULAR## extends Model {
     protected $presenter = ##CLASS_SINGULAR##Presenter::class;
 
 
+    /**
+     * @codeCoverageIgnore
+     */
     public static function getRules()
     {
         return array(
@@ -32,6 +35,9 @@ class ##CLASS_SINGULAR## extends Model {
         );
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public static function getDefaults()
     {
         return array(

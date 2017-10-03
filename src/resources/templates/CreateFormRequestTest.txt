@@ -4,7 +4,7 @@
 use ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest;
 use ##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper;
 
-class Create##CLASS_SINGULAR##FormRequestTest extends BaseUnitTestCase {
+class Create##CLASS_SINGULAR##FormRequestTest extends BaseFormRequestTestCase {
 
     /**
      * @covers \##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##\Create##CLASS_SINGULAR##FormRequest::rules()
@@ -19,7 +19,8 @@ class Create##CLASS_SINGULAR##FormRequestTest extends BaseUnitTestCase {
         $##VARIABLE_SINGULAR##ValidationHelper->shouldReceive('getFormValidationRules')->once()->andReturn($rules);
         App::instance( ##CLASS_SINGULAR##ValidationHelper::class , $##VARIABLE_SINGULAR##ValidationHelper );
 
-        $result = App::make( Create##CLASS_SINGULAR##FormRequest::class )->rules();
+        $request = new Create##CLASS_SINGULAR##FormRequest();
+        $result = $request->rules();
 
         $this->assertEquals( $rules, $result );
     }

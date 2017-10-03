@@ -11,6 +11,9 @@ class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
     protected $repository;
 
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function __construct(Eloquent##CLASS_SINGULAR##Repository $##VARIABLE_SINGULAR##Repository)
     {
         $this->repository = $##VARIABLE_SINGULAR##Repository;

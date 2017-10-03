@@ -2,6 +2,10 @@
 
 All Notable changes to `ixudra/generators` will be documented in this file
 
+## 6.0.1 - 2017-10-03
+### Updated
+- Various template improvements
+
 ## 6.0.0 - 2017-09-14
 ### Updated
 - Fixed commands for Laravel 5.5

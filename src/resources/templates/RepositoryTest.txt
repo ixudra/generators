@@ -1,8 +1,8 @@
 <?php
 
 
-use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 
 class Eloquent##CLASS_SINGULAR##RepositoryTest extends BaseRepositoryTestCase {
 

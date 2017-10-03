@@ -29,6 +29,8 @@ class GenerateGroupCommand extends BaseGenerateCommand {
         foreach( $files as $file ) {
             $this->generateFile( $file );
         }
+
+        $this->info(' - Group files generated!');
     }
 
 }
