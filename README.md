@@ -105,18 +105,16 @@ The config file will be published to `app/config/generators.php` where you will 
 As of version 1.0.0, the package also supports custom templates. These templates may contain 8 different variables that you can use to customize your development flow:
 
 
-| Name                      | key                       | example: project  | example 2: product type   |
-|---------------------------|---------------------------|-------------------|---------------------------|
-| Resource name             |                           | project           | product_type              |
-|---------------------------|---------------------------|-------------------|---------------------------|
-| Application namespace     | ##NAMESPACE##             | App               | Ixudra                    |
-| Table name                | ##TABLE_NAME##            | projects          | product_types             |
-| class name singular       | ##CLASS_SINGULAR##        | Project           | ProductType               |
-| class name plural         | ##CLASS_PLURAL##          | Projects          | ProductTypes              |
-| variable name singular    | ##VARIABLE_SINGULAR##     | project           | productType               |
-| variable name plural      | ##VARIABLE_PLURAL##       | projects          | productTypes              |
-| constant name singular    | ##CONSTANT_SINGULAR##     | PROJECT           | PRODUCT_TYPE              |
-| constant name plural      | ##CONSTANT_PLURAL##       | PROJECT           | PRODUCT_TYPES             |
+| Resource name             | Key                       | Example 1: project    | Example 2: product_type   |
+|---------------------------|---------------------------|-----------------------|---------------------------|
+| Application namespace     | ##NAMESPACE##             | App                   | App                       |
+| Table name                | ##TABLE_NAME##            | projects              | product_types             |
+| class name singular       | ##CLASS_SINGULAR##        | Project               | ProductType               |
+| class name plural         | ##CLASS_PLURAL##          | Projects              | ProductTypes              |
+| variable name singular    | ##VARIABLE_SINGULAR##     | project               | productType               |
+| variable name plural      | ##VARIABLE_PLURAL##       | projects              | productTypes              |
+| constant name singular    | ##CONSTANT_SINGULAR##     | PROJECT               | PRODUCT_TYPE              |
+| constant name plural      | ##CONSTANT_PLURAL##       | PROJECT               | PRODUCT_TYPES             |
 
 
 All variables except the namespace are determined automatically based on the parameters which are passed along to the command when called. The namespace can be set in the package `config.php` files after it has been published.
@@ -129,7 +127,7 @@ Using the previously mentioned `vendor:publish` command will also publish the de
 The package also allows for you to generate a file or resource specifically for the admin backend. This can be done by adding the `--admin` option to the `generate:resource` or `generate:file` commands. There are 4 different parameters that can be used to modify the templates for the admin backend:
 
 
-| Name                      | key                               | value if printed      |
+| Name                      | Key                               | Value if printed      |
 |---------------------------|-----------------------------------|-----------------------|
 | resource folder path      | ##ADMIN_RESOURCE_FOLDER_PATH##    | /admin                |
 | resource dot path         | ##ADMIN_RESOURCE_DOT_PATH##       | admin.                |
