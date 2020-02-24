@@ -1,7 +1,6 @@
 <?php namespace ##NAMESPACE##\Services\Html##ADMIN_NAMESPACE_PATH##;
 
 
-use Ixudra\Core\Services\Html\BaseViewFactory;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 use ##NAMESPACE##\Services\Input\##CLASS_SINGULAR##InputHelper;

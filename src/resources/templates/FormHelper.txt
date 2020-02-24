@@ -4,8 +4,6 @@
 use Ixudra\Core\Services\Form\BaseFormHelper;
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
 
-use App;
-
 class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
 
     protected $repository;

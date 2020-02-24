@@ -11,4 +11,16 @@ class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
         return $this->getPrefixedInput( ##CLASS_SINGULAR##::getDefaults(), $prefix );
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getInputForSearch($input)
+    {
+        if( array_key_exists('query', $input) && !empty($input[ 'query' ]) ) {
+            $input[ 'query' ] = '%'. $input[ 'query' ] .'%';
+        }
+
+        return parent::getInputForSearch( $input );
+    }
+
 }

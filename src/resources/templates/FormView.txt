@@ -1,16 +1,29 @@
+
 {!! Form::open(array('route' => $route, 'method' => $method, 'id' => $formId, 'class' => 'form-horizontal', 'role' => 'form')) !!}
 
-    <div class="well well-large">
-        {!! Form::openFormGroup('name', $errors, $requiredFields) !!}
-            {!! Form::label($prefix . 'name', Translate::recursive('members.name') .': ', array('class' => 'control-label col-md-3')) !!}
-            <div class="col-md-8">
-                {!! Form::text($prefix . 'name', $input[$prefix . 'name'], array('class' => 'form-control')) !!}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    {{ Translate::recursive('common.titles.basicInformation') }}
+                </div>
+                <div class="card-body">
+                    {!! Form::openFormGroup('name', $errors, $requiredFields) !!}
+                        {!! Form::label($prefix . 'name', Translate::recursive('members.name') .': ', array('class' => 'control-label col-md-3')) !!}
+                        <div class="col-md-8">
+                            {!! Form::text($prefix . 'name', $input[$prefix . 'name'], array('class' => 'form-control')) !!}
+                        </div>
+                    {!! Form::closeFormGroup('name', $errors) !!}
+                </div>
             </div>
-        {!! Form::closeFormGroup('name', $errors) !!}
+        </div>
     </div>
-    <div class="action-button">
+
+    <div class="row col-md-12">&nbsp;</div>
+
+    <div class="align-right">
         {!! Form::submit(Translate::recursive('common.submit'), array('class' => 'btn btn-primary')) !!}
-        {!! HTML::linkRoute($redirectUrl, Translate::recursive('common.cancel'), $redirectParameters, array('class' => 'btn btn-default')) !!}
+        {!! HTML::linkRoute($redirectUrl, Translate::recursive('common.cancel'), $redirectParameters, array('class' => 'btn btn-outline-secondary')) !!}
     </div>
 
 {!! Form::close() !!}
