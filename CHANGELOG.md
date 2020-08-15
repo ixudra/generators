@@ -2,6 +2,14 @@
 
 All Notable changes to `ixudra/generators` will be documented in this file
 
+## 6.3.0 2020-08-15
+### Added
+- Laravel 7 support
+
+## 6.2.0 - 2019-10-15
+### Updated
+- View templates for Bootstrap 4
+
 ## 6.1.0 - 2019-10-15
 ### Updated
 - Updated for Laravel 6

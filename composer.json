@@ -1,9 +1,9 @@
 {
     "name": "ixudra/generators",
-    "description": "Custom PHP resource generation library for the Laravel 5 framework - developed by Ixudra",
-    "version": "6.2.0",
+    "description": "Custom PHP resource generation library for the Laravel framework - developed by Ixudra",
+    "version": "6.3.0",
     "keywords": ["Ixudra", "Laravel", "Generator"],
-    "homepage": "http://ixudra.be",
+    "homepage": "https://ixudra.be",
     "license": "MIT",
 
     "authors": [
