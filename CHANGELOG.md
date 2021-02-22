@@ -2,6 +2,10 @@
 
 All Notable changes to `ixudra/generators` will be documented in this file
 
+## 6.4.0 2021-02-22
+### Added
+- Laravel 8 support
+
 ## 6.3.0 2020-08-15
 ### Added
 - Laravel 7 support
