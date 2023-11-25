@@ -1,4 +1,4 @@
-@extends('bootstrap.layouts.master')
+@extends('adminLTE.layouts.master')
 
 
 @section('page-title')
@@ -13,6 +13,12 @@
 
 @section('content')
 
-    @include('bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.form', array('route' => array('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', $##VARIABLE_SINGULAR##->id), 'method' => 'put', 'input' => $input, 'formId' => 'edit##CLASS_SINGULAR##', 'redirectUrl' => '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', 'redirectParameters' => array($##VARIABLE_SINGULAR##->id)))
+    <section class="content">
+        <div class="container-fluid">
+
+            @include('adminLTE.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.form', array('route' => array('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', $##VARIABLE_SINGULAR##->id), 'method' => 'put', 'input' => $input, 'formId' => 'edit##CLASS_SINGULAR##', 'redirectUrl' => '##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.show', 'redirectParameters' => array($##VARIABLE_SINGULAR##->id)))
+
+        </div>
+    </section>
 
 @endsection

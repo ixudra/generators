@@ -1,10 +1,10 @@
 <?php namespace ##NAMESPACE##\Models;
 
 
+use ##NAMESPACE##\Presenters\##CLASS_SINGULAR##Presenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use Laracasts\Presenter\PresentableTrait;
-use ##NAMESPACE##\Presenters\##CLASS_SINGULAR##Presenter;
 
 class ##CLASS_SINGULAR## extends Model {
 

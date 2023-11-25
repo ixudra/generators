@@ -1,8 +1,8 @@
 <?php namespace ##NAMESPACE##\Services\Validation;
 
 
-use Ixudra\Core\Services\Validation\BaseValidationHelper;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use Ixudra\Core\Services\Validation\BaseValidationHelper;
 
 class ##CLASS_SINGULAR##ValidationHelper extends BaseValidationHelper {
 

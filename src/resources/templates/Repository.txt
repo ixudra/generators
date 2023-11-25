@@ -1,8 +1,8 @@
 <?php namespace ##NAMESPACE##\Repositories\Eloquent;
 
 
-use Ixudra\Core\Repositories\Eloquent\BaseEloquentRepository;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use Ixudra\Core\Repositories\Eloquent\BaseEloquentRepository;
 
 class Eloquent##CLASS_SINGULAR##Repository extends BaseEloquentRepository {
 

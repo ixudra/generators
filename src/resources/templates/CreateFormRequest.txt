@@ -1,8 +1,8 @@
 <?php namespace ##NAMESPACE##\Http\Requests##ADMIN_NAMESPACE_PATH##\##CLASS_PLURAL##;
 
 
-use Ixudra\Core\Http\Requests\BaseRequest;
 use ##NAMESPACE##\Services\Validation\##CLASS_SINGULAR##ValidationHelper;
+use Ixudra\Core\Http\Requests\BaseRequest;
 
 use App;
 

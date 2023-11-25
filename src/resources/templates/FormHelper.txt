@@ -1,8 +1,8 @@
 <?php namespace ##NAMESPACE##\Services\Form;
 
 
-use Ixudra\Core\Services\Form\BaseFormHelper;
 use ##NAMESPACE##\Repositories\Eloquent\Eloquent##CLASS_SINGULAR##Repository;
+use Ixudra\Core\Services\Form\BaseFormHelper;
 
 class ##CLASS_SINGULAR##FormHelper extends BaseFormHelper {
 

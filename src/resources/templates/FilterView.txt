@@ -1,18 +1,17 @@
 
-<div id="##VARIABLE_SINGULAR##Filters" class="collapse">
-    {!! Form::open(array('route' => array('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.filter'), 'method' => 'POST', 'id' => 'filter##CLASS_PLURAL##')) !!}
-        <div class="form-row">
-            <div class="col-md-4 mb-3">
-                {!! Form::label('query', Translate::recursive('common.query') .': ') !!}
-                {!! Form::text('query', $input['query'], array('placeholder' => Translate::recursive('common.query'), 'class' => 'form-control', 'id' => 'query')) !!}
-            </div>
-            <div class="col-md-6 mb-3 align-bottom">
-                {!! Form::label('query','&nbsp;') !!}
-                <div class="form-group">
-                    {!! Form::iconSubmit(Translate::recursive('common.search'), 'search', array('class' => 'btn btn-primary align-bottom')) !!}
-                    {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.index', Translate::recursive('common.clear'), 'times', array(), array('class' => 'btn btn-outline-secondary')) !!}
+{!! Form::open(array('route' => array('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.filter'), 'method' => 'POST', 'id' => 'filter##CLASS_PLURAL##')) !!}
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="form-group">
+                <div class="input-group input-group-lg">
+                    {!! Form::text('query', $input['query'], array('placeholder' => Translate::recursive('common.query'), 'class' => 'form-control form-control-lg', 'id' => 'query')) !!}
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-lg btn-default">
+                           <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    {!! Form::close() !!}
-</div>
+    </div>
+{!! Form::close() !!}

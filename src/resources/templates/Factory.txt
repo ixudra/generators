@@ -1,8 +1,8 @@
 <?php namespace ##NAMESPACE##\Services\Factories;
 
 
-use Ixudra\Core\Services\Factories\BaseFactory;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use Ixudra\Core\Services\Factories\BaseFactory;
 
 class ##CLASS_SINGULAR##Factory extends BaseFactory {
 

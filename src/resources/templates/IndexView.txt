@@ -1,4 +1,4 @@
-@extends('bootstrap.layouts.master')
+@extends('adminLTE.layouts.master')
 
 
 @section('page-title')
@@ -13,17 +13,21 @@
 
 @section('content')
 
-    <div class="d-flex flex-row-reverse bd-highlight">
-        <p>
-            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="###VARIABLE_SINGULAR##Filters" aria-expanded="false" aria-controls="##VARIABLE_SINGULAR##Filters">
-                <i class="fas fa-sliders-h" aria-hidden="true"></i> {{ Translate::recursive('common.filters') }}
-            </button>
-            {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create', Translate::recursive('common.new'), 'plus', array(), array('class' => 'btn btn-primary')) !!}
-        </p>
-    </div>
+    <section class="content">
+        <div class="container-fluid">
 
-    @include('bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.filter')
+            <div class="row row-triggers">
+                <div class="col-12">
+                    {!! HTML::iconRoute('##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.create', Translate::recursive('common.new'), 'plus', array(), array('class' => 'btn btn-primary float-right')) !!}
+                </div>
+            </div>
 
-    @include('bootstrap.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.table')
+            @include('adminLTE.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.filter')
+
+            @include('adminLTE.##ADMIN_RESOURCE_DOT_PATH####VARIABLE_PLURAL##.table')
+
+        </div>
+    </section>
 
 @endsection
+

@@ -1,11 +1,14 @@
 <?php namespace ##NAMESPACE##\Services\Input;
 
 
-use Ixudra\Core\Services\Input\BaseInputHelper;
 use ##NAMESPACE##\Models\##CLASS_SINGULAR##;
+use Ixudra\Core\Services\Input\BaseInputHelper;
 
 class ##CLASS_SINGULAR##InputHelper extends BaseInputHelper {
 
+    /**
+     * {@inheritDoc}
+     */
     public function getDefaultInput($prefix = '')
     {
         return $this->getPrefixedInput( ##CLASS_SINGULAR##::getDefaults(), $prefix );
