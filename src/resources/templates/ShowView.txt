@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="col-md-4"><strong>{{ Translate::recursive('members.general') }}</strong></div>
+                                    <div class="col-md-4"><strong>{{ Translate::recursive('members.name') }}</strong></div>
                                     <div class="col-md-8">{{ $##VARIABLE_SINGULAR##->name }}</div>
                                 </div>
                             </div>
