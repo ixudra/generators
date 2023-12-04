@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">{{ Translate::recursive('admin.menu.title.index', array('model' => 'user')) }}</h3>
+                <h3 class="card-title">{{ Translate::recursive('admin.menu.title.index', array('model' => '##VARIABLE_SINGULAR##')) }}</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
